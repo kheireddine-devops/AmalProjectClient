@@ -1,0 +1,8 @@
+{
+ "helps":[
+  {"idHelp":1,"typeHelp":"Demande d'emploi","subjectHelp":"Jeune Diplomé cherche un emploi","contentHelp":"","dateHelp":"02-10-2022","statusHelp" :"","idUser":3},
+  {"idHelp":2,"typeHelp":"Demande d'emploi","subjectHelp":"Jeune Diplomé cherche un emploi","contentHelp":"","dateHelp":"12-10-2022","statusHelp" :"","idUser":3},
+  {"idHelp":3,"typeHelp":"Demande d'emploi","subjectHelp":"Jeune Diplomé cherche un emploi","contentHelp":"","dateHelp":"13-10-2022","statusHelp" :"","idUser":9},
+  {"idHelp":4,"typeHelp":"Demande d'emploi","subjectHelp":"Jeune Diplomé cherche un emploi","contentHelp":"","dateHelp":"22-10-2022","statusHelp" :"","idUser":9}
+ ]
+}

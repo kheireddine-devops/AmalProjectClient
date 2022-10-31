@@ -1,0 +1,54 @@
+<div class="col-sm-12 col-xl-12">
+    <div class="bg-light rounded h-100 p-4">
+        <h6 class="mb-4">{{titre}}</h6>
+        <form #f="ngForm" >
+            <div class="form-floating mb-3">
+                <select class="form-select" id="floatingSelect" aria-label="Floating label select example" name="typeHelp" ngModel #t="ngModel" [(ngModel)]="help.typeHelp" required>
+                    <option selected>Selectionner type de demande</option>
+                    <option value="Demande d'emploi">Demande d'emploi</option>
+                    <option value="Demande de Formation">Demande de Formation</option>
+                    <option value="Demande Dons">Demande Dons</option>
+                    <option value="Autres">Autres</option>
+                </select>
+                <label for="floatingSelect">Type Demande</label>
+            </div>
+            <div class="alert alert-danger" *ngIf="t.invalid && t.touched">
+                Ce Champs est obligatoire
+            </div>
+
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="floatingInput" name="subjectHelp" ngModel #s="ngModel" required [(ngModel)]="help.subjectHelp">
+            <label for="floatingInput">Sujet</label>
+        </div>
+        <div class="alert alert-danger" *ngIf="s.invalid && s.touched">
+            Ce Champs est obligatoire
+        </div>
+        <div class="form-floating">
+            <textarea class="form-control" placeholder="votre publication ici" id="floatingTextarea" style="height: 150px;" name="contentHelp" ngModel #c="ngModel" minlength="30" required [(ngModel)]="help.contentHelp"></textarea>
+            <label for="floatingTextarea">Contenue</label>
+        </div>
+        <div class="alert alert-danger" *ngIf="c.invalid && c.touched">
+            Ce Champs est obligatoire
+            le contenue doit deppaser le 30 caractéres
+        </div>
+        <fieldset class="form-floating">
+            <legend class="col-form-label col-sm-2 pt-0">Status</legend>
+            <div class="col-sm-10">
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="published" checked name="statusHelp" ngModel [(ngModel)]="help.statusHelp">
+                    <label class="form-check-label" for="gridRadios1">
+                        Published
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="Unpublished" name="statusHelp" ngModel [(ngModel)]="help.statusHelp">
+                    <label class="form-check-label" for="gridRadios2">
+                        Unpublished
+                    </label>
+                </div>
+            </div>
+        </fieldset>
+        <button type="submit" class="btn btn-success rounded-pill m-2" [disabled]="f.invalid" (click)="Save()" >Ajouter</button>
+    </form>
+    </div>
+</div>
