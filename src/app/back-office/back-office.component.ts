@@ -7,9 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BackOfficeComponent implements OnInit {
 
+  isOpenSideBar: boolean = false;
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  onToggleSideBar() {
+    this.isOpenSideBar = !this.isOpenSideBar;
+  }
 }
