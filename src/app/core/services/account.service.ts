@@ -1,13 +1,15 @@
 import {Injectable} from '@angular/core';
-import {CurrentUser, RoleEnum} from "../entities/users";
+import {AuthRequest, AuthResponse, CurrentUser, RoleEnum} from "../entities/users";
 import {map, Observable, of} from "rxjs";
+import {HttpClient} from "@angular/common/http";
+import {TokenUtilsService} from "./token-utils.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AccountService {
 
-  constructor() { }
+  constructor(private _http: HttpClient,private _tokenUtilsService: TokenUtilsService) { }
 
   // getCurrentUser(): Observable<CurrentUser> {
   //   return new Observable<CurrentUser>()
@@ -22,5 +24,16 @@ export class AccountService {
 
   getCurrentUserByToken(token: string): Observable<CurrentUser> {
     return of({role: RoleEnum.BENEFICIER, firstname: "kheireddine", lastname: "mechergui", photo: "", id: 1, fullName: "kheireddine mechergui"});
+  }
+
+  login(credentials : AuthRequest): Observable<AuthResponse> {
+    return this._http.get<Array<any>>(`/api/auth/${credentials.login}/${credentials.password}`)
+      .pipe(map(value => {
+        if (value.length == 1) {
+          return { token: value[0].token, valid: true}
+        }
+        return { token: "", valid: false}
+      }));
+    // return of({token: ""});
   }
 }

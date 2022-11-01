@@ -17,3 +17,13 @@ export enum RoleEnum {
   BENEVOLE='BENEVOLE',
   ORGANIZATION='ORGANIZATION'
 }
+
+export interface AuthRequest {
+  login: string,
+  password: string
+}
+
+export interface AuthResponse {
+  token: string | undefined,
+  valid: boolean
+}
