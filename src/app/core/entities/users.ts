@@ -27,3 +27,16 @@ export interface AuthResponse {
   token: string | undefined,
   valid: boolean
 }
+
+export interface JWTResponse {
+  iss: string,
+  iat:number,
+  exp: number,
+  aud: string,
+  sub: string
+
+  username: string;
+  role: RoleEnum;
+  id: number;
+  name: string;
+}
