@@ -19,6 +19,7 @@ export class AddHelpComponent implements OnInit {
   }
   Save(){
     this.helpService.PostHelp(this.help).subscribe();
+    //console.warn(this.Save());
  }
 
 }
