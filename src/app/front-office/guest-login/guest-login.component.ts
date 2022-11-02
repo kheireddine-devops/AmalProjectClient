@@ -5,11 +5,11 @@ import {TokenUtilsService} from "../../core/services/token-utils.service";
 import {JWTResponse, RoleEnum} from "../../core/entities/users";
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: 'app-guest-login',
+  templateUrl: './guest-login.component.html',
+  styleUrls: ['./guest-login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class GuestLoginComponent implements OnInit {
 
   username: string = "admin";
   password: string = "admin";
