@@ -1,0 +1,77 @@
+<div class="container-fluid pt-4 px-4">
+    <div class="bg-light text-center rounded p-4">
+        <div class="d-flex align-items-center justify-content-between mb-4">
+            <h6 class="mb-0">Commentaires</h6>
+            <a href="">Voir Plus</a>
+        </div>
+        <div class="table-responsive">
+            <table class="table text-start align-middle table-bordered table-hover mb-0">
+                <thead>
+                    <tr class="text-dark">
+                        <th scope="col"><input class="form-check-input" type="checkbox"></th>
+                        <th scope="col">Nom</th>
+                        <th scope="col">Prénom</th>
+                        <th scope="col">Commentaires</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><input class="form-check-input" type="checkbox"></td>
+                        <td>01 Jan 2045</td>
+                        <td>INV-0123</td>
+                        <td>Jhon Doe</td>
+                        <td>$123</td>
+                        <td>Paid</td>
+                        <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
+                    </tr>
+                    
+                </tbody>
+            </table>
+        </div><br><br>
+        <!--- Add Commentaires-->
+        <div class="accordion accordion-flush" id="accordionFlushExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingOne">
+                    <button class="accordion-button" type="button"
+                        data-bs-toggle="collapse" data-bs-target="#flush-collapseOne"
+                        aria-expanded="true" aria-controls="flush-collapseOne">
+                        Ajouter un nouveau commentaire
+                    </button>
+                </h2>
+                <div id="flush-collapseOne" class="accordion-collapse collapse show"
+                    aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">
+                        <!--formulaire d'ajout commentaire-->
+                        <form>
+                            <div class="form-floating">
+                                <textarea class="form-control" placeholder="Leave a comment here"
+                                    id="floatingTextarea" style="height: 150px;"></textarea>
+                                <label for="floatingTextarea">Commentaire</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                    id="flexRadioDefault1">
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                    Published
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                    id="flexRadioDefault2" checked>
+                                <label class="form-check-label" for="flexRadioDefault2">
+                                    Unpublished
+                                </label>
+                            </div>
+                            <button type="submit" class="btn btn-outline-primary m-2"><i class="fa fa-save me-2"></i>Commenter</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+         
+        </div>
+
+    </div>
+</div>

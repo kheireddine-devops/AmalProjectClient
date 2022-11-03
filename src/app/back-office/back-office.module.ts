@@ -9,6 +9,7 @@ import { GestionDonsComponent } from './gestion-dons/gestion-dons.component';
 import { SideBarComponent } from './side-bar/side-bar.component';
 import { ShowHelpComponent } from './show-help/show-help.component';
 import { AddHelpComponent } from './add-help/add-help.component';
+import { CommentsHelpComponent } from './comments-help/comments-help.component';
 
 
 
@@ -19,6 +20,7 @@ import { AddHelpComponent } from './add-help/add-help.component';
     SideBarComponent,
     ShowHelpComponent,
     AddHelpComponent,
+    CommentsHelpComponent,
     
   ],
   imports: [

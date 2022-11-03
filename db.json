@@ -27,5 +27,12 @@
       "statusHelp": "Published",
       "idUser": 9
     }
+  ],
+  "commenthelp":[
+    {"id":"1",
+    "comment":"test test test",
+    "dateComment":"03-01-2022",
+    "helpId":"2",
+    "idUser":"3"}
   ]
 }
