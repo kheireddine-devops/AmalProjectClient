@@ -1,8 +1,31 @@
 {
- "helps":[
-  {"idHelp":1,"typeHelp":"Demande d'emploi","subjectHelp":"Jeune Diplomé cherche un emploi","contentHelp":"patattttt","dateHelp":"02-10-2022","statusHelp" :"Published","idUser":3},
-  {"idHelp":2,"typeHelp":"Demande de formation","subjectHelp":"Je cherche une formation pour.....","contentHelp":"test1","dateHelp":"12-10-2022","statusHelp" :"Published","idUser":3},
-  {"idHelp":3,"typeHelp":"Demande dons","subjectHelp":"Jeune Diplomé cherche un emploi","contentHelp":"test","dateHelp":"13-10-2022","statusHelp" :"Published","idUser":9},
-  {"idHelp":4,"typeHelp":"Demande d'emploi","subjectHelp":"Jeune Diplomé cherche un emploi","contentHelp":"test test test","dateHelp":"22-10-2022","statusHelp" :"Published","idUser":9}
- ]
+  "helps": [
+    {
+      "id": "2",
+      "typeHelp": "Demande de formation",
+      "subjectHelp": "Je cherche une formation pour.....",
+      "contentHelp": "test1",
+      "dateHelp": "12-10-2022",
+      "statusHelp": "Published",
+      "idUser": 3
+    },
+    {
+      "id": "3",
+      "typeHelp": "Demande dons",
+      "subjectHelp": "Jeune Diplomé cherche un emploi",
+      "contentHelp": "test",
+      "dateHelp": "13-10-2022",
+      "statusHelp": "Published",
+      "idUser": 9
+    },
+    {
+      "id": "4",
+      "typeHelp": "Demande d'emploi",
+      "subjectHelp": "Jeune Diplomé cherche un emploi",
+      "contentHelp": "test test test",
+      "dateHelp": "22-10-2022",
+      "statusHelp": "Published",
+      "idUser": 9
+    }
+  ]
 }

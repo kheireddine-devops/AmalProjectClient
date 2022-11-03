@@ -1,0 +1,30 @@
+<img src="assets/aideimg/slide2.jpg" class="d-block w-100" alt="..." height="300px">
+<div class="container">
+    <div class="row">
+      <h1>Demandes D'aides</h1>
+      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias, saepe quia non corrupti voluptatum autem dicta aspernatur officia quod ut natus beatae quis quaerat sunt vitae doloremque explicabo accusantium corporis quibusdam consectetur tempore libero similique velit et. Fugit, ducimus quos?
+      </p>
+    </div>
+    <div class="row">
+        <div class="col-md-4" *ngFor="let help of listHelps">
+            <div class="card" style="width: 18rem;">
+              <button type="button" class="btn btn-primary position-relative">
+                Commentaires
+                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                  3+
+                  <span class="visually-hidden">unread messages</span>
+                </span>
+              </button>
+              <i>{{help.dateHelp}}</i>
+                <img src="assets/aideimg/aide.png" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">{{help.typeHelp}}</h5>
+                  <h6>{{help.subjectHelp}}</h6>
+                  <p class="card-text"></p>
+                  <a routerLink="../helpdetails" class="btn btn-primary">Voir Plus</a>
+                </div>
+              </div>
+        </div>
+    
+</div>
+

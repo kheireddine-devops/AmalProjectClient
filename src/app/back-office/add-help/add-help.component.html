@@ -1,5 +1,8 @@
 <div class="col-sm-12 col-xl-12">
     <div class="bg-light rounded h-100 p-4">
+        <div class="alert alert-success" role="alert" *ngIf="alert">
+            Demande ajoutée avec success
+          </div>
         <h6 class="mb-4">{{titre}}</h6>
         <form #f="ngForm" >
             <div class="form-floating mb-3">

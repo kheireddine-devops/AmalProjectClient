@@ -1,0 +1,14 @@
+.row{
+    margin-bottom: 50px;
+    margin-top: 50px;
+    text-align: center;
+}
+h1{
+    color:#e41737;
+}
+i{
+    text-align: right;
+}
+.card{
+    margin-bottom: 30px;
+}

@@ -6,9 +6,11 @@ import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 
 
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+   
    
   ],
   imports: [

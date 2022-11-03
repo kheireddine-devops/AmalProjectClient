@@ -10,6 +10,7 @@ import { Help } from 'src/app/shared/model/Help';
 export class AddHelpComponent implements OnInit {
   titre:string="Ajouter Demande Aide";
   help!:Help;
+  alert:boolean=false;
 
   constructor(private helpService:HelpService) { }
 
@@ -18,8 +19,12 @@ export class AddHelpComponent implements OnInit {
     
   }
   Save(){
+    this.help.dateHelp = new Date();
+    this.help.idUser=3;
     this.helpService.PostHelp(this.help).subscribe();
     //console.warn(this.Save());
+    this.alert=true;
+    
  }
 
 }

@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Help } from '../model/Help';
@@ -8,6 +8,11 @@ import { Help } from '../model/Help';
 })
 export class HelpService {
   url :string="http://localhost:3000/helps";
+  httpOptions = {
+    headers: new HttpHeaders({
+    'Content-Type': 'application/json'
+    })
+    }
 
   constructor(private http:HttpClient) { }
   getHelps():Observable<Help[]>{
@@ -15,6 +20,10 @@ export class HelpService {
 
   }
   PostHelp(h:Help){
-    return this.http.post(this.url,h);
+    return this.http.post(this.url,h,this.httpOptions);
+  }
+  DeleteHelp(id:any){
+    return this.http.delete<any>(this.url+'/'+id);
+
   }
 }

@@ -1,5 +1,5 @@
 export class Help{
-    idHelp!:number;
+    id!:string;
     typeHelp!:string;
     subjectHelp!:string;
     contentHelp!:string;

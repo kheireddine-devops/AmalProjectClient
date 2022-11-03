@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -10,18 +11,21 @@ import { ShowHelpComponent } from './show-help/show-help.component';
 import { AddHelpComponent } from './add-help/add-help.component';
 
 
+
 @NgModule({
   declarations: [
     BackOfficeComponent,
     GestionDonsComponent,
     SideBarComponent,
     ShowHelpComponent,
-    AddHelpComponent
+    AddHelpComponent,
+    
   ],
   imports: [
     CommonModule,
     BackOfficeRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ]
 })
 export class BackOfficeModule { }

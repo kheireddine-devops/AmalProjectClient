@@ -16,5 +16,10 @@ export class ShowHelpComponent implements OnInit {
   ngOnInit(): void {
     this.helpservice.getHelps().subscribe((data:Help[])=>this.listHelps=data);
   }
+  Delete(help:Help):void{
+  
+    this.helpservice.DeleteHelp(help.id).subscribe();
+  }
+
 
 }
