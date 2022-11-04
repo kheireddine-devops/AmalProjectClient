@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -8,6 +9,7 @@ import { SideBarComponent } from './side-bar/side-bar.component';
 import { GestionEmploisComponent } from './gestion-emplois/gestion-emplois.component';
 import { AjouterEmploisComponent } from './ajouter-emplois/ajouter-emplois.component';
 import { FormsModule } from '@angular/forms';
+import { EmploisComponent } from './emplois/emplois.component';
 
 
 @NgModule({
@@ -16,12 +18,14 @@ import { FormsModule } from '@angular/forms';
     GestionDonsComponent,
     SideBarComponent,
     GestionEmploisComponent,
-    AjouterEmploisComponent
+    AjouterEmploisComponent,
+    EmploisComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
-    BackOfficeRoutingModule
+    BackOfficeRoutingModule,
+    HttpClientModule
   ]
 })
 export class BackOfficeModule { }

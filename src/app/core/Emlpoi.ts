@@ -1,8 +1,8 @@
 export class Emploi{
     id!: number;
     titre!: string;
-    descriptif!: number;
-    secteur!: number;
-    ref!: number;
-    deteExp!:Date;
+    descriptif!: String;
+    secteur!: String;
+    ref!: String;
+    dateExp!:Date;
 }
