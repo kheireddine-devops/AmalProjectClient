@@ -1,11 +1,11 @@
 
  <img src="assets/aideimg/slide2.jpg" class="d-block w-100" alt="..." height="300px">
  <!----help details-->
- <div class="container">
+ <div class="container section">
  <div class="container-fluid pt-4 px-4">
     <div class="bg-light text-center rounded p-4">
         <div class="d-flex align-items-center justify-content-between mb-4">
-            <h6 class="mb-0">Demande d'aide</h6>
+            <h5 class="mb-0">Demande d'aide</h5>
             <a href=""><div class="d-flex align-items-center border-bottom py-3">
                 <img class="rounded-circle flex-shrink-0" src="assets/img/user.jpg" alt="" style="width: 40px; height: 40px;">
                 <div class="w-100 ms-3">
@@ -16,18 +16,46 @@
                 </div>
             </div></a>
         </div>
-        <div class="table-responsive">
-            
-        </div>
+        <!----start Help-->
+        
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card" id="card1" >
+                          <div class="card-body">
+                            <img src="assets/img/logo-amal.png" width="150px" height="150px">
+                            <h1 class="white">Lorem ipsum dolor sit, amet consectetur adipisicing elit. </h1>
+                            
+                            <a href="#" class="btn btn-primary">S'inscrire</a>
+                          </div>
+                    </div>
+                  
+                </div>
+                <div class="col-md-6">
+                    <div class="card">
+              
+                        <i><button type="button" class="btn btn-square btn-secondary m-2"><i class="fa fa-clock"></i></button>12-03-2022</i>
+                          
+                          <div class="card-body">
+                            <h5 class="card-title">titre</h5>
+                            <h6>Sujet</h6>
+                            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. At ullam adipisci sequi sapiente saepe, et a nemo! Maxime ipsa labore cumque error quis facilis aut quaerat ipsum temporibus provident. Earum eveniet quibusdam at quos voluptate voluptates incidunt placeat asperiores deserunt sunt nihil iusto aut aspernatur inventore amet, architecto dignissimos nesciunt in laborum voluptas ut, molestias aliquam voluptatum. Explicabo, dolores aut culpa voluptatem et mollitia hic.</p>
+                            
+                          </div>
+                        </div>
+                  </div>
+                </div>
+            </div>
+        
     </div>
 </div>
+<div class="container-fluid"></div>
 <!---commentaire start-->
-<div class="container-fluid pt-12 px-9">
-    <div class="row g-4">
-        <div class="col-sm-12 col-md-6 col-xl-4">
+<div class="container commentaire">
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-xl-12">
             <div class="h-100 bg-light rounded p-4">
                 <div class="d-flex align-items-center justify-content-between mb-2">
-                    <h6 class="mb-0">Commentaires</h6>
+                    <h5 class="mb-0">Commentaires</h5>
                     <a href="">Voir Plus</a>
                 </div>
                 <div class="d-flex align-items-center border-bottom py-3">
@@ -72,4 +100,32 @@
                 </div>
             </div>
         </div>
-    </div>
+</div>
+<!--add commentaire-->
+<div class="accordion accordion-flush" id="accordionFlushExample">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="flush-headingOne">
+                            <button class="accordion-button" type="button"
+                                data-bs-toggle="collapse" data-bs-target="#flush-collapseOne"
+                                aria-expanded="true" aria-controls="flush-collapseOne">
+                                Ajouter un nouveau commentaire
+                            </button>
+                        </h2>
+                        <div id="flush-collapseOne" class="accordion-collapse collapse show"
+                            aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">
+                                <!--formulaire d'ajout commentaire-->
+                                <form #f="ngForm">
+                                    <div class="form-floating">
+                                        <textarea class="form-control" placeholder="Leave a comment here"
+                                            id="floatingTextarea" style="height: 150px;" name="commentHelp" ngModel required></textarea>
+                                        <label for="floatingTextarea">Commentaire</label>
+                                    </div>
+                                    
+                                    <button type="submit" class="btn btn-primary m-2" [disabled]="f.invalid"><i class="fa fa-save me-2"></i>Commenter</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                 
+</div>

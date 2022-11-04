@@ -1,21 +1,35 @@
 <img src="assets/aideimg/slide2.jpg" class="d-block w-100" alt="..." height="300px">
+<div class="section">
 <div class="container">
     <div class="row">
       <h1>Demandes D'aides</h1>
       <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias, saepe quia non corrupti voluptatum autem dicta aspernatur officia quod ut natus beatae quis quaerat sunt vitae doloremque explicabo accusantium corporis quibusdam consectetur tempore libero similique velit et. Fugit, ducimus quos?
       </p>
     </div>
+    <div class="row search">
+      <form>
+        <div class="row">
+        <div class="col-md-6">
+            <select class="form-select" id="floatingSelect" aria-label="Floating label select example" name="typeHelp" required>
+                <option selected>Selectionner type de demande</option>
+                <option value="Demande d'emploi">Demande d'emploi</option>
+                <option value="Demande de Formation">Demande de Formation</option>
+                <option value="Demande Dons">Demande Dons</option>
+                <option value="Autres">Autres</option>
+            </select>
+        </div>
+        
+      <div class="col-md-6">
+        <button type="button" class="btn btn-primary m-2"><i class="fa fa-search me-2"></i>Rechercher</button>
+      </div>
+    </div>
+      </form>
+    </div>
     <div class="row">
         <div class="col-md-4" *ngFor="let help of listHelps">
             <div class="card" style="width: 18rem;">
-              <button type="button" class="btn btn-primary position-relative">
-                Commentaires
-                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                  3+
-                  <span class="visually-hidden">unread messages</span>
-                </span>
-              </button>
-              <i>{{help.dateHelp}}</i>
+              
+              <i><button type="button" class="btn btn-square btn-secondary m-2"><i class="fa fa-clock"></i></button>{{help.dateHelp}}</i>
                 <img src="assets/aideimg/aide.png" class="card-img-top" alt="...">
                 <div class="card-body">
                   <h5 class="card-title">{{help.typeHelp}}</h5>
@@ -26,5 +40,6 @@
               </div>
         </div>
     
+</div>
 </div>
 

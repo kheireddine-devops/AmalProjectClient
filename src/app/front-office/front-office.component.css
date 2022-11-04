@@ -1,0 +1,19 @@
+.navbar{
+    background: #fff;
+    transition: all 0.5s;
+    z-index: 997;
+    padding: 15px 0;
+    right: 0;
+    left: 0;
+    box-shadow: 0px 2px 15px rgb(25 119 204 / 10%);
+    position:fixed;
+    width: 100%;
+}
+.navbar a{
+    font-size: 16px;
+    color: #2c4964;
+    white-space: nowrap;
+    transition: 0.3s;
+    border-bottom: 2px solid #fff;
+    padding: 5px 2px;
+}
