@@ -10,13 +10,14 @@
       <form>
         <div class="row">
         <div class="col-md-6">
-            <select class="form-select" id="floatingSelect" aria-label="Floating label select example" name="typeHelp" required>
+            <select class="form-select" id="floatingSelect" aria-label="Floating label select example"  >
                 <option selected>Selectionner type de demande</option>
                 <option value="Demande d'emploi">Demande d'emploi</option>
                 <option value="Demande de Formation">Demande de Formation</option>
                 <option value="Demande Dons">Demande Dons</option>
                 <option value="Autres">Autres</option>
             </select>
+            
         </div>
         
       <div class="col-md-6">
@@ -25,8 +26,10 @@
     </div>
       </form>
     </div>
+    
     <div class="row">
         <div class="col-md-4" *ngFor="let help of listHelps">
+          
             <div class="card" style="width: 18rem;">
               
               <i><button type="button" class="btn btn-square btn-secondary m-2"><i class="fa fa-clock"></i></button>{{help.dateHelp}}</i>
@@ -35,10 +38,11 @@
                   <h5 class="card-title">{{help.typeHelp}}</h5>
                   <h6>{{help.subjectHelp}}</h6>
                   <p class="card-text"></p>
-                  <a routerLink="../helpdetails" class="btn btn-primary">Voir Plus</a>
+                  <a routerLink="../helpdetails/{{help.id}}" class="btn btn-primary">Voir Plus</a>
                 </div>
               </div>
         </div>
+        
     
 </div>
 </div>

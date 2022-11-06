@@ -20,7 +20,10 @@
                         <td>{{h.contentHelp}}</td>
                         <td>{{h.dateHelp}}</td>
                         <td>{{h.statusHelp}}</td>
-                        <td><button type="submit" class="btn btn-square btn-danger m-2" (click)="Delete(h)"><i class="fa fa-trash"></i></button> <button type="submit" class="btn btn-square btn-primary m-2"><i class="fa fa-edit"></i></button></td>
+                        <td><button type="submit" class="btn btn-square btn-danger m-2" (click)="Delete(h)"><i class="fa fa-trash"></i>
+                        </button> <button type="submit" class="btn btn-square btn-primary m-2"><i class="fa fa-edit"></i></button>
+                        <a routerLink="../gestioncommentaires/{{h.id}}">commentaire</a>
+                    </td>
                     </tr>
                    
                 </tbody>

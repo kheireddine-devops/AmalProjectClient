@@ -18,7 +18,10 @@ export class ShowHelpComponent implements OnInit {
   }
   Delete(help:Help):void{
   
-    this.helpservice.DeleteHelp(help.id).subscribe();
+    this.helpservice.DeleteHelp(help.id).subscribe((data)=>{
+      this.listHelps= this.listHelps.filter((h:any)=>h !== help);
+    });
+    
   }
 
 

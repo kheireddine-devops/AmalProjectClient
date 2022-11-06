@@ -24,6 +24,9 @@ export class HelpService {
   }
   DeleteHelp(id:any){
     return this.http.delete<any>(this.url+'/'+id);
-
   }
+  getHelpById(id:any):Observable<Help>{
+    return this.http.get<Help>(this.url+'/'+id);
+  }
+
 }

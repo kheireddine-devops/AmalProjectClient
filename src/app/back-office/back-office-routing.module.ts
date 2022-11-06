@@ -10,7 +10,7 @@ const routes: Routes = [{ path: '', component: BackOfficeComponent ,
 children:[{path: 'gestiondons',component:GestionDonsComponent},
 {path: 'gestionaides',component:ShowHelpComponent},
 {path: 'ajouteraide',component:AddHelpComponent},
-{path: 'gestioncommentaires',component:CommentsHelpComponent}]},
+{path: 'gestioncommentaires/:id',component:CommentsHelpComponent}]},
 ];
 
 @NgModule({

@@ -6,7 +6,7 @@ import { FrontOfficeComponent } from './front-office.component';
 
 const routes: Routes = [{ path: '', component: FrontOfficeComponent,children:[
   {path:'demandeaide',component:HelpShowComponent},
-  {path:'helpdetails', component:HelpDetailsComponent}
+  {path:'helpdetails/:id', component:HelpDetailsComponent}
 ] }];
 
 @NgModule({

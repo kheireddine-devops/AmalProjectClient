@@ -10,6 +10,7 @@ import { Help } from 'src/app/shared/model/Help';
 })
 export class HelpShowComponent implements OnInit {
   listHelps :Help[]=[];
+  typeSearch !:string;
 
   constructor(private helps:HelpService) { }
 

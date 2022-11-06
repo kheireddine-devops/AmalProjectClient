@@ -36,9 +36,9 @@
                         <i><button type="button" class="btn btn-square btn-secondary m-2"><i class="fa fa-clock"></i></button>12-03-2022</i>
                           
                           <div class="card-body">
-                            <h5 class="card-title">titre</h5>
-                            <h6>Sujet</h6>
-                            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. At ullam adipisci sequi sapiente saepe, et a nemo! Maxime ipsa labore cumque error quis facilis aut quaerat ipsum temporibus provident. Earum eveniet quibusdam at quos voluptate voluptates incidunt placeat asperiores deserunt sunt nihil iusto aut aspernatur inventore amet, architecto dignissimos nesciunt in laborum voluptas ut, molestias aliquam voluptatum. Explicabo, dolores aut culpa voluptatem et mollitia hic.</p>
+                            <h5 class="card-title">{{help.typeHelp}}</h5>
+                            <h6>{{help.subjectHelp}}</h6>
+                            <p class="card-text">{{help.contentHelp}}</p>
                             
                           </div>
                         </div>
@@ -48,7 +48,7 @@
         
     </div>
 </div>
-<div class="container-fluid"></div>
+
 <!---commentaire start-->
 <div class="container commentaire">
     <div class="row">
@@ -58,46 +58,17 @@
                     <h5 class="mb-0">Commentaires</h5>
                     <a href="">Voir Plus</a>
                 </div>
-                <div class="d-flex align-items-center border-bottom py-3">
+                <div class="d-flex align-items-center border-bottom py-3" *ngFor="let c of listComment;let i = index">
                     <img class="rounded-circle flex-shrink-0" src="assets/img/user.jpg" alt="" style="width: 40px; height: 40px;">
                     <div class="w-100 ms-3">
                         <div class="d-flex w-100 justify-content-between">
                             <h6 class="mb-0">Jhon Doe</h6>
-                            <small>15 minutes ago</small>
+                            <small>{{c.dateComment|date: 'dd/MM/yy, à HH:mm' }}</small>
                         </div>
-                        <span>Short message goes here...</span>
+                        <span>{{c.comment}}</span><br>
+                        <button type="button" class="btn btn-sm btn-sm-square btn-primary m-2" (click)="addlike(i)"><i class="{{textButton}}"></i></button>{{c.like}}
                     </div>
-                </div>
-                <div class="d-flex align-items-center border-bottom py-3">
-                    <img class="rounded-circle flex-shrink-0" src="assets/img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                    <div class="w-100 ms-3">
-                        <div class="d-flex w-100 justify-content-between">
-                            <h6 class="mb-0">Jhon Doe</h6>
-                            <small>15 minutes ago</small>
-                        </div>
-                        <span>Short message goes here...</span>
-                    </div>
-                </div>
-                <div class="d-flex align-items-center border-bottom py-3">
-                    <img class="rounded-circle flex-shrink-0" src="assets/img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                    <div class="w-100 ms-3">
-                        <div class="d-flex w-100 justify-content-between">
-                            <h6 class="mb-0">Jhon Doe</h6>
-                            <small>15 minutes ago</small>
-                        </div>
-                        <span>Short message goes here...</span>
-                    </div>
-                </div>
-                <div class="d-flex align-items-center pt-3">
-                    <img class="rounded-circle flex-shrink-0" src="assets/img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                    <div class="w-100 ms-3">
-                        <div class="d-flex w-100 justify-content-between">
-                            <h6 class="mb-0">Jhon Doe</h6>
-                            <small>15 minutes ago</small>
-                        </div>
-                        <span>Short message goes here...</span>
-                    </div>
-                </div>
+                </div>  
             </div>
         </div>
 </div>
@@ -114,15 +85,25 @@
                         <div id="flush-collapseOne" class="accordion-collapse collapse show"
                             aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                             <div class="accordion-body">
+                                <div class="alert alert-success alert-dismissible fade show" role="alert" *ngIf="alert">
+                                    <i class="fa fa-exclamation-circle me-2"></i>Commentaire Ajoutée avec succées <i class="fa fa-smile"></i>!
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
                                 <!--formulaire d'ajout commentaire-->
                                 <form #f="ngForm">
                                     <div class="form-floating">
                                         <textarea class="form-control" placeholder="Leave a comment here"
-                                            id="floatingTextarea" style="height: 150px;" name="commentHelp" ngModel required></textarea>
+                                            id="floatingTextarea" style="height: 150px;" name="commentHelp" #com="ngModel" ngModel minlength="50" required [(ngModel)]="commenthelp.comment"></textarea>
                                         <label for="floatingTextarea">Commentaire</label>
+                                    </div><br>
+                                    <div class="alert alert-danger" *ngIf="com.invalid && com.touched">
+                                        <div *ngIf="com.errors?.['required']">Ce champs est Obligatoire</div>
+                                        <div *ngIf="com.errors?.['minlength']">la longueur minimale est 50</div>
+                                        
                                     </div>
+
                                     
-                                    <button type="submit" class="btn btn-primary m-2" [disabled]="f.invalid"><i class="fa fa-save me-2"></i>Commenter</button>
+                                    <button type="submit" class="btn btn-primary m-2" [disabled]="f.invalid" (click)="save()"><i class="fa fa-save me-2"></i>Commenter</button>
                                 </form>
                             </div>
                         </div>
