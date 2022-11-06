@@ -17,27 +17,27 @@ export class EmploiService{
 
 
     getEmploi():Observable<Emploi[]>{
-        return this.httpClient.get<Emploi[]>(this.emploisUrl);
+        return this.httpClient.get<Emploi[]>("http://localhost:3000/emplois");
       }
 
     getEmploiInformatique():Observable<Emploi[]>{
-        return this.httpClient.get<Emploi[]>(this.emploisUrl+"?secteur=Informatique");
+        return this.httpClient.get<Emploi[]>("http://localhost:3000/emplois?secteur=Informatique");
       }  
 
       addEmploi (emploi: Emploi): Observable<Emploi> {
-        return this.httpClient.post<Emploi>(this.emploisUrl, emploi,
+        return this.httpClient.post<Emploi>("http://localhost:3000/emplois", emploi,
         this.httpOptions);}
     
       deleteEmploi(id:any): Observable<any>{
-        return this.httpClient.delete<any>(this.emploisUrl+'/'+id);
+        return this.httpClient.delete<any>("http://localhost:3000/emplois"+'/'+id);
       }
     
       getEmploiById(id:any):Observable<Emploi>{
-        return this.httpClient.get<Emploi>(this.emploisUrl+'/'+id);
+        return this.httpClient.get<Emploi>("http://localhost:3000/emplois"+'/'+id);
       }
     
       updateEmploi(id:any,emploi: Emploi): Observable<any>{
-        return this.httpClient.put(this.emploisUrl+'/'+id,emploi,this.httpOptions);
+        return this.httpClient.put("http://localhost:3000/emplois"+'/'+id,emploi,this.httpOptions);
       }
 
 }

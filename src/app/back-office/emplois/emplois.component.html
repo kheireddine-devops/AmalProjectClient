@@ -1,1 +1,54 @@
+
 <p>emplois works!</p>
+   
+  <!-- <div class="container">
+    <div class="row">
+        <div class="col-md-3 col-xs-12 col-sm-6" *ngFor="let e of listEmplois;let i = index">
+
+        <div class="card" style="width: 18rem;" >
+            <img src="https://i2.wp.com/urbaniste-tunisien.org/wp-content/uploads/2017/06/offre-emploi-e1497615572612.png?fit=600%2C430" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">{{e.titre}}</h5>
+              <p class="card-text"><strong>Secteur:</strong>{{e.secteur}} </p>
+              <p class="card-text"><strong>Reference :</strong>{{e.reference}}</p>
+              <p class="card-text"><strong>Detail de l'offre :</strong>{{e.descriptif}}</p>
+              <div class="actions">
+                <button class="btn btn-danger" >Delete</button>
+                &nbsp;&nbsp;
+                <button class="btn btn-primary">Update</button>
+                &nbsp;&nbsp;
+                <button class="btn btn-success" >Add</button>
+              &nbsp;&nbsp;
+              </div>
+            </div>
+          </div>
+          </div>
+          <button class="btn" type="button" >Candidature</button>
+    </div>
+</div> -->
+
+
+
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Réference"</th>
+        <th scope="col">Secteur</th>
+        <th scope="col">Titre</th>
+        <th scope="col">Decription</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr  *ngFor="let e of listEmplois;let i = index">
+        <th scope="row" >{{e.reference}}</th>
+        <td>{{e.secteur}}</td>
+        <td>{{e.titre}}</td>
+        <td>{{e.descriptif}}</td>
+        <td> <div><button class="btn btn-primary" style="margin-left:10em;width:8em;display:inline-block;">update</button> <button class="btn btn-danger" style="margin-left:10em;width:8em;display:inline-block;">delete</button></div></td>
+      </tr>
+      
+      
+    </tbody>
+  </table>
+

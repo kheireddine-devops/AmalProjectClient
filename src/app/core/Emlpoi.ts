@@ -3,6 +3,6 @@ export class Emploi{
     titre!: string;
     descriptif!: String;
     secteur!: String;
-    ref!: String;
+    reference!: String;
     dateExp!:Date;
 }

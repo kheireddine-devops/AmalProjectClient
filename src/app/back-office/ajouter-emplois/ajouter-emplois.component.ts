@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./ajouter-emplois.component.css']
 })
 export class AjouterEmploisComponent implements OnInit {
+  currentDate:any =new Date(); //curent date
   emploi! : Emploi;
   constructor() { }
 

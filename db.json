@@ -5,7 +5,7 @@
             "titre": "Ingénieur",
             "descriptif":"Rattaché au service Technologies (maintenance, EHS & OpEx) vous serez en charge de Réaliser les travaux de maintenance curative Réaliser suivant le planning, les gammes de maintenance préventive" ,
             "secteur":"Informatique" ,
-            "ref":"RFX001" ,
+            "reference":"RFX001" ,
             "dateExp":"2022-11-30"
         },
         {
@@ -13,7 +13,7 @@
             "titre": "Technicien",
             "descriptif":"Rattaché au service Technologies (maintenance, EHS & OpEx) vous serez en charge de Réaliser les travaux de maintenance curative Réaliser suivant le planning, les gammes de maintenance préventive" ,
             "secteur":"Energitique" ,
-            "ref":"RFX002" ,
+            "reference":"RFX002" ,
             "dateExp":"2023-12-09"
          },
         {
@@ -21,7 +21,7 @@
             "titre": "Standatiste",
             "descriptif":"Rattaché au service Technologies (maintenance, EHS & OpEx) vous serez en charge de Réaliser les travaux de maintenance curative Réaliser suivant le planning, les gammes de maintenance préventive" ,
             "secteur":"Administration" ,
-            "ref":"RFX003" ,
+            "reference":"RFX003" ,
             "dateExp":"2023-10-10"
          }
         ]
