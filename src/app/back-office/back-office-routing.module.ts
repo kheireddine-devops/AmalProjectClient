@@ -12,6 +12,7 @@ children:[{path: 'gestiondons',component:GestionDonsComponent},
           {path: 'emplois',component:EmploisComponent},
           {path: 'gestionemplois',component:GestionEmploisComponent},
           {path: 'ajouteremploi',component:AjouterEmploisComponent},
+          {path:'modifieremploi/:id',component: AjouterEmploisComponent},
           
 ]}];
 

@@ -1,1 +1,27 @@
 <p>tous-emplois works!</p>
+  <div class="container">
+    <div class="row">
+        <div class="col-md-3 col-xs-12 col-sm-6" *ngFor="let e of tousEmplois;let i = index" style="margin-top:40px ;">
+
+        <div class="card" style="width: 18em; height: 40em;" >
+            <img src="https://i2.wp.com/urbaniste-tunisien.org/wp-content/uploads/2017/06/offre-emploi-e1497615572612.png?fit=600%2C430" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">{{e.titre}}</h5>
+              <p class="card-text"><strong>Secteur:</strong>{{e.secteur}} </p>
+              <p class="card-text"><strong>Reference :</strong>{{e.reference}}</p>
+              <p class="card-text"><strong>Secteur:</strong>{{e.dateExp}} </p>
+              <p class="card-text"><strong>Detail de l'offre :</strong>{{e.descriptif}}</p>
+              <div class="actions">
+            
+               
+                <button class="btn btn-success" style="position: absolute; bottom: 20px ; " >Postuler</button>
+              &nbsp;&nbsp;
+              <button class="btn btn-primary" style="position: absolute; bottom: 20px ;right: 10px;; " >Détail</button>
+              &nbsp;&nbsp;
+              </div>
+            </div>
+          </div>
+          </div>
+          <button class="btn" type="button" >Candidature</button>
+    </div>
+</div> -->

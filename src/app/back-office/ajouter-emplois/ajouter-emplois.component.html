@@ -1,9 +1,10 @@
 <!-- <p>ajouter-emplois works!</p> -->
-<h3 style="margin-bottom: 40px; margin-top: 40px;">Ajouter une offre d'emploi</h3>
+
+<h3 style="margin-bottom: 40px; margin-top: 40px;">{{titrepage}}</h3>
 <form  #form="ngForm" (ngSubmit)="onSubmit()"> 
 
     <div class="mb-3">
-    <select class="form-select form-control" aria-label="Default select example "  name="secteur"   ngModel  #secteur="ngModel" required >
+    <select class="form-select form-control"   name="secteur"   ngModel  #secteur="ngModel" required >
         <option selected>Secteur</option>
         <option value="1">Administration</option>
         <option value="2">Banque</option>
@@ -46,9 +47,11 @@
  
 
     <div class="mb-3">
-        <input type="date" class="form-control"  min="{{ currentDate | date:'yyyy-MM-dd'}}" name="date" placeholder="Date d'expication"[(ngModel)]="emploi.dateExp"  ngModel #date="ngModel" required  >
+        <input type="date" class="form-control"  min="{{ currentDate | date:'yyyy-MM-dd'}}" name="date" placeholder="Date d'expication"[(ngModel)]="emploi.dateExp"  ngModel #dateE="ngModel" required  >
     </div>
-    <div *ngIf="titre.touched && titre.invalid"class="alert alert-danger"> Date d'expiration est obligatoire</div>
+    <div *ngIf="dateE.touched && dateE.invalid"class="alert alert-danger">
+      <div *ngIf="dateE.errors?.['required']">Date d'expiration est obligatoire</div>
+    </div> 
 
-    <button type="submit" class="btn btn-primary" [disabled]="form.invalid" >Submit</button>
+    <button type="submit" class="btn btn-primary"   [disabled]="form.invalid" >Submit</button>
   </form>
