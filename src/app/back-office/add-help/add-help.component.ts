@@ -11,10 +11,12 @@ export class AddHelpComponent implements OnInit {
   titre:string="Ajouter Demande Aide";
   help!:Help;
   alert:boolean=false;
+  urlRegex!:RegExp;
 
   constructor(private helpService:HelpService) { }
 
   ngOnInit(): void {
+    this.urlRegex = /(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&/=]*)/;
     this.help = new Help();
     
   }

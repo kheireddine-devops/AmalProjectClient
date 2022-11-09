@@ -22,17 +22,18 @@
             </div>
 
         <div class="form-floating mb-3">
-        <input type="text" class="form-control" id="floatingInput" name="subjectHelp" ngModel #s="ngModel" required minlength="20" maxlength="100" pattern="[*]" [(ngModel)]="help.subjectHelp">
+        <input type="text" class="form-control" id="floatingInput" name="subjectHelp" ngModel #s="ngModel" required minlength="20" maxlength="100" pattern="([.\s]?[a-zA-Z]*){10}" [(ngModel)]="help.subjectHelp">
             <label for="floatingInput">Sujet</label>
         </div>
         <div class="alert alert-danger" *ngIf="s.invalid && s.touched">
             <div *ngIf="s.errors?.['required']">Ce champs est Obligatoire</div>
             <div *ngIf="s.errors?.['minlength']">la longueur minimale est 20</div>
-            <div *ngIf="s.errors?.['pattern']">les chiffres ne sont pas permisent </div>
+            <div *ngIf="s.errors?.['pattern']">Entrer seulement du texte</div>
+            
         </div>
         <div class="form-floating mb-3">
-            <input type="url" class="form-control" id="floatingInput" name="urlImage" ngModel #image="ngModel" required pattern="[http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&/=]*]" [(ngModel)]="help.urlImage">
-                <label for="floatingInput">URL Image</label>
+            <input type="url" class="form-control" id="floatingInput" name="urlImage" ngModel #image="ngModel" required pattern="(http[s]?:\/\/)?([^\/\s]+\/)(.*)" [(ngModel)]="help.urlImage">
+             <label for="floatingInput">URL Image</label>
         </div>
         <div class="alert alert-danger" *ngIf="image.invalid && image.touched">
             <div *ngIf="image.errors?.['required']">Ce champs est Obligatoire</div>
