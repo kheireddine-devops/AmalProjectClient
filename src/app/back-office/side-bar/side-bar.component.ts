@@ -80,9 +80,20 @@ const ADMIN_MENU: Array<MenuItem> = [
   {path: '/BackOffice/admin/my-profile', text: 'My Profile', icon: 'fa fa-keyboard'},
   {path: '/BackOffice/admin/my-profile/edit', text: 'My Profile', icon: 'fa fa-keyboard'},
   {path: '/BackOffice/admin/users', text: 'Users', icon: 'fa fa-th'},
-  {path: '/BackOffice/admin/ADMIN-MENU-01', text: 'ADMIN Item #01', icon: 'fa fa-table'},
-  {path: '/BackOffice/admin/ADMIN-MENU-02', text: 'ADMIN Item #02', icon: 'fa fa-chart-bar'},
-  {path: '/BackOffice/admin/ADMIN-MENU-03', text: 'ADMIN Item #03', icon: 'fa fa-chart-bar'}
+  {
+    path: '',
+    text: "Offres d'emplois",
+    icon: 'fa fa-keyboard',
+    subMenu: [
+      {path: "/BackOffice/admin/emplois", text: "Liste des offres d'emplois"},
+      {path: "/BackOffice/admin/ajouteremploi", text: "Ajouter une offre"},
+      {path: "/BackOffice/admin/link-1", text: "Statéstique"},
+      {path: "/BackOffice/admin/linl-2", text: "Mes candidatures"}
+    ]
+  },
+  // {path: '/BackOffice/admin/ADMIN-MENU-01', text: 'ADMIN Item #01', icon: 'fa fa-table'},
+  // {path: '/BackOffice/admin/ADMIN-MENU-02', text: 'ADMIN Item #02', icon: 'fa fa-chart-bar'},
+  // {path: '/BackOffice/admin/ADMIN-MENU-03', text: 'ADMIN Item #03', icon: 'fa fa-chart-bar'}
 ];
 
 const DOCTOR_MENU: Array<MenuItem> = [
@@ -126,7 +137,18 @@ const ORGANIZATION_MENU: Array<MenuItem> = [
   {path: '/BackOffice/organization/dashboard', text: 'Dashboard', icon: 'fa fa-tachometer-alt'},
   {path: '/BackOffice/organization/my-profile', text: 'My Profile', icon: 'fa fa-keyboard'},
   {path: '/BackOffice/organization/my-profile/edit', text: 'Edit Profile', icon: 'fa fa-keyboard'},
-  {path: '/BackOffice/organization/ORGANIZATION-MENU-01', text: 'Org Menu Item #01', icon: 'fa fa-table'},
-  {path: '/BackOffice/organization/ORGANIZATION-MENU-02', text: 'Org Menu Item #02', icon: 'fa fa-chart-bar'},
-  {path: '/BackOffice/organization/ORGANIZATION-MENU-03', text: 'Org Menu Item #03', icon: 'fa fa-chart-bar'}
+  {
+    path: '',
+    text: "Offres d'emplois",
+    icon: 'fa fa-keyboard',
+    subMenu: [
+      {path: "/BackOffice/organization/emplois", text: "Liste des offres d'emplois"},
+      {path: "/BackOffice/organization/ajouteremploi", text: "Ajouter une offre"},
+      {path: "/BackOffice/organization/link-1", text: "Statéstique"},
+      {path: "/BackOffice/organization/linl-2", text: "Mes candidatures"}
+    ]
+  },
+  // {path: '/BackOffice/organization/ORGANIZATION-MENU-01', text: 'Org Menu Item #01', icon: 'fa fa-table'},
+  // {path: '/BackOffice/organization/ORGANIZATION-MENU-02', text: 'Org Menu Item #02', icon: 'fa fa-chart-bar'},
+  // {path: '/BackOffice/organization/ORGANIZATION-MENU-03', text: 'Org Menu Item #03', icon: 'fa fa-chart-bar'}
 ];

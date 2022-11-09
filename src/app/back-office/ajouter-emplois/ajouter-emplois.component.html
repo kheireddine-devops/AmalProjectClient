@@ -1,0 +1,63 @@
+<!-- <p>ajouter-emplois works!</p> -->
+
+<h3 style="margin-bottom: 40px; margin-top: 40px;">{{titrepage}}</h3>
+<form  #form="ngForm" (ngSubmit)="onSubmit()"> 
+
+    <div class="mb-3">
+      <label class="form-label">Secteur</label>
+    <select class="form-select form-control"   name="secteur"  [(ngModel)]="emploi.secteur" ngModel  #secteur="ngModel" required >
+        <option selected>Secteur</option>
+        <option value="Administration">Administration</option>
+        <option value="Banque">Banque</option>
+        <option value="Electronique">Electronique</option>
+        <option value="Industrie">Industrie</option>
+        <option value="Informatique">Informatique</option>
+        <option value="Santé">Santé</option>
+    </select>
+    </div>
+    <div *ngIf="secteur.touched && secteur.invalid"class="alert alert-danger">
+    Merci de sélectioner le secteur de l'emploi
+   </div>
+
+    <div class="mb-3">
+      <label class="form-label">Titre</label>
+        <input type="text" class="form-control" name="titre" placeholder="Titre"  [(ngModel)]="emploi.titre" required minlength="5" pattern="[a-zA-Z  à â ä é è ê ë î ï ô ö ù û ü ÿ ç À Â Ä Ç É È Ê Ë Î Ï Ô Ö Ù Û Ü Ÿ ]*"  ngModel #titre="ngModel" >
+    </div>
+    <div *ngIf="titre.touched && titre.invalid"class="alert alert-danger">
+       <div *ngIf="titre.errors?.['required']">Le titre est obligatoire </div>
+       <div *ngIf="titre.errors?.['minlength']">Le titre doit composé de 5 lettre au minimum</div>
+       <div *ngIf="titre.errors?.['pattern']">Le titre ne peux contenir que des lettres </div>
+    </div>
+    
+    
+    <div class="mb-3">
+      <label class="form-label">Référence :</label>
+        <input type="text" class="form-control" name="ref" placeholder="Réference" [(ngModel)]="emploi.reference"   ngModel #ref="ngModel" required minlength="5" pattern="[a-zA-Z0-9-]*"  >
+    </div>
+    <div *ngIf="ref.touched && ref.invalid"class="alert alert-danger">
+      <div *ngIf="ref.errors?.['required']">La référence  est obligatoire </div>
+      <div *ngIf="ref.errors?.['minlength']">La référence doit se composée de 5  caractéres au minimum</div>
+      <div *ngIf="ref.errors?.['pattern']">La référence  ne peux contenir que des caractéres et des chiffres </div>
+    </div>
+
+      <div class="mb-3">
+        <label class="form-label">Description</label>
+        <textarea class="form-control" name="desc" placeholder="Description" rows="3" [(ngModel)]="emploi.descriptif"  ngModel #desc="ngModel" required minlength="10"></textarea>
+      </div>
+      <div *ngIf="desc.touched && desc.invalid"class="alert alert-danger">
+        <div *ngIf="desc.errors?.['required']">La description  est obligatoire </div>
+        <div *ngIf="desc.errors?.['minlength']">La description doit se composée de 10 caractére au minimum</div>
+      </div>
+ 
+
+    <div class="mb-3">
+      <label class="form-label">Date expiration</label>
+        <input type="date" class="form-control"  min="{{ currentDate | date:'yyyy-MM-dd'}}" name="date" placeholder="Date d'expication"[(ngModel)]="emploi.dateExp"  ngModel #dateE="ngModel" required  >
+    </div>
+    <div *ngIf="dateE.touched && dateE.invalid"class="alert alert-danger">
+      <div *ngIf="dateE.errors?.['required']">Date d'expiration est obligatoire</div>
+      <div *ngIf="">Date d'expiration future </div>
+      
+    </div> 
+    <button type="submit" class="btn btn-primary"   [disabled]="form.invalid" > Submit </button>
+  </form>

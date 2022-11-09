@@ -1,9 +1,11 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { FrontOfficeRoutingModule } from './front-office-routing.module';
 import { FrontOfficeComponent } from './front-office.component';
 import { NavbarComponent } from './navbar/navbar.component';
+
 import { GuestLoginComponent } from './guest-login/guest-login.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { GuestContactComponent } from './guest-contact/guest-contact.component';
@@ -15,6 +17,9 @@ import {FrontOfficeMaterialModule} from "../core/material/front-office-material.
 import {MAT_DATE_LOCALE} from "@angular/material/core";
 import { GuestFooterComponent } from './guest-footer/guest-footer.component';
 import { GuestToolbarComponent } from './guest-toolbar/guest-toolbar.component';
+import { CandidaturesComponent } from './candidatures/candidatures.component';
+import { TousEmploisComponent } from './tous-emplois/tous-emplois.component';
+import { PostulerComponent } from './postuler/postuler.component';
 
 
 @NgModule({
@@ -28,7 +33,11 @@ import { GuestToolbarComponent } from './guest-toolbar/guest-toolbar.component';
         GuestResetPasswordComponent,
         GuestHomeComponent,
         GuestFooterComponent,
-        GuestToolbarComponent
+        GuestToolbarComponent,
+        NavbarComponent,
+        CandidaturesComponent,
+        TousEmploisComponent,
+        PostulerComponent
     ],
     imports: [
         CommonModule,
@@ -42,6 +51,5 @@ import { GuestToolbarComponent } from './guest-toolbar/guest-toolbar.component';
     ],
     exports: [
         GuestInscriptionComponent
-    ]
-})
+    ]})
 export class FrontOfficeModule { }

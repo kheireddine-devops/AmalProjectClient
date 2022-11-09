@@ -1,6 +1,8 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BackOfficeRoutingModule } from './back-office-routing.module';
+
 import { BackOfficeComponent } from "./back-office.component";
 import { BackOfficeMaterialModule } from "../core/material/back-office-material.module";
 
@@ -24,6 +26,13 @@ import {MatChipsModule} from "@angular/material/chips";
 import {NgxChartsModule} from "@swimlane/ngx-charts";
 
 
+import { GestionDonsComponent } from './gestion-dons/gestion-dons.component';
+import { GestionEmploisComponent } from './gestion-emplois/gestion-emplois.component';
+import { AjouterEmploisComponent } from './ajouter-emplois/ajouter-emplois.component';
+import { EmploisComponent } from './emplois/emplois.component';
+
+
+
 @NgModule({
   declarations: [
     BackOfficeComponent,
@@ -34,7 +43,10 @@ import {NgxChartsModule} from "@swimlane/ngx-charts";
     AdminEditUsersDialogComponent,
     AdminDashboardUserStatisticsComponent,
     AdminConfirmDeleteUserDialogComponent,
-    AdminUserDetailsDialogComponent
+    AdminUserDetailsDialogComponent,
+    GestionEmploisComponent,
+    AjouterEmploisComponent,
+    EmploisComponent
   ],
     imports: [
         CommonModule,

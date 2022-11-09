@@ -1,0 +1,36 @@
+<p>postuler works!</p>
+
+<h3 style="margin-left: 40px; margin-bottom: 40px; margin-top: 40px;">{{titrepage}}</h3>
+
+<div class="container-fluid" style="width: 60% ;">
+<form  #form="ngForm" (ngSubmit)="onSubmit()"> 
+
+    <div class="mb-3">
+      <label class="form-label">Niveau Scolaire</label>
+    <select class="form-select form-control"   name="niveau"     [(ngModel)]="candidature.niveau" ngModel  #niveau="ngModel" required >
+        <option selected>niveau</option>
+        <option value="1">niveau Scolaire</option>
+        <option value="2">BTP</option>
+        <option value="2">BTS</option>
+        <option value="2">Bac+2</option>
+        <option value="3">Bac+3</option>
+        <option value="4">Bac+5</option>
+    </select>
+    </div>
+    <div *ngIf="niveau.touched && niveau.invalid"class="alert alert-danger">
+    Merci de sélectioner le niveau d'étude
+   </div>
+
+
+      <div class="mb-3">
+        <label class="form-label">Message</label>
+        <textarea class="form-control" name="desc" placeholder="Message" rows="3" [(ngModel)]="candidature.message"  ngModel #msg="ngModel" required minlength="10"></textarea>
+      </div>
+      <div *ngIf="msg.touched && msg.invalid"class="alert alert-danger">
+        <div *ngIf="msg.errors?.['required']">Le message  est obligatoire </div>
+        <div *ngIf="msg.errors?.['minlength']">Le message doit se composée de 10 caractére au minimum</div>
+      </div>
+ 
+    <button type="submit" class="btn btn-primary"   [disabled]="form.invalid" > Submit </button>
+  </form>
+</div>
