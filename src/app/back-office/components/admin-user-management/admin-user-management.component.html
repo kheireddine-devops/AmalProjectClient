@@ -1,0 +1,66 @@
+<div class="container-fluid admin-user-management-component">
+  <div class="row my-5">
+    <mat-card >
+
+      <mat-card-header >
+        <mat-card-title>User Management</mat-card-title>
+        <mat-card-subtitle>Manage all users</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-actions align="end">
+<span class="material-symbols-outlined">
+
+</span>
+        <button (click)="onAddUser('ADD_BENEVOLE')" mat-flat-button color="primary" class="me-2"><mat-icon class="me-2">volunteer_activism</mat-icon>Add Benevole</button>
+        <button (click)="onAddUser('ADD_BENEFICIER')" mat-flat-button color="primary" class="me-2"><mat-icon class="me-2">accessible</mat-icon>Add Beneficier</button>
+        <button (click)="onAddUser('ADD_DOCTOR')" mat-flat-button color="primary" class="me-2"><mat-icon class="me-2" >medical_services</mat-icon>Add Doctor</button>
+        <button (click)="onAddUser('ADD_ORGANIZATION')" mat-flat-button color="primary" class="me-2"><mat-icon class="me-2">corporate_fare</mat-icon>Add Organization</button>
+      </mat-card-actions>
+      <mat-card-content>
+        <table mat-table [dataSource]="dataSource" matSort (matSortChange)="announceSortChange($event)" class="w-100">
+
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+            <td mat-cell *matCellDef="let element">
+              <img class="avatar" [src]="(element.data?.photo) ? 'assets/images/users/'+element.data.photo : 'assets/images/users/USER-UNKNOWN.jpg'" alt="">
+              {{element.type !== "ORGANIZATION"? element.data.firstname + " " + element.data.lastname : element.data.name}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="email">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Email</th>
+            <td mat-cell *matCellDef="let element"> {{element.data.email}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="role">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Role</th>
+            <td mat-cell *matCellDef="let element"> {{element.type}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef>Action</th>
+            <td mat-cell *matCellDef="let element">
+              <button (click)="onUserDetails(element.data.id)" mat-icon-button aria-label="">
+                <mat-icon>visibility</mat-icon>
+              </button>
+              <button (click)="onEditUser(element.data.id,element.type)" mat-icon-button aria-label="">
+                <mat-icon>settings</mat-icon>
+              </button>
+              <button (click)="onDeleteUser(element.data.id)" mat-icon-button color="warn" aria-label="">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+<!--              (click)="onClick(row)"-->
+
+        </table>
+
+        <mat-paginator [pageSize]="10" [pageSizeOptions]="[10, 25, 50, 100]"
+                       showFirstLastButtons
+                       aria-label="">
+        </mat-paginator>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
