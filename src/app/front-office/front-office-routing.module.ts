@@ -7,6 +7,7 @@ import { HelpShowComponent } from './help-show/help-show.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { FrontOfficeComponent } from './front-office.component';
+import { DonsComponent } from './dons/dons.component';
 import {GuestLoginComponent} from "./guest-login/guest-login.component";
 import {NotFoundComponent} from "../shared/not-found/not-found.component";
 import {GuestChooseInscriptionComponent} from "./guest-choose-inscription/guest-choose-inscription.component";
@@ -40,12 +41,13 @@ const routes: Routes = [
       {path:'demandeaide',component:HelpShowComponent},
       {path:'helpdetails/:id', component:HelpDetailsComponent},
       // End Ameni Routes
+      // Start Haithem Routes
+      {path:'dons',component:DonsComponent},
+      // End Haithem Routes
       { path: "", redirectTo: "/home", pathMatch: "full" },
       { path: '**', component: NotFoundComponent }
     ]
   }];
-
-
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]

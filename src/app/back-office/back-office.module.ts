@@ -42,6 +42,13 @@ import { ShowHelpComponent } from './show-help/show-help.component';
 import { AddHelpComponent } from './add-help/add-help.component';
 import { CommentsHelpComponent } from './comments-help/comments-help.component';
 
+import { AddDonsComponent } from './add-dons/add-dons.component';
+import { RapportComponent } from './rapport/rapport.component';
+import { ConsulterRapportComponent } from './consulter-rapport/consulter-rapport.component';
+import { AjouterRapportComponent } from './ajouter-rapport/ajouter-rapport.component';
+
+
+
 
 @NgModule({
   declarations: [
@@ -59,18 +66,19 @@ import { CommentsHelpComponent } from './comments-help/comments-help.component';
     EmploisComponent,
     GestionDonsComponent,
     SideBarComponent,
-
     GestionFormationsComponent,
     ListeFormationComponent,
     ListeTutorielsComponent,
     AddDialogComponentComponent,
     KPIformationComponent,
     KPIformationComponent,
-
     ShowHelpComponent,
     AddHelpComponent,
     CommentsHelpComponent,
-
+    AddDonsComponent,
+    RapportComponent,
+    ConsulterRapportComponent,
+    AjouterRapportComponent
 
   ],
   imports: [
@@ -97,7 +105,7 @@ import { CommentsHelpComponent } from './comments-help/comments-help.component';
       MatDatepickerModule,
       ObserversModule,
       A11yModule,
-      MatChipsModule,
+      MatChipsModule
   ]
 })
 export class BackOfficeModule { }

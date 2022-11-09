@@ -17,6 +17,10 @@ import {AdminDashbordComponent} from "./components/admin-dashbord/admin-dashbord
 import { CommentsHelpComponent } from './comments-help/comments-help.component';
 import { AddHelpComponent } from './add-help/add-help.component';
 import { ShowHelpComponent } from './show-help/show-help.component';
+import { AddDonsComponent } from './add-dons/add-dons.component';
+import { RapportComponent } from './rapport/rapport.component';
+import { ConsulterRapportComponent } from './consulter-rapport/consulter-rapport.component';
+import { AjouterRapportComponent } from './ajouter-rapport/ajouter-rapport.component';
 import {AdminGuard} from "../core/guards/admin.guard";
 import {BenevoleGuard} from "../core/guards/benevole.guard";
 import {DoctorGuard} from "../core/guards/doctor.guard";
@@ -35,9 +39,6 @@ const routes: Routes = [
       {path: 'admin/contact', component: AdminGuestContactComponent, canActivate: [/*AdminGuard*/]},
       {path: 'admin', redirectTo: 'admin/dashboard', pathMatch: 'full'},
       // End khairi Routes
-      // Start Haithem Routes
-      {path: 'gestiondons', component: GestionDonsComponent},
-      // End Haithem Routes
       // Start Sabrine Routes
       {path: 'admin/emplois', component: EmploisComponent},
       {path: 'admin/gestionemplois', component: GestionEmploisComponent},
@@ -62,6 +63,14 @@ const routes: Routes = [
       {path: 'ajouteraide',component:AddHelpComponent},
       {path: 'gestioncommentaires/:id',component:CommentsHelpComponent},
       // End Ameni Routes
+      // Strat Heithem Routes
+      {path: 'gestiondons', component: GestionDonsComponent},
+      {path: 'mesdons',component:GestionDonsComponent},
+      {path: 'ajouterdons',component:AddDonsComponent},
+      {path: 'rapport', component:RapportComponent},
+      {path: 'gestionrapport', component:ConsulterRapportComponent},
+      {path: 'ajouter_rapport', component:AjouterRapportComponent},
+      // End Haithem Routes
       {path: '**', component: NotFoundComponent}
     ]
   }

@@ -7,6 +7,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FrontOfficeRoutingModule } from './front-office-routing.module';
 import { FrontOfficeComponent } from './front-office.component';
+
 import { CartComponent } from './cart/cart.component';
 import { PlaylisteComponent } from './playliste/playliste.component';
 import {MatListModule} from '@angular/material/list';
@@ -26,6 +27,7 @@ import { TousEmploisComponent } from './tous-emplois/tous-emplois.component';
 import { PostulerComponent } from './postuler/postuler.component';
 import {HelpShowComponent} from "./help-show/help-show.component";
 import {HelpDetailsComponent} from "./help-details/help-details.component";
+import { DonsComponent } from './dons/dons.component';
 
 
 @NgModule({
@@ -47,6 +49,7 @@ import {HelpDetailsComponent} from "./help-details/help-details.component";
         PlaylisteComponent,
         HelpShowComponent,
         HelpDetailsComponent,
+        DonsComponent
     ],
     imports: [
         CommonModule,

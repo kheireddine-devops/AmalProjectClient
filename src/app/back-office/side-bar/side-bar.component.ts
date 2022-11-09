@@ -75,6 +75,7 @@ interface MenuItem {
   subMenu?: Array<SubMenuItem>
 }
 
+
 const ADMIN_MENU: Array<MenuItem> = [
   {path: '/BackOffice/admin/dashboard', text: 'Dashboard', icon: 'fa fa-tachometer-alt'},
   // {path: '/BackOffice/admin/my-profile', text: 'My Profile', icon: 'fa fa-keyboard'},
@@ -82,6 +83,7 @@ const ADMIN_MENU: Array<MenuItem> = [
   {path: '/BackOffice/admin/users', text: 'Users', icon: 'fa fa-th'},
   {path: '/BackOffice/gestionaides', text:'Gestion D\'aides', icon: 'fa fa-tachometer-alt'},
   // {path: '/BackOffice/KPIformation', text: 'Users', icon: 'fa fa-th'},
+  {path: "/BackOffice/gestionrapport", text: "Consulter Rapports", icon: 'fa fa-th'},
   {
     path: "",
     text: "Gestion de Formation",
@@ -103,16 +105,50 @@ const ADMIN_MENU: Array<MenuItem> = [
       {path: "/BackOffice/admin/linl-2", text: "Mes candidatures"}
     ]
   },
+  {
+    path: '',
+    text: 'Gestion Dons',
+    icon: 'fa fa-table',
+    subMenu: [
+      {path: "/BackOffice/ajouterdons", text: "Ajouter Dons"},
+      {path: "/BackOffice/mesdons", text: "Mes Dons"},
+    ]
+  },
+  {
+    path: '',
+    text: 'Gestion Rapports',
+    icon: 'fa fa-table',
+    subMenu: [
+      {path: "/BackOffice/ajouter_rapport", text: "Ajouter Rapports"},
+      {path: "/BackOffice/rapport", text: "Modifier Rapports"},
+    ]
+  },
 ];
 
 const DOCTOR_MENU: Array<MenuItem> = [
   {path: '/BackOffice/doctor/dashboard', text: 'Dashboard', icon: 'fa fa-tachometer-alt'},
   {path: '/BackOffice/doctor/my-profile', text: 'My Profile', icon: 'fa fa-keyboard'},
   {path: '/BackOffice/doctor/my-profile/edit', text: 'Edit Profile', icon: 'fa fa-keyboard'},
-  {path: '/BackOffice/doctor/DOCTOR-MENU-01', text: 'DOCTOR Item #01', icon: 'fa fa-table'},
-  {path: '/BackOffice/doctor/DOCTOR-MENU-02', text: 'DOCTOR Item #02', icon: 'fa fa-chart-bar'},
-  {path: '/BackOffice/doctor/DOCTOR-MENU-03', text: 'DOCTOR Item #03', icon: 'fa fa-chart-bar'}
+  {
+    path: '',
+    text: 'Gestion Dons',
+    icon: 'fa fa-table',
+    subMenu: [
+      {path: "/BackOffice/ajouterdons", text: "Ajouter Dons"},
+      {path: "/BackOffice/mesdons", text: "Mes Dons"},
+    ]
+  },
+  {
+    path: '',
+    text: 'Gestion Rapports',
+    icon: 'fa fa-table',
+    subMenu: [
+      {path: "/BackOffice/ajouter_rapport", text: "Ajouter Rapports"},
+      {path: "/BackOffice/rapport", text: "Modifier Rapports"},
+    ]
+  }
 ];
+
 
 
 
@@ -123,17 +159,24 @@ const BENEFICIER_MENU: Array<MenuItem> = [
   {path: '/BackOffice/beneficier/my-profile/edit', text: 'Edit Profile', icon: 'fa fa-keyboard'},
   {path: '/BackOffice/gestionaides', text:'Gestion D\'aides', icon: 'fa fa-tachometer-alt'},
   {path: "/BackOffice/reserverFormation", text: "Réserver Formations", icon: 'fa fa-laptop'},
-  // {
-  //   path: '/BackOffice/beneficier/BENEFICIER-MENU-01',
-  //   text: 'BENEFICIER Item #01',
-  //   icon: 'fa fa-table',
-  //   subMenu: [
-  //     {path: "/BackOffice/beneficier/SUB_MENU_01", text: "Sub MENU #01"},
-  //     {path: "/BackOffice/beneficier/SUB_MENU_02", text: "Sub MENU #02"},
-  //     {path: "/BackOffice/beneficier/SUB_MENU_03", text: "Sub MENU #03"},
-  //     {path: "/BackOffice/beneficier/SUB_MENU_04", text: "Sub MENU #04"}
-  //   ]
-  // },
+  {
+    path: '',
+    text: 'Gestion Dons',
+    icon: 'fa fa-table',
+    subMenu: [
+      {path: "/BackOffice/ajouterdons", text: "Ajouter Dons"},
+      {path: "/BackOffice/mesdons", text: "Mes Dons"},
+    ]
+  },
+  {
+    path: '',
+    text: 'Gestion Rapports',
+    icon: 'fa fa-table',
+    subMenu: [
+      {path: "/BackOffice/ajouter_rapport", text: "Ajouter Rapports"},
+      {path: "/BackOffice/rapport", text: "Modifier Rapports"},
+    ]
+  }
 ];
 
 const BENEVOLE_MENU: Array<MenuItem> = [
@@ -149,9 +192,24 @@ const BENEVOLE_MENU: Array<MenuItem> = [
       {path: "/BackOffice/gestionTutoriels", text: "Gestion Tutoriels"}
     ]
   },
-  // {path: '/BackOffice/benevole/BENEVOLE-MENU-01', text: 'BENEVOLE Item #01', icon: 'fa fa-table'},
-  // {path: '/BackOffice/benevole/BENEVOLE-MENU-02', text: 'BENEVOLE Item #02', icon: 'fa fa-chart-bar'},
-  // {path: '/BackOffice/benevole/BENEVOLE-MENU-03', text: 'BENEVOLE Item #03', icon: 'fa fa-chart-bar'}
+  {
+    path: '',
+    text: 'Gestion Dons',
+    icon: 'fa fa-table',
+    subMenu: [
+      {path: "/BackOffice/ajouterdons", text: "Ajouter Dons"},
+      {path: "/BackOffice/mesdons", text: "Mes Dons"},
+    ]
+  },
+  {
+    path: '',
+    text: 'Gestion Rapports',
+    icon: 'fa fa-table',
+    subMenu: [
+      {path: "/BackOffice/ajouter_rapport", text: "Ajouter Rapports"},
+      {path: "/BackOffice/rapport", text: "Modifier Rapports"},
+    ]
+  }
 ];
 
 const ORGANIZATION_MENU: Array<MenuItem> = [
@@ -167,6 +225,24 @@ const ORGANIZATION_MENU: Array<MenuItem> = [
       {path: "/BackOffice/organization/ajouteremploi", text: "Ajouter une offre"},
       {path: "/BackOffice/organization/link-1", text: "Statéstique"},
       {path: "/BackOffice/organization/linl-2", text: "Mes candidatures"}
+    ]
+  },
+  {
+    path: '',
+    text: 'Gestion Dons',
+    icon: 'fa fa-table',
+    subMenu: [
+      {path: "/BackOffice/ajouterdons", text: "Ajouter Dons"},
+      {path: "/BackOffice/mesdons", text: "Mes Dons"},
+    ]
+  },
+  {
+    path: '',
+    text: 'Gestion Rapports',
+    icon: 'fa fa-table',
+    subMenu: [
+      {path: "/BackOffice/ajouter_rapport", text: "Ajouter Rapports"},
+      {path: "/BackOffice/rapport", text: "Modifier Rapports"},
     ]
   }
 ];

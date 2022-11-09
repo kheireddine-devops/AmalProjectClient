@@ -1,5 +1,6 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,6 +16,8 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 
 import { MAT_DATE_FORMATS, NativeDateModule } from '@angular/material/core';
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,6 +27,7 @@ import { MAT_DATE_FORMATS, NativeDateModule } from '@angular/material/core';
     MatListModule,
     BrowserModule,
     AppRoutingModule,
+
     HttpClientModule,
 
     BrowserAnimationsModule,

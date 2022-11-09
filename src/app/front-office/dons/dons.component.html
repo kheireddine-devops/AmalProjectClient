@@ -1,7 +1,7 @@
 <h1>Liste des dons</h1>
 <div class="container">
     <div class="row">
-        <div class="card" style="width: 20rem;" *ngFor="let d of listDon; let i=index">
+        <div class="card" style="width: 20rem;" *ngFor="let d of listDons; let i=index">
             <img class="card-img-top" src={{d.photo_produit_dons}} alt="Card image cap">
             <div  class="card-body">
               <h5 class="card-title">{{d.libele_dons}}</h5>
@@ -11,8 +11,8 @@
               <button  class="btn btn-primary" [disabled]="p.quantity==0" (click)="Buy(i)" >BUY</button> <button class="btn btn-success"     (click)="like(i)">LIKE</button> 
               <button class="btn btn-success"     (click)="deleteProduct(p.id)">Delete</button>
               -->
-              <button class="btn btn-primary" type="button" >Modifier</button>
-          <button class="btn btn-danger" type="button" >Supprimer</button>
+              <button type="button" class="btn btn-success" routerLink="">Consulter</button>
+              <button type="button" class="btn btn-danger">Signaler</button>
             </div>
           </div>
           

@@ -1,0 +1,14 @@
+<div class="list-group" *ngFor="let r of listRapport; let i=index">
+    <a href="#" class="list-group-item list-group-item-action active">
+      Rapports 
+    </a>
+    <a class="list-group-item list-group-item-action">Sujet : {{r.sujet}}</a>
+    <a class="list-group-item list-group-item-action">Nom : {{r.nom}}</a>
+    <a class="list-group-item list-group-item-action">Prenom {{r.prenom}}</a>
+    <a class="list-group-item list-group-item-action">Num Telephone {{r.numTel}}</a>
+    <a class="list-group-item list-group-item-action">Mail {{r.mail}}</a>
+    <a class="list-group-item list-group-item-action">Description : {{r.description}}</a>
+    <a class="list-group-item list-group-item-action">Id dons : {{r.id_dons}}</a>
+    <a class="list-group-item list-group-item-action">Id compte : {{r.id_compte}}</a>
+    <a class="list-group-item list-group-item-action"> 
+        <button type="button" class="btn btn-info">Consulter</button>
