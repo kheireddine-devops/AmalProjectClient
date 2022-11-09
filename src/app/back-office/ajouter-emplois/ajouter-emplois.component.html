@@ -5,14 +5,14 @@
 
     <div class="mb-3">
       <label class="form-label">Secteur</label>
-    <select class="form-select form-control"   name="secteur"   ngModel  #secteur="ngModel" required >
+    <select class="form-select form-control"   name="secteur"  [(ngModel)]="emploi.secteur" ngModel  #secteur="ngModel" required >
         <option selected>Secteur</option>
-        <option value="1">Administration</option>
-        <option value="2">Banque</option>
-        <option value="3">Electronique</option>
-        <option value="4">Industrie</option>
-        <option value="3">Informatique</option>
-        <option value="6">Santé</option>
+        <option value="Administration">Administration</option>
+        <option value="Banque">Banque</option>
+        <option value="Electronique">Electronique</option>
+        <option value="Industrie">Industrie</option>
+        <option value="Informatique">Informatique</option>
+        <option value="Santé">Santé</option>
     </select>
     </div>
     <div *ngIf="secteur.touched && secteur.invalid"class="alert alert-danger">
@@ -21,7 +21,7 @@
 
     <div class="mb-3">
       <label class="form-label">Titre</label>
-        <input type="text" class="form-control" name="titre" placeholder="Titre"  [(ngModel)]="emploi.titre" required minlength="5" pattern="[a-zA-Z ]*"  ngModel #titre="ngModel" >
+        <input type="text" class="form-control" name="titre" placeholder="Titre"  [(ngModel)]="emploi.titre" required minlength="5" pattern="[a-zA-Z  à â ä é è ê ë î ï ô ö ù û ü ÿ ç À Â Ä Ç É È Ê Ë Î Ï Ô Ö Ù Û Ü Ÿ ]*"  ngModel #titre="ngModel" >
     </div>
     <div *ngIf="titre.touched && titre.invalid"class="alert alert-danger">
        <div *ngIf="titre.errors?.['required']">Le titre est obligatoire </div>

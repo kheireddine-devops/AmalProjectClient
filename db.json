@@ -25,32 +25,20 @@
       "dateExp": "2023-10-10"
     },
     {
-      "titre": "informaticien",
-      "reference": "RFX04",
-      "descriptif": "hdgdgd gdgdtete hdhhdgdgf",
-      "dateExp": "2022-11-17",
-      "id": 5
-    },
-    {
       "descriptif": " blanditiis quo modi molestiae. Assumenda debitis, culpa nemo nostrum repudiandae non alias, est, quos atque tempore amet.\nQuae aut earum odit tempore ex nulla temporibus. Qui voluptatibus repellat iste hic ab neque obcaecati rerum vitae aspernatur eaque esse atque, id repellendus optio veritatis voluptatum quas impedit praesentium",
       "titre": "Ingenieur",
       "reference": "RFX0555",
       "dateExp": "2022-11-18",
-      "id": 6
+      "id": 6,
+      "secteur": "Santé"
     },
     {
       "titre": "informaticien",
       "reference": "RFX04",
       "descriptif": "hhhhhhhh bhhdchdh",
       "dateExp": "2022-11-09",
-      "id": 7
-    },
-    {
-      "titre": "technicien sup",
-      "reference": "RFX0400000",
-      "descriptif": "hh bggdgdt hghdtsgf",
-      "dateExp": "2022-11-10",
-      "id": 8
+      "id": 7,
+      "secteur": "Informatique"
     }
   ]
 }
