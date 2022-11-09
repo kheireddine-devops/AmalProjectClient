@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {AccountService} from "../../core/services/account.service";
 import {Router} from "@angular/router";
 import {TokenUtilsService} from "../../core/services/token-utils.service";
-import {JWTResponse, RoleEnum} from "../../core/entities/users";
+import {AuthRequest, JWTResponse, RoleEnum} from "../../core/entities/users";
 
 @Component({
   selector: 'app-guest-login',
@@ -11,15 +11,15 @@ import {JWTResponse, RoleEnum} from "../../core/entities/users";
 })
 export class GuestLoginComponent implements OnInit {
 
-  username: string = "admin";
-  password: string = "admin";
+  authRequest : AuthRequest = {login: "", password: ""}
+  invalidAuth: boolean = false;
   constructor(private _accountService: AccountService, private _tokenUtilsService: TokenUtilsService, private _router: Router) { }
 
   ngOnInit(): void {
   }
 
   onLogIn() {
-    this._accountService.login({login: this.username, password: this.password})
+    this._accountService.login({login: this.authRequest.login, password: this.authRequest.password})
       .subscribe(value => {
         console.log(value);
         if (value.valid) {
@@ -50,8 +50,11 @@ export class GuestLoginComponent implements OnInit {
           }
 
           // this.router.navigate([""]);
+        } else {
+          this.invalidAuth = true;
         }
       },error => {
+        this.invalidAuth = true;
         console.log(error);
       })
   }
