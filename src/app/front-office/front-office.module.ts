@@ -1,11 +1,13 @@
 import { HttpClientModule } from '@angular/common/http';
+import { MatIconModule } from '@angular/material/icon';
+import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { FrontOfficeRoutingModule } from './front-office-routing.module';
 import { FrontOfficeComponent } from './front-office.component';
-import { NavbarComponent } from './navbar/navbar.component';
-
+import { CartComponent } from './cart/cart.component';
+import { PlaylisteComponent } from './playliste/playliste.component';
+import {MatListModule} from '@angular/material/list';
 import { GuestLoginComponent } from './guest-login/guest-login.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { GuestContactComponent } from './guest-contact/guest-contact.component';
@@ -25,7 +27,6 @@ import { PostulerComponent } from './postuler/postuler.component';
 @NgModule({
     declarations: [
         FrontOfficeComponent,
-        NavbarComponent,
         GuestLoginComponent,
         GuestContactComponent,
         GuestChooseInscriptionComponent,
@@ -34,17 +35,24 @@ import { PostulerComponent } from './postuler/postuler.component';
         GuestHomeComponent,
         GuestFooterComponent,
         GuestToolbarComponent,
-        NavbarComponent,
         CandidaturesComponent,
         TousEmploisComponent,
-        PostulerComponent
+        PostulerComponent,
+        FrontOfficeComponent,
+        CartComponent,
+        PlaylisteComponent,
     ],
     imports: [
         CommonModule,
         FrontOfficeMaterialModule,
         FrontOfficeRoutingModule,
         FormsModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+
+        RouterModule,
+        HttpClientModule,
+        MatIconModule,
+        MatListModule,
     ],
     providers: [
         {provide: MAT_DATE_LOCALE, useValue: 'fr-FR'},

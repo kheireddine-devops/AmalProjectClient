@@ -1,0 +1,96 @@
+
+<h3 class="heading">video gallery</h3>
+<!-- *************choose file ****************** -->
+<input type="file" style="display: none" #fileInput accept="video/*" (change)="onChangeFileInput()" />
+<button mat-raised-button color="primary" class="file-select-button"  (click)="onClickFileInputButton()">
+  <!-- <mat-icon>attach_file</mat-icon> -->
+  choose file
+</button>
+
+<p class="file-name" *ngIf="!file; else fileName">name url</p>
+<ng-template #fileName>
+  <p class="file-name">{{ file?.name }}</p>
+</ng-template>
+<button mat-fab color="primary"   style="  margin-left: 10px;" type="submit" ><mat-icon class="bi bi-cloud-plus"  > </mat-icon> </button>
+
+  <!-- *********btn supprimer video ************** -->
+  <button mat-fab color="primary" style="  margin-left: 10px;" type="submit" ><mat-icon class="bi bi-trash" > </mat-icon> </button>
+ 
+<!-- ******************debut gallery*********** -->
+
+<div class="container">
+<div class="main-video">
+
+    <div class="video">
+<video src="assets/video/handicapetscolarité.mp4" controls muted ></video>
+<h3 class="title">01. video title</h3>
+
+    </div>
+</div>
+
+<!-- liste video -->
+
+<div class="video-list">
+
+ 
+
+    <div class="vid active" >
+        <video src="assets/video/handicapetscolarité.mp4"  muted ></video>
+        <h3 class="title">01. video title</h3>
+    </div>
+
+    
+    <div class="vid">
+        <video src="assets/video/handicapetscolarité.mp4"  muted ></video>
+        <h3 class="title">02. video title</h3>
+    </div>
+    
+    <div class="vid">
+        <video src="assets/video/handicapetscolarité.mp4"  muted ></video>
+        <h3 class="title">03. video title</h3>
+    </div>
+    
+    <div class="vid">
+        <video src="assets/video/handicapetscolarité.mp4"  muted ></video>
+        <h3 class="title">04. video title</h3>
+    </div>
+    
+    <div class="vid">
+        <video src="assets/video/handicapetscolarité.mp4"  muted ></video>
+        <h3 class="title">05. video title</h3>
+    </div>
+    
+    <div class="vid">
+        <video src="assets/video/handicapetscolarité.mp4"  muted ></video>
+        <h3 class="title">06. video title</h3>
+    </div>
+    
+    <div class="vid">
+        <video src="assets/video/handicapetscolarité.mp4"  muted ></video>
+        <h3 class="title">07. video title</h3>
+    </div>
+
+
+
+</div>
+
+</div>
+
+<script>
+let listvideo = document.querySelectorAll('.video-list .vid');
+let minvideo = document.querySelector('.main-video .video');
+let title = document.querySelectorAll('.main-video .title');
+// listvideo.forEach(video =>
+//   {
+//     video.onclick()=> {
+//       listvideo.forEach(vid =>vid.classList.remove('active'));
+//       video.classList.add('active');
+//       if(video.classList.contains('active')){
+//         let src=video.children[0].getAttribute('src');
+//         minvideo.src = src;
+//         let text =video.children[1].innerHTML;
+//       };
+//     };
+//   });
+
+</script>

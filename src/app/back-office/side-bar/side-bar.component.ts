@@ -33,7 +33,7 @@ export class SideBarComponent implements OnInit {
         switch (this.currentUser.role) {
           case RoleEnum.ADMIN: this.menus = ADMIN_MENU; break;
           case RoleEnum.BENEFICIER: this.menus = BENEFICIER_MENU; break;
-          case RoleEnum.BENEVOLE: this.menus = BENEFICIER_MENU; break;
+          case RoleEnum.BENEVOLE: this.menus = BENEVOLE_MENU; break;
           case RoleEnum.DOCTOR: this.menus = DOCTOR_MENU; break;
           case RoleEnum.ORGANIZATION: this.menus = ORGANIZATION_MENU; break;
           default: console.error("unknown user")
@@ -77,13 +77,24 @@ interface MenuItem {
 
 const ADMIN_MENU: Array<MenuItem> = [
   {path: '/BackOffice/admin/dashboard', text: 'Dashboard', icon: 'fa fa-tachometer-alt'},
-  {path: '/BackOffice/admin/my-profile', text: 'My Profile', icon: 'fa fa-keyboard'},
-  {path: '/BackOffice/admin/my-profile/edit', text: 'My Profile', icon: 'fa fa-keyboard'},
+  // {path: '/BackOffice/admin/my-profile', text: 'My Profile', icon: 'fa fa-keyboard'},
+  // {path: '/BackOffice/admin/my-profile/edit', text: 'My Profile', icon: 'fa fa-keyboard'},
   {path: '/BackOffice/admin/users', text: 'Users', icon: 'fa fa-th'},
+  // {path: '/BackOffice/KPIformation', text: 'Users', icon: 'fa fa-th'},
+  {
+    path: "",
+    text: "Gestion de Formation",
+    icon: "fa fa-laptop",
+    subMenu: [
+      {path: "/BackOffice/gestionFormation", text: "Gestion Formation"},
+      {path: "/BackOffice/reserverFormation", text: "Réserver Formations"},
+      {path: "/BackOffice/gestionTutoriels", text: "Gestion Tutoriels"}
+    ]
+  },
   {
     path: '',
     text: "Offres d'emplois",
-    icon: 'fa fa-keyboard',
+    icon: 'fa fa-briefcase',
     subMenu: [
       {path: "/BackOffice/admin/emplois", text: "Liste des offres d'emplois"},
       {path: "/BackOffice/admin/ajouteremploi", text: "Ajouter une offre"},
@@ -91,9 +102,6 @@ const ADMIN_MENU: Array<MenuItem> = [
       {path: "/BackOffice/admin/linl-2", text: "Mes candidatures"}
     ]
   },
-  // {path: '/BackOffice/admin/ADMIN-MENU-01', text: 'ADMIN Item #01', icon: 'fa fa-table'},
-  // {path: '/BackOffice/admin/ADMIN-MENU-02', text: 'ADMIN Item #02', icon: 'fa fa-chart-bar'},
-  // {path: '/BackOffice/admin/ADMIN-MENU-03', text: 'ADMIN Item #03', icon: 'fa fa-chart-bar'}
 ];
 
 const DOCTOR_MENU: Array<MenuItem> = [
@@ -105,32 +113,43 @@ const DOCTOR_MENU: Array<MenuItem> = [
   {path: '/BackOffice/doctor/DOCTOR-MENU-03', text: 'DOCTOR Item #03', icon: 'fa fa-chart-bar'}
 ];
 
+
+
+
 const BENEFICIER_MENU: Array<MenuItem> = [
   {path: '/BackOffice/beneficier/dashboard', text: 'Dashboard', icon: 'fa fa-tachometer-alt'},
   {path: '/BackOffice/beneficier/my-profile', text: 'My Profile', icon: 'fa fa-keyboard'},
   {path: '/BackOffice/beneficier/my-profile/edit', text: 'Edit Profile', icon: 'fa fa-keyboard'},
-  {
-    path: '/BackOffice/beneficier/BENEFICIER-MENU-01',
-    text: 'BENEFICIER Item #01',
-    icon: 'fa fa-table',
-    subMenu: [
-      {path: "/BackOffice/beneficier/SUB_MENU_01", text: "Sub MENU #01"},
-      {path: "/BackOffice/beneficier/SUB_MENU_02", text: "Sub MENU #02"},
-      {path: "/BackOffice/beneficier/SUB_MENU_03", text: "Sub MENU #03"},
-      {path: "/BackOffice/beneficier/SUB_MENU_04", text: "Sub MENU #04"}
-    ]
-  },
-  {path: '/BackOffice/beneficier/BENEFICIER-MENU-02', text: 'BENEFICIER Item #02', icon: 'fa fa-chart-bar'},
-  {path: '/BackOffice/beneficier/BENEFICIER-MENU-03', text: 'BENEFICIER Item #03', icon: 'fa fa-chart-bar'}
+  {path: "/BackOffice/reserverFormation", text: "Réserver Formations", icon: 'fa fa-laptop'},
+  // {
+  //   path: '/BackOffice/beneficier/BENEFICIER-MENU-01',
+  //   text: 'BENEFICIER Item #01',
+  //   icon: 'fa fa-table',
+  //   subMenu: [
+  //     {path: "/BackOffice/beneficier/SUB_MENU_01", text: "Sub MENU #01"},
+  //     {path: "/BackOffice/beneficier/SUB_MENU_02", text: "Sub MENU #02"},
+  //     {path: "/BackOffice/beneficier/SUB_MENU_03", text: "Sub MENU #03"},
+  //     {path: "/BackOffice/beneficier/SUB_MENU_04", text: "Sub MENU #04"}
+  //   ]
+  // },
 ];
 
 const BENEVOLE_MENU: Array<MenuItem> = [
   {path: '/BackOffice/benevole/dashboard', text: 'Dashboard', icon: 'fa fa-tachometer-alt'},
   {path: '/BackOffice/benevole/my-profile', text: 'My Profile', icon: 'fa fa-keyboard'},
   {path: '/BackOffice/benevole/my-profile/edit', text: 'Edit Profile', icon: 'fa fa-keyboard'},
-  {path: '/BackOffice/benevole/BENEVOLE-MENU-01', text: 'BENEVOLE Item #01', icon: 'fa fa-table'},
-  {path: '/BackOffice/benevole/BENEVOLE-MENU-02', text: 'BENEVOLE Item #02', icon: 'fa fa-chart-bar'},
-  {path: '/BackOffice/benevole/BENEVOLE-MENU-03', text: 'BENEVOLE Item #03', icon: 'fa fa-chart-bar'}
+  {
+    path: "",
+    text: "Gestion de Formation",
+    icon: "fa fa-laptop",
+    subMenu: [
+      {path: "/BackOffice/gestionFormation", text: "Gestion Formation"},
+      {path: "/BackOffice/gestionTutoriels", text: "Gestion Tutoriels"}
+    ]
+  },
+  // {path: '/BackOffice/benevole/BENEVOLE-MENU-01', text: 'BENEVOLE Item #01', icon: 'fa fa-table'},
+  // {path: '/BackOffice/benevole/BENEVOLE-MENU-02', text: 'BENEVOLE Item #02', icon: 'fa fa-chart-bar'},
+  // {path: '/BackOffice/benevole/BENEVOLE-MENU-03', text: 'BENEVOLE Item #03', icon: 'fa fa-chart-bar'}
 ];
 
 const ORGANIZATION_MENU: Array<MenuItem> = [
@@ -140,15 +159,12 @@ const ORGANIZATION_MENU: Array<MenuItem> = [
   {
     path: '',
     text: "Offres d'emplois",
-    icon: 'fa fa-keyboard',
+    icon: 'fa fa-briefcase',
     subMenu: [
       {path: "/BackOffice/organization/emplois", text: "Liste des offres d'emplois"},
       {path: "/BackOffice/organization/ajouteremploi", text: "Ajouter une offre"},
       {path: "/BackOffice/organization/link-1", text: "Statéstique"},
       {path: "/BackOffice/organization/linl-2", text: "Mes candidatures"}
     ]
-  },
-  // {path: '/BackOffice/organization/ORGANIZATION-MENU-01', text: 'Org Menu Item #01', icon: 'fa fa-table'},
-  // {path: '/BackOffice/organization/ORGANIZATION-MENU-02', text: 'Org Menu Item #02', icon: 'fa fa-chart-bar'},
-  // {path: '/BackOffice/organization/ORGANIZATION-MENU-03', text: 'Org Menu Item #03', icon: 'fa fa-chart-bar'}
+  }
 ];

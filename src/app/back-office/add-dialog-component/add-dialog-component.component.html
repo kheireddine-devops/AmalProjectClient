@@ -1,0 +1,80 @@
+
+<!-- ************************formulaire ajouter formation  ********************* -->
+
+<div class="container" >
+  <h2 class="text-center"> Ajouter une formation </h2>
+<form class="form-group" #f="ngForm" (submit)="sauvgarder()">
+  <div class="form-group" class="mb-3">
+      <label>Théme</label>
+      <input name="theme" type="text" class="form-control" ngModel [(ngModel)]="Formation.theme" #theme="ngModel"  required  pattern="[a-zA-Z  à â ä é è ê ë î ï ô ö ù û ü ÿ ç À Â Ä Ç É È Ê Ë Î Ï Ô Ö Ù Û Ü Ÿ ]*" >
+      <div class="alert alert-danger" *ngIf="theme.invalid && theme.touched">
+
+      <div *ngIf="theme.errors?.['required']"> champ obliguatoire</div>
+      <div *ngIf="theme.errors?.['pattern']"> n'accepte que de des caractéres  </div>
+
+
+      </div>
+   </div>
+
+   <div class="form-group" class="mb-3">
+        <label>Détail</label>
+         <input name="detail" type="text" class="form-control" ngModel   #detail="ngModel" [(ngModel)]="Formation.descriptif" required pattern="[a-zA-Z  à â ä é è ê ë î ï ô ö ù û ü ÿ ç À Â Ä Ç É È Ê Ë Î Ï Ô Ö Ù Û Ü Ÿ ]*">
+         <div class="alert alert-danger" *ngIf="detail.invalid && detail.touched">
+          <div *ngIf="detail.errors?.['required']"> champ obliguatoire</div>
+          <div *ngIf="detail.errors?.['pattern']"> n'accepte que de des caractéres  </div>
+
+         </div>
+      </div>
+<!-- ********************************DATE DEBUT******************************************** -->
+  <div class="form-group" class="mb-3">
+     <label>Date début</label>
+     <input name="DateD" type="date" class="form-control" ngModel   #DateD="ngModel" [(ngModel)]="Formation.date_debut" required
+     (change)="compareDatesD()">
+     <div class="alert alert-danger" *ngIf="!isPeriodValid && DateD.touched && Datef.touched"> date debut obliguatoire et inférieur à date fin</div>
+   </div>
+<!-- *******************************DATE FIN ********************************************* -->
+   <div class="form-group" class="mb-3">
+      <label>Date fin</label>
+      <input name="Datef" type="date" class="form-control" ngModel  #Datef="ngModel" [(ngModel)]="Formation.dateFin" required
+      (change)="compareDatesD()">
+      <div class="alert alert-danger" *ngIf="!isPeriodValid && Datef.touched && DateD.touched">date fin obliguatoire et supérieur à date debut</div>
+      </div>
+
+<!-- *************** -->
+
+    <div class="form-group" class="mb-3">
+      <label>Nombre de jours</label>
+      <input name="nbrJ" type="number" class="form-control" ngModel   #nbrJ="ngModel" [(ngModel)]="Formation.Nbr_jours" required pattern="[0-9]*" pattern="\d+"  min="1">
+      <div class="alert alert-danger" *ngIf="nbrJ.invalid && nbrJ.touched  ">
+
+          <div *ngIf="nbrJ.errors?.['required']"> Champ obliguatoire</div>
+          <div *ngIf="nbrP.errors?.['pattern']"> n'accepte que de des chiffre  </div>
+          <div *ngIf="nbrP.errors?.['pattern']"> N'accepte que des chiffre possitive   </div>
+
+          <div *ngIf="nbrP.errors?.['min']"> Au minimum une personnes  </div>
+      </div>
+    </div>
+
+    <div class="form-group" class="mb-3">
+      <label>Nombre de Pérsonnes</label>
+      <input name="nbrP" type="number" class="form-control" ngModel   #nbrP="ngModel" [(ngModel)]="Formation.Nbr_personnes" required pattern="[1-9]*"pattern="\d+" min=1>
+      <div class="alert alert-danger" *ngIf="nbrP.invalid &&nbrP.touched">
+
+          <div *ngIf="nbrP.errors?.['required']"> champ obliguatoire</div>
+          <div *ngIf="nbrP.errors?.['pattern']"> n'accepte que de des chiffre  </div>
+          <div *ngIf="nbrP.errors?.['pattern']"> accepte que des chiffre possitive  </div>
+          <div *ngIf="nbrP.errors?.['min']"> au minimum une personnes  </div>
+
+      </div>
+    </div>
+    <div class="form-group" class="mb-3" class="text-center">
+   <button class="btn btn-success "  type="submit" routerLink="/BackOffice/gestionFormation" [disabled]="f.invalid">Sauvguarder</button>&nbsp;
+   <button type="submit" class="btn btn-danger " [disabled]="f.invalid">Annuler</button>
+  </div>
+  &nbsp;
+  <div></div>
+</form>
+</div>
+
+<!-- ****** -->
+

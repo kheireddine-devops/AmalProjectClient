@@ -1,10 +1,11 @@
-import { PostulerComponent } from './postuler/postuler.component';
 
+import { PostulerComponent } from './postuler/postuler.component';
 import { CandidaturesComponent } from './candidatures/candidatures.component';
+import { PlaylisteComponent } from './playliste/playliste.component';
+import { CartComponent } from './cart/cart.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { FrontOfficeComponent } from './front-office.component';
-
 import {GuestLoginComponent} from "./guest-login/guest-login.component";
 import {NotFoundComponent} from "../shared/not-found/not-found.component";
 import {GuestChooseInscriptionComponent} from "./guest-choose-inscription/guest-choose-inscription.component";
@@ -29,6 +30,10 @@ const routes: Routes = [
       {path: 'candidatures',component:CandidaturesComponent},
       {path: 'postuler',component:PostulerComponent},
       // End Sabrine Routes
+      // Start Asma Routes
+      {path: 'ListetousFormation',component:CartComponent},
+      {path: 'ListetousTutoriels',component:PlaylisteComponent},
+      // End Asma Routes
       { path: "", redirectTo: "/home", pathMatch: "full" },
       { path: '**', component: NotFoundComponent }
     ]
