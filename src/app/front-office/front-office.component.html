@@ -8,34 +8,31 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarScroll">
         <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" routerLink="#">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="#">Link</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" routerLink="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Link
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-              <li><a class="dropdown-item" routerLink="#">Action</a></li>
-              <li><a class="dropdown-item" routerLink="#">Another action</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" routerLink="#">Something else here</a></li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" routerLink="#" tabindex="-1" aria-disabled="true">Link</a>
-          </li>
+         
+          <div class="nav-item dropdown">
+            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Gestion de Formation</a>
+            <div class="dropdown-menu bg-transparent border-0">
+               
+               <li> <a  routerLink="/FrontOffice/ListetousFormation" class="dropdown-item">Liste des Formations</a></li>
+  
+              <li> <a routerLink="/FrontOffice/ListetousTutoriels" class="dropdown-item">Liste des Tutoriels</a></li>
+            </div>
+        </div>
         </ul>
         <form class="d-flex">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
+          <button class="btn btn-outline-primary"  type="submit">Search</button>
         </form>
       </div>
     </div>
   </nav>
+<!-- IMAGE NAV BAR -->
+<div class="card bg-dark text-white">
+  <img class="card-img" src="assets/img/NAVBAR.jpg" alt="Card image"  width="50px" height="300px">
+</div>
+
+
+
   <router-outlet></router-outlet>
   <footer>
     
