@@ -11,6 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class AjouterEmploisComponent implements OnInit {
   currentDate:any =new Date(); //curent date
   emploi! : Emploi;
+  
   constructor(private emploiService : EmploiService, private router:Router,private ac: ActivatedRoute) { }
   id:any;
   titrepage:any=""
@@ -34,5 +35,7 @@ export class AjouterEmploisComponent implements OnInit {
 
     }
   }
+  
+  
   }
 

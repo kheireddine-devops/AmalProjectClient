@@ -8,6 +8,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { FormsModule } from '@angular/forms';
 import { CandidaturesComponent } from './candidatures/candidatures.component';
 import { TousEmploisComponent } from './tous-emplois/tous-emplois.component';
+import { PostulerComponent } from './postuler/postuler.component';
 
 
 
@@ -16,7 +17,8 @@ import { TousEmploisComponent } from './tous-emplois/tous-emplois.component';
     FrontOfficeComponent,
     NavbarComponent,
     CandidaturesComponent,
-    TousEmploisComponent
+    TousEmploisComponent,
+    PostulerComponent
   ],
   imports: [
     CommonModule,
