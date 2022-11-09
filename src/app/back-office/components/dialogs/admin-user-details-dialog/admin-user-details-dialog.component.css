@@ -1,0 +1,27 @@
+.user-details-container {
+  background-color: #FFFFFF;
+  min-height: 400px;
+}
+.user-details-navbar {
+  height: 50px;
+  background-color: #FFFFFF;
+  border: solid 1px silver;
+  border-top: none;
+  position: relative;
+}
+
+.user-details-avatar {
+  width: 120px;
+  height: 120px;
+  background-color: #FFFFFF;
+  border: solid 5px #FFFFFF;
+  border-radius: 8px;
+  position: absolute;
+  bottom: 15px;
+  left: 25px;
+}
+
+.user-details-name {
+  margin-left: 170px;
+  line-height: 50px;
+}

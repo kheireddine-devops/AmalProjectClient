@@ -1,0 +1,36 @@
+<mat-grid-list cols="4" rowHeight="100px">
+  <mat-grid-tile colspan="1" rowspan="1">
+
+  </mat-grid-tile>
+  <mat-grid-tile colspan="1" rowspan="1">
+    User 2
+  </mat-grid-tile>
+  <mat-grid-tile colspan="1" rowspan="1">
+    User 3
+  </mat-grid-tile>
+  <mat-grid-tile colspan="1" rowspan="1">
+    User 4
+  </mat-grid-tile>
+  <mat-grid-tile colspan="2" rowspan="1">
+    User 5
+  </mat-grid-tile>
+  <mat-grid-tile colspan="2" rowspan="1">
+    User 6
+  </mat-grid-tile>
+</mat-grid-list>
+
+<div class="user-counts">
+  <ngx-charts-bar-vertical
+    [view]="[800,400]"
+    [results]="saleData"
+    [xAxisLabel]="'Products'"
+    [legendTitle]="'Product Sale Chart'"
+    [yAxisLabel]="'Sale'"
+    [legend]="true"
+    [showXAxisLabel]="true"
+    [showYAxisLabel]="true"
+    [xAxis]="true"
+    [yAxis]="true"
+    [gradient]="true">
+  </ngx-charts-bar-vertical>
+</div>

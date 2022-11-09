@@ -1,0 +1,19 @@
+.guest-login-component {
+  /* background-color: yellow; */
+  min-height: 100vh;
+  /*background-color: #ebebee;*/
+}
+.guest-login-card {
+  width: 380px;
+  /*background-color: yellow;*/
+}
+.guest-login-card .guest-login-card-logo {
+  background-color: transparent;
+  height: 124px;
+  display: flex;
+}
+.guest-login-card  .guest-login-card-logo img{
+  margin: auto;
+  width: 94px;
+  height: 94px;
+}
