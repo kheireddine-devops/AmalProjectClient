@@ -80,6 +80,7 @@ const ADMIN_MENU: Array<MenuItem> = [
   // {path: '/BackOffice/admin/my-profile', text: 'My Profile', icon: 'fa fa-keyboard'},
   // {path: '/BackOffice/admin/my-profile/edit', text: 'My Profile', icon: 'fa fa-keyboard'},
   {path: '/BackOffice/admin/users', text: 'Users', icon: 'fa fa-th'},
+  {path: '/BackOffice/gestionaides', text:'Gestion D\'aides', icon: 'fa fa-tachometer-alt'},
   // {path: '/BackOffice/KPIformation', text: 'Users', icon: 'fa fa-th'},
   {
     path: "",
@@ -120,6 +121,7 @@ const BENEFICIER_MENU: Array<MenuItem> = [
   {path: '/BackOffice/beneficier/dashboard', text: 'Dashboard', icon: 'fa fa-tachometer-alt'},
   {path: '/BackOffice/beneficier/my-profile', text: 'My Profile', icon: 'fa fa-keyboard'},
   {path: '/BackOffice/beneficier/my-profile/edit', text: 'Edit Profile', icon: 'fa fa-keyboard'},
+  {path: '/BackOffice/gestionaides', text:'Gestion D\'aides', icon: 'fa fa-tachometer-alt'},
   {path: "/BackOffice/reserverFormation", text: "Réserver Formations", icon: 'fa fa-laptop'},
   // {
   //   path: '/BackOffice/beneficier/BENEFICIER-MENU-01',

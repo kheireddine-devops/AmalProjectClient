@@ -14,9 +14,13 @@ import {NotFoundComponent} from "../shared/not-found/not-found.component";
 import {AdminUserManagementComponent} from "./components/admin-user-management/admin-user-management.component";
 import {AdminGuestContactComponent} from "./components/admin-guest-contact/admin-guest-contact.component";
 import {AdminDashbordComponent} from "./components/admin-dashbord/admin-dashbord.component";
+import { CommentsHelpComponent } from './comments-help/comments-help.component';
+import { AddHelpComponent } from './add-help/add-help.component';
+import { ShowHelpComponent } from './show-help/show-help.component';
 import {AdminGuard} from "../core/guards/admin.guard";
 import {BenevoleGuard} from "../core/guards/benevole.guard";
 import {DoctorGuard} from "../core/guards/doctor.guard";
+
 
 const routes: Routes = [
   {
@@ -52,6 +56,12 @@ const routes: Routes = [
       {path: 'KPIformation',component:KPIformationComponent},
       {path: 'addFormation',component:AddDialogComponentComponent},
       // End Asma Routes
+      // Start Ameni Routes
+      {path: 'gestiondons',component:GestionDonsComponent},
+      {path: 'gestionaides',component:ShowHelpComponent},
+      {path: 'ajouteraide',component:AddHelpComponent},
+      {path: 'gestioncommentaires/:id',component:CommentsHelpComponent},
+      // End Ameni Routes
       {path: '**', component: NotFoundComponent}
     ]
   }

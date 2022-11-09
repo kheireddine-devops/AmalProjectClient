@@ -1,0 +1,94 @@
+<div class="container-fluid pt-4 px-4">
+    <div class="bg-light text-center rounded p-4">
+        <div class="d-flex align-items-center justify-content-between mb-4">
+            <h6 class="mb-0">Commentaires</h6>
+            <a href="">Voir Plus</a>
+        </div>
+        <div class="table-responsive">
+            <table class="table text-start align-middle table-bordered table-hover mb-0">
+                <thead>
+                    <tr class="text-dark">
+                        <th scope="col"><input class="form-check-input" type="checkbox"></th>
+                        <th scope="col">Nom</th>
+                        <th scope="col">Prénom</th>
+                        <th scope="col">Commentaires</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let c of ListComment">
+                        <td><input class="form-check-input" type="checkbox"></td>
+                        <td>KHLIFI</td>
+                        <td>Ameni</td>
+                        <td>{{c.comment}}</td>
+                        <td>{{c.dateComment| date}}</td>
+                        <td>{{c.status}}</td>
+                        <td><button type="submit" class="btn btn-square btn-danger m-2" (click)="delete(c)"><i class="fa fa-trash"></i>
+                        </button> <button type="submit" class="btn btn-square btn-primary m-2"><i class="fa fa-edit"></i></button></td>
+                    </tr>
+                    
+                </tbody>
+            </table>
+        </div>
+
+        
+
+    </div>
+</div>
+<br><br>
+<div class="container containerComment">
+    <!--- Add Commentaires-->
+    <div class="accordion accordion-flush" id="accordionFlushExample">
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="flush-headingOne">
+                <button class="accordion-button" type="button"
+                    data-bs-toggle="collapse" data-bs-target="#flush-collapseOne"
+                    aria-expanded="true" aria-controls="flush-collapseOne">
+                    Ajouter un nouveau commentaire
+                </button>
+            </h2>
+
+            <div id="flush-collapseOne" class="accordion-collapse collapse show"
+                aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body">
+
+                    <div class="alert alert-success alert-dismissible fade show" role="alert" *ngIf="alert">
+                        <i class="fa fa-exclamation-circle me-2"></i>Commentaire Ajoutée avec succées <i class="fa fa-smile"></i>!
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    <!--formulaire d'ajout commentaire-->
+                    <form #f="ngForm">
+                        <div class="form-floating">
+                            <textarea class="form-control" placeholder="Leave a comment here"
+                                id="floatingTextarea" style="height: 150px;" name="commentHelp" ngModel #com="ngModel" required minlength="50" maxlength="500" [(ngModel)]="commenthelp.comment"></textarea>
+                            <label for="floatingTextarea">Commentaire</label>
+                        </div><br>
+                        <div class="alert alert-danger" *ngIf="com.invalid && com.touched">
+                            <div *ngIf="com.errors?.['required']">Ce champs est Obligatoire</div>
+                            <div *ngIf="com.errors?.['minlength']">la longueur minimale est 50</div>
+                            
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="status" ngModel #status="ngModel"
+                                id="flexRadioDefault1" value="Published" [(ngModel)]="commenthelp.status">
+                            <label class="form-check-label" for="flexRadioDefault1">
+                                Published
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="status" ngModel #status="ngModel"
+                                id="flexRadioDefault2" value="Unpublished" [(ngModel)]="commenthelp.status">
+                            <label class="form-check-label" for="flexRadioDefault2">
+                                Unpublished
+                            </label>
+                        </div>
+                        <button type="submit" class="btn btn-outline-primary m-2" [disabled]="f.invalid" (click)="save()"><i class="fa fa-save me-2"></i>Commenter</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+     
+    </div>
+</div>

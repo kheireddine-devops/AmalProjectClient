@@ -1,8 +1,9 @@
-
 import { PostulerComponent } from './postuler/postuler.component';
 import { CandidaturesComponent } from './candidatures/candidatures.component';
 import { PlaylisteComponent } from './playliste/playliste.component';
 import { CartComponent } from './cart/cart.component';
+import { HelpDetailsComponent } from './help-details/help-details.component';
+import { HelpShowComponent } from './help-show/help-show.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { FrontOfficeComponent } from './front-office.component';
@@ -14,6 +15,7 @@ import {GuestContactComponent} from "./guest-contact/guest-contact.component";
 import {GuestResetPasswordComponent} from "./guest-reset-password/guest-reset-password.component";
 import {GuestHomeComponent} from "./guest-home/guest-home.component";
 import {TousEmploisComponent} from "./tous-emplois/tous-emplois.component";
+
 
 const routes: Routes = [
   { path: '',
@@ -34,10 +36,15 @@ const routes: Routes = [
       {path: 'ListetousFormation',component:CartComponent},
       {path: 'ListetousTutoriels',component:PlaylisteComponent},
       // End Asma Routes
+      // Start Ameni Routes
+      {path:'demandeaide',component:HelpShowComponent},
+      {path:'helpdetails/:id', component:HelpDetailsComponent},
+      // End Ameni Routes
       { path: "", redirectTo: "/home", pathMatch: "full" },
       { path: '**', component: NotFoundComponent }
     ]
   }];
+
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

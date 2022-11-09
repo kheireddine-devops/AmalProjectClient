@@ -1,6 +1,8 @@
+
 import { HttpClientModule } from '@angular/common/http';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterModule } from '@angular/router';
+
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FrontOfficeRoutingModule } from './front-office-routing.module';
@@ -22,6 +24,8 @@ import { GuestToolbarComponent } from './guest-toolbar/guest-toolbar.component';
 import { CandidaturesComponent } from './candidatures/candidatures.component';
 import { TousEmploisComponent } from './tous-emplois/tous-emplois.component';
 import { PostulerComponent } from './postuler/postuler.component';
+import {HelpShowComponent} from "./help-show/help-show.component";
+import {HelpDetailsComponent} from "./help-details/help-details.component";
 
 
 @NgModule({
@@ -41,6 +45,8 @@ import { PostulerComponent } from './postuler/postuler.component';
         FrontOfficeComponent,
         CartComponent,
         PlaylisteComponent,
+        HelpShowComponent,
+        HelpDetailsComponent,
     ],
     imports: [
         CommonModule,

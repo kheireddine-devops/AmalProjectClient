@@ -1,0 +1,81 @@
+<div class="col-sm-12 col-xl-12">
+    <div class="bg-light rounded h-100 p-4">
+        <div class="alert alert-success alert-dismissible fade show" role="alert" *ngIf="alert">
+            Demande ajoutée avec success
+          </div>
+        <h6 class="mb-4">{{titre}}</h6>
+        <form #f="ngForm" >
+            <div class="form-floating mb-3">
+                <select class="form-select" id="floatingSelect" aria-label="Floating label select example" name="typeHelp" ngModel #t="ngModel" [(ngModel)]="help.typeHelp" required>
+                    <option selected>demande aide médical</option>
+                    <option value="Demande d'emploi">Demande d'emploi</option>
+                    <option value="Demande de Formation">Demande de Formation</option>
+                    <option value="Demande Dons">Demande Dons</option>
+                    <option value="Demande Dons">Demande Aide financiere</option>
+                    <option value="Demande Dons">Demande logement</option>
+                    <option value="Autres">Autres</option>
+                </select>
+                <label for="floatingSelect">Type Demande</label>
+            </div>
+            <div class="alert alert-danger" *ngIf="t.invalid && t.touched">
+                Ce Champs est obligatoire
+            </div>
+
+        <div class="form-floating mb-3">
+        <input type="text" class="form-control" id="floatingInput" name="subjectHelp" ngModel #s="ngModel" required minlength="20" maxlength="100" pattern="([.\s]?[a-zA-Z]*){10}" [(ngModel)]="help.subjectHelp">
+            <label for="floatingInput">Sujet</label>
+        </div>
+        <div class="alert alert-danger" *ngIf="s.invalid && s.touched">
+            <div *ngIf="s.errors?.['required']">Ce champs est Obligatoire</div>
+            <div *ngIf="s.errors?.['minlength']">la longueur minimale est 20</div>
+            <div *ngIf="s.errors?.['pattern']">Entrer seulement du texte</div>
+            
+        </div>
+        <div class="form-floating mb-3">
+            <input type="url" class="form-control" id="floatingInput" name="urlImage" ngModel #image="ngModel" required pattern="(http[s]?:\/\/)?([^\/\s]+\/)(.*)" [(ngModel)]="help.urlImage">
+             <label for="floatingInput">URL Image</label>
+        </div>
+        <div class="alert alert-danger" *ngIf="image.invalid && image.touched">
+            <div *ngIf="image.errors?.['required']">Ce champs est Obligatoire</div>
+            <div *ngIf="image.errors?.['pattern']">URL n'est pas valide </div>
+        </div>
+        <div class="form-floating mb-3">
+            <input class="form-control" type="number" placeholder="Nombre des personnes" id="floatingNumber"  name="numberHelp" ngModel #n="ngModel" pattern="[1-5]" required [(ngModel)]="help.numberHelp">
+            <label for="floatingNumber">Nombre des personnes ont besoin d'aide</label>
+        </div>
+        <div class="alert alert-danger" *ngIf="n.invalid && n.touched">
+            <div *ngIf="n.errors?.['required']">Ce champs est Obligatoire</div>
+            <div *ngIf="n.errors?.['pattern']">le nombre doit être entre 1 et 5</div>
+            
+        </div>
+        <div class="form-floating">
+            <textarea class="form-control" placeholder="votre publication ici" id="floatingTextarea" style="height: 150px;" name="contentHelp" ngModel #c="ngModel" minlength="100" required [(ngModel)]="help.contentHelp"></textarea>
+            <label for="floatingTextarea">Votre demande en quelque phrase</label>
+        </div><br>
+        <div class="alert alert-danger alert-dismissible fade show"  *ngIf="c.invalid && c.touched">
+            <div *ngIf="c.errors?.['required']">Ce champs est Obligatoire</div>
+            <div *ngIf="c.errors?.['minlength']">
+              la longueur minimale de votre demande est 100
+            </div>
+        </div>
+        <fieldset class="form-floating">
+            <legend class="col-form-label col-sm-2 pt-0">Status</legend>
+            <div class="col-sm-10">
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="published" checked name="statusHelp" ngModel [(ngModel)]="help.statusHelp">
+                    <label class="form-check-label" for="gridRadios1">
+                        Published
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="Unpublished" name="statusHelp" ngModel [(ngModel)]="help.statusHelp">
+                    <label class="form-check-label" for="gridRadios2">
+                        Unpublished
+                    </label>
+                </div>
+            </div>
+        </fieldset>
+        <button type="submit" class="btn btn-success rounded-pill m-2" [disabled]="f.invalid" (click)="Save()" >Ajouter</button>
+    </form>
+    </div>
+</div>

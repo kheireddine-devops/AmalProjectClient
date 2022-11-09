@@ -25,6 +25,7 @@ import { MAT_DATE_FORMATS, NativeDateModule } from '@angular/material/core';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+
     BrowserAnimationsModule,
     HttpClientModule,
     BrowserAnimationsModule,

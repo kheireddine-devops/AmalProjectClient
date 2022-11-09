@@ -38,6 +38,10 @@ import {MatTableModule} from '@angular/material/table';
 import { MatDialogModule } from '@angular/material/dialog';
 import { AddDialogComponentComponent } from './add-dialog-component/add-dialog-component.component';
 import { KPIformationComponent } from './kpiformation/kpiformation.component';
+import { ShowHelpComponent } from './show-help/show-help.component';
+import { AddHelpComponent } from './add-help/add-help.component';
+import { CommentsHelpComponent } from './comments-help/comments-help.component';
+
 
 @NgModule({
   declarations: [
@@ -55,12 +59,19 @@ import { KPIformationComponent } from './kpiformation/kpiformation.component';
     EmploisComponent,
     GestionDonsComponent,
     SideBarComponent,
+
     GestionFormationsComponent,
     ListeFormationComponent,
     ListeTutorielsComponent,
     AddDialogComponentComponent,
     KPIformationComponent,
-    KPIformationComponent
+    KPIformationComponent,
+
+    ShowHelpComponent,
+    AddHelpComponent,
+    CommentsHelpComponent,
+
+
   ],
   imports: [
       CommonModule,
