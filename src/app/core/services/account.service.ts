@@ -19,7 +19,7 @@ export class AccountService {
   // }
 
   getCurrentUser(): Observable<CurrentUser> {
-    return of({role: RoleEnum.BENEFICIER, firstname: "kheireddine", lastname: "mechergui", photo: "assets/images/users/USER-000001.jpg", id: 1, fullName: "kheireddine mechergui"});
+    return of({role: RoleEnum.DOCTOR, firstname: "kheireddine", lastname: "mechergui", photo: "assets/images/users/USER-000001.jpg", id: 1, fullName: "kheireddine mechergui"});
   }
 
   getCurrentUserByToken(token: string): Observable<CurrentUser> {
@@ -35,5 +35,47 @@ export class AccountService {
         return { token: "", valid: false}
       }));
     // return of({token: ""});
+  }
+
+  logOut() {
+    this._tokenUtilsService.deleteTokenInLocalStorage();
+  }
+
+  isAuthenticated(): boolean {
+    const token = this._tokenUtilsService.getTokenByLocalStorage();
+    return token === undefined? false : true;
+  }
+
+  getRole(): RoleEnum | undefined {
+    return this._tokenUtilsService.getRoleByToken();
+  }
+
+  hasRole(role: RoleEnum): boolean {
+    const token = this._tokenUtilsService.getTokenByLocalStorage();
+    if (token !== undefined) {
+      return this._tokenUtilsService.decodeToken(token).role === role;
+    }
+    return false;
+  }
+
+  getCurrentUserByMode(mode: RoleEnum.ADMIN | RoleEnum.DOCTOR | RoleEnum.BENEFICIER | RoleEnum.BENEVOLE | RoleEnum.ORGANIZATION) {
+    switch (mode) {
+      case RoleEnum.ADMIN:
+        return of({role: RoleEnum.ADMIN, firstname: "Kheireddine", lastname: "Mechergui", photo: "assets/images/users/USER-000001.jpg", id: 1, fullName: "Kheireddine Mechergui"});
+      case RoleEnum.DOCTOR:
+        return of({role: RoleEnum.DOCTOR, firstname: "Ahmed", lastname: "Marzouki", photo: "assets/images/users/USER-000002.jpg", id: 1, fullName: "Ahmed Marzouki"});
+      case RoleEnum.BENEVOLE:
+        return of({role: RoleEnum.BENEVOLE, firstname: "Rami", lastname: "Wnifi", photo: "assets/images/users/USER-000001.jpg", id: 1, fullName: "Rami Wnifi"});
+      case RoleEnum.BENEFICIER:
+        return of({role: RoleEnum.BENEFICIER, firstname: "Akrem", lastname: "Mejri", photo: "assets/images/users/USER-000001.jpg", id: 1, fullName: "Akrem Mejri"});
+      case RoleEnum.ORGANIZATION:
+        return of({role: RoleEnum.ORGANIZATION, firstname: "", lastname: "", photo: "assets/images/users/USER-000001.jpg", id: 1, fullName: "I-WATCH"});
+      default:
+        throw new Error("PROBLEM");
+    }
+  }
+
+  resetPassword(email: string): Observable<any> {
+    return this._http.post('/api/reset-password',email);
   }
 }
