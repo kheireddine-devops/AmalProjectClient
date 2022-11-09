@@ -1,0 +1,15 @@
+label {
+    color: blueviolet;
+    
+}
+input{
+    width: 700px;
+    height: 50px;
+}
+
+button{
+    width: 200px;
+    height: 60px;
+    font-size: 30px;
+    margin-left: 25%;
+}

@@ -1,0 +1,150 @@
+<div class="container">
+    <h1>Ajouter noveaux dons</h1>
+    <form
+      name="form"
+      #form="ngForm"
+      
+      class="needs-validation"
+      novalidate
+      style="margin-top: 20px"
+    >
+      <div class="row">
+        <div class="col-md-6 col-sm-12">
+          <div class="mb-3">
+            <label class="form-label">Sujet :</label>
+            <input
+              class="form-control"
+              type="text"
+              name="title"
+              [(ngModel)]="rep.sujet"
+              #title="ngModel"
+              required
+              minlength="3"
+              placeholder="Sujet rapport"
+            />
+            <div
+              *ngIf="title.touched && title.invalid"
+              class="alert alert-danger"
+            >
+            
+              <div *ngIf="title.errors?.['required']">Le sujet est obligatoire</div>
+              <div *ngIf="title.errors?.['minlength']">
+                Le titre doit avoir 3 caractères
+             </div>
+             
+            </div>
+          </div>
+          
+          <div class="mb-3">
+            <label class="form-label">Nom :</label>
+            <input
+              class="form-control"
+              type="text"
+              name="price"
+              [(ngModel)]="rep.nom"
+              placeholder="Votre nom"
+              #price="ngModel"
+              required
+            />
+            <div
+              *ngIf="price.touched && price.invalid"
+              class="alert alert-danger"
+            >
+              Le nom est obligatoire!
+            </div>
+          </div>
+        </div>
+        <br>
+  
+        <div class="col-md-6 col-sm-12">
+          <div class="mb-3">
+            <label class="form-label">Prenom :</label>
+            <input
+              class="form-control"
+              type="text"
+              name="quantity"
+              [(ngModel)]="rep.prenom"
+              placeholder="Type Dons"
+              #quantity="ngModel"
+              required
+            />
+            <div
+              *ngIf="quantity.touched && quantity.invalid"
+              class="alert alert-danger"
+            >
+              Le prenom est obligatoire !
+            </div>
+          </div>
+          
+          <div class="mb-3">
+            <label class="form-label">Mail :</label>
+            <input
+              class="form-control"
+              type="text"
+              name="picture"
+              [(ngModel)]="rep.mail"
+              placeholder="Votre adresse mail"
+              #picture="ngModel"
+              required
+            />
+            <div
+              *ngIf="picture.touched && picture.invalid"
+              class="alert alert-danger"
+            >
+              L'adresse mail est obligatoire !
+            </div>
+          </div>
+        </div>
+      </div>
+      <br>
+
+      <div class="mb-3">
+        <label class="form-label">Num telephone :</label>
+        <input
+          class="form-control"
+          type="number"
+          name="picture"
+          [(ngModel)]="rep.numTel"
+          placeholder="Votre numero de telephone"
+          #picture="ngModel"
+          required
+        />
+        <div
+          *ngIf="picture.touched && picture.invalid"
+          class="alert alert-danger"
+        >
+          Le numero de telephone est obligatoire
+        </div>
+      </div>
+
+      <br>
+      <div class="mb-3">
+        <label class="form-label"> Description :</label>
+        <input
+          class="form-control"
+          type="test"
+          name="picture"
+          [(ngModel)]="rep.description"
+          placeholder="La déscription du rapport"
+          #picture="ngModel"
+          required
+        />
+        <div
+          *ngIf="picture.touched && picture.invalid"
+          class="alert alert-danger"
+        >
+          la description est obligatoire !
+        </div>
+      </div>
+      <br>
+
+      
+
+      <button class="btn btn-success" (click)="ajouter()" [disabled]="form.invalid">
+        Enregistrer
+      </button>
+
+     
+
+    </form>
+  </div>

@@ -1,0 +1,113 @@
+<div class="container">
+    <h1>Ajouter noveaux dons</h1>
+    <form
+      name="form"
+      #form="ngForm"
+      
+      class="needs-validation"
+      novalidate
+      style="margin-top: 20px"
+    >
+      <div class="row">
+        <div class="col-md-6 col-sm-12">
+          <div class="mb-3">
+            <label class="form-label">Libelle :</label>
+            <input
+              class="form-control"
+              type="text"
+              name="title"
+              [(ngModel)]="dons.libele_dons"
+              #title="ngModel"
+              required
+              minlength="3"
+              placeholder="Libelle Dons"
+            />
+            <div
+              *ngIf="title.touched && title.invalid"
+              class="alert alert-danger"
+            >
+            
+              <div *ngIf="title.errors?.['required']">La libelle est obligatoire</div>
+              <div *ngIf="title.errors?.['minlength']">
+                Le titre doit avoir 3 caractères
+             </div>
+             
+            </div>
+          </div>
+          
+          <div class="mb-3">
+            <label class="form-label">Description :</label>
+            <input
+              class="form-control"
+              type="text"
+              name="price"
+              [(ngModel)]="dons.description_dons"
+              placeholder="Description Dons"
+              #price="ngModel"
+              required
+            />
+            <div
+              *ngIf="price.touched && price.invalid"
+              class="alert alert-danger"
+            >
+              La description est obligatoire!
+            </div>
+          </div>
+        </div>
+        <br>
+  
+        <div class="col-md-6 col-sm-12">
+          <div class="mb-3">
+            <label class="form-label">Type Dons :</label>
+            <input
+              class="form-control"
+              type="text"
+              name="quantity"
+              [(ngModel)]="dons.type_dons"
+              placeholder="Type Dons"
+              #quantity="ngModel"
+              required
+            />
+            <div
+              *ngIf="quantity.touched && quantity.invalid"
+              class="alert alert-danger"
+            >
+              Le type de dons est obligatoire !
+            </div>
+          </div>
+          
+          <div class="mb-3">
+            <label class="form-label">Image :</label>
+            <input
+              class="form-control"
+              type="text"
+              name="picture"
+              [(ngModel)]="dons.photo_produit_dons"
+              placeholder="Image du produit"
+              #picture="ngModel"
+              required
+            />
+            <div
+              *ngIf="picture.touched && picture.invalid"
+              class="alert alert-danger"
+            >
+              L'image est obligatoire !
+            </div>
+          </div>
+        </div>
+      </div>
+      <br>
+
+      
+      <br>
+
+      
+
+      <button class="btn btn-success" (click)="save()" [disabled]="form.invalid">
+        Enregistrer
+      </button>
+
+     
+
+    </form>
+  </div>

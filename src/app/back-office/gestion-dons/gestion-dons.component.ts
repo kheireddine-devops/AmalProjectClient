@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Dons } from '../../core/dons';
+import { MesDonsService } from '../../services/mes-dons.service';
 
 @Component({
   selector: 'app-gestion-dons',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GestionDonsComponent implements OnInit {
 
-  constructor() { }
+  listDon : Dons[]=[];
+  title : string="Liste mes dons"
+
+  constructor(private mesDonsService:MesDonsService) { }
 
   ngOnInit(): void {
+    this.mesDonsService.getDons().subscribe((data)=>this.listDon=data);
   }
 
 }
