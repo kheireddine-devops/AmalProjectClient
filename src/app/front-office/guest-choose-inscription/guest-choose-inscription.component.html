@@ -1,0 +1,42 @@
+<app-guest-toolbar></app-guest-toolbar>
+<div class="container-fluid guest-choose-inscription-component py-5 bg-pattern">
+  <div class="row justify-content-center">
+    <div class="guest-choose-inscription-card">
+
+      <mat-card class="text-center">
+        <mat-card-content class="pt-3 px-2 pb-0">
+          <mat-grid-list  cols="2" rowHeight="2:1" [gutterSize]="'7px'">
+            <mat-grid-tile-header>
+              <h2 class="h1">Choisissez le type de compte</h2>
+            </mat-grid-tile-header>
+            <mat-grid-tile>
+              <button class="w-100 h-100" routerLink="/FrontOffice/inscription/doctor" mat-stroked-button color="primary">
+                <img width="100" height="100" src="assets/img/doctor-01.png"/>
+                <span class="ms-3">Doctor</span>
+              </button>
+            </mat-grid-tile>
+            <mat-grid-tile>
+              <button class="w-100 h-100" routerLink="/FrontOffice/inscription/benevole" mat-stroked-button color="primary">
+                <img width="100" height="100" src="assets/img/donation.png"/>
+                <span class="ms-3">Benevole</span>
+              </button>
+            </mat-grid-tile>
+            <mat-grid-tile>
+              <button class="w-100 h-100" routerLink="/FrontOffice/inscription/benefecier" mat-stroked-button color="primary">
+                <img width="100" height="100" src="assets/img/volunteer.png"/>
+                <span class="ms-3">Beneficier</span>
+              </button>
+            </mat-grid-tile>
+            <mat-grid-tile>
+              <button class="w-100 h-100" routerLink="/FrontOffice/inscription/organization" mat-stroked-button color="primary">
+                <img width="100" height="100" src="assets/img/corporation.png"/>
+                <span class="ms-3">Organization</span>
+              </button>
+            </mat-grid-tile>
+          </mat-grid-list>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>
+<app-guest-footer></app-guest-footer>

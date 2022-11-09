@@ -1,0 +1,316 @@
+<mat-card-header>
+  <mat-card-title>{{cardTitle}}</mat-card-title>
+</mat-card-header>
+<mat-dialog-content class="mat-typography">
+<div *ngIf="mode !== undefined">
+  <form [formGroup]="userFormGroup">
+    <div class="row px-2">
+      <ng-container formGroupName="account">
+        <div class="col-6">
+          <mat-form-field appearance="outline">
+            <mat-label>Username</mat-label>
+            <input matInput formControlName="username">
+            <mat-error *ngIf="userFormGroup.get('account.username')?.invalid && userFormGroup.get('account.username')?.touched">
+              <p *ngIf="userFormGroup.get('account.username')?.hasError('required')">Username Is Required</p>
+              <p *ngIf="userFormGroup.get('account.username')?.hasError('pattern')">Username Invalid</p>
+              <p *ngIf="userFormGroup.get('account.username')?.hasError('IsUniqueUsername')">Username already used</p>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-12">
+          <div class="row">
+            <div class="col-6">
+              <mat-form-field appearance="outline">
+                <mat-label>Password</mat-label>
+                <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                  <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+                <mat-error *ngIf="userFormGroup.get('account.password')?.invalid && userFormGroup.get('account.password')?.touched">
+                  <p *ngIf="userFormGroup.get('account.password')?.hasError('required')">Password Is Required</p>
+                  <p *ngIf="userFormGroup.get('account.password')?.hasError('pattern')">Password Invalid</p>
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col-6">
+              <mat-form-field appearance="outline">
+                <mat-label>Confirm Password</mat-label>
+                <input matInput [type]="hide ? 'password' : 'text'" formControlName="confirmPassword">
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                  <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+                <mat-error *ngIf="userFormGroup.get('account.confirmPassword')?.invalid && userFormGroup.get('account.confirmPassword')?.touched">
+                  <p *ngIf="userFormGroup.get('account.confirmPassword')?.hasError('required')">Confirm Password Is Required</p>
+                  <p *ngIf="userFormGroup.get('account.confirmPassword')?.hasError('passwordIsMatched')">Passwords do not match</p>
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="(mode !== 'ADD_ORGANIZATION') && (mode !== 'EDIT_ORGANIZATION')">
+        <div class="col-12">
+          <div class="row">
+            <div class="col-6">
+              <mat-form-field appearance="outline">
+                <mat-label>Firstname</mat-label>
+                <input matInput formControlName="firstname">
+                <mat-error *ngIf="userFormGroup.get('firstname')?.invalid && userFormGroup.get('firstname')?.touched">
+                  <p *ngIf="userFormGroup.get('firstname')?.hasError('required')">Firstname Is Required</p>
+                  <p *ngIf="userFormGroup.get('firstname')?.hasError('pattern')">Firstname Invalid</p>
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col-6">
+              <mat-form-field appearance="outline">
+                <mat-label>Lastname</mat-label>
+                <input matInput formControlName="lastname">
+                <mat-error *ngIf="userFormGroup.get('lastname')?.invalid && userFormGroup.get('lastname')?.touched">
+                  <p *ngIf="userFormGroup.get('lastname')?.hasError('required')">Lastname Is Required</p>
+                  <p *ngIf="userFormGroup.get('lastname')?.hasError('pattern')">Lastname Invalid</p>
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-8">
+          <mat-form-field appearance="outline">
+            <mat-label>Date Of Birth</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="dateOfBirth">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matSuffix [for]="picker">
+              <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+            </mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error *ngIf="userFormGroup.get('dateOfBirth')?.invalid && userFormGroup.get('dateOfBirth')?.touched">
+              <p *ngIf="userFormGroup.get('dateOfBirth')?.hasError('required')">Date of Birth Is Required</p>
+              <p *ngIf="userFormGroup.get('dateOfBirth')?.hasError('DateInTheFuture')">Date of Birth In Not In The Future</p>
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col-12">
+          <mat-radio-group color="primary" formControlName="gender" aria-label="Select your gender">
+            <mat-radio-button value="MALE" class="mx-2">Male</mat-radio-button>
+            <mat-radio-button value="FEMALE">Female</mat-radio-button>
+
+            <mat-error *ngIf="userFormGroup.get('gender')?.invalid && userFormGroup.get('gender')?.touched">
+              <p *ngIf="userFormGroup.get('gender')?.hasError('required')">Gender Is Required</p>
+            </mat-error>
+          </mat-radio-group>
+        </div>
+      </ng-container>
+
+      <div class="col-12">
+        <div class="row">
+          <div class="col-6">
+            <mat-form-field appearance="outline">
+              <mat-label>Email</mat-label>
+              <input matInput type="email" formControlName="email">
+              <mat-error *ngIf="userFormGroup.get('email')?.invalid && userFormGroup.get('email')?.touched">
+                <p *ngIf="userFormGroup.get('email')?.hasError('required')">Email Is Required</p>
+                <p *ngIf="userFormGroup.get('email')?.hasError('email')">Invalid email address</p>
+                <p *ngIf="userFormGroup.get('email')?.hasError('pattern')">Invalid email pattern</p>
+                <p *ngIf="userFormGroup.get('email')?.hasError('IsUniqueEmail')">Email Already Used</p>
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-6">
+            <mat-form-field appearance="outline">
+              <mat-label>Phone Number</mat-label>
+              <input matInput type="text" formControlName="phone">
+              <mat-error *ngIf="userFormGroup.get('phone')?.invalid && userFormGroup.get('phone')?.touched">
+                <p *ngIf="userFormGroup.get('phone')?.hasError('required')">Phone Is Required</p>
+                <p *ngIf="userFormGroup.get('phone')?.hasError('pattern')">Invalid Phone Number</p>
+                <p *ngIf="userFormGroup.get('phone')?.hasError('IsUniquePhone')">Phone Number Already Used</p>
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+
+      <ng-container formGroupName="address">
+        <div class="col-12">
+          <div class="row">
+            <div class="col-5">
+              <mat-form-field appearance="outline">
+                <mat-label>Street</mat-label>
+                <input matInput formControlName="street">
+                <mat-error *ngIf="userFormGroup.get('address.street')?.invalid && userFormGroup.get('address.street')?.touched">
+                  <p *ngIf="userFormGroup.get('address.street')?.hasError('required')">Street Is Required</p>
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col-4">
+              <mat-form-field appearance="outline">
+                <mat-label>City</mat-label>
+                <input matInput formControlName="city">
+                <mat-error *ngIf="userFormGroup.get('address.city')?.invalid && userFormGroup.get('address.city')?.touched">
+                  <p *ngIf="userFormGroup.get('address.city')?.hasError('required')">City Is Required</p>
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col-3">
+              <mat-form-field appearance="outline">
+                <mat-label>zipcode</mat-label>
+                <input matInput formControlName="zipcode">
+                <mat-error *ngIf="userFormGroup.get('address.zipcode')?.invalid && userFormGroup.get('address.zipcode')?.touched">
+                  <p *ngIf="userFormGroup.get('address.zipcode')?.hasError('required')">zipcode Is Required</p>
+                  <p *ngIf="userFormGroup.get('address.zipcode')?.hasError('pattern')">zipcode Invalid</p>
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+
+      <ng-container *ngIf="(mode === 'ADD_BENEVOLE') || (mode === 'EDIT_BENEVOLE')">
+        <div class="col-6">
+          <mat-form-field appearance="outline">
+            <mat-label>Profession</mat-label>
+            <input matInput formControlName="profession">
+            <mat-error *ngIf="userFormGroup.get('profession')?.invalid && userFormGroup.get('profession')?.touched">
+              <p *ngIf="userFormGroup.get('profession')?.hasError('required')">Profession Is Required</p>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </ng-container>
+
+      <ng-container *ngIf="(mode === 'ADD_BENEFICIER') || (mode === 'EDIT_BENEFICIER')">
+        <div class="col-6">
+          <mat-form-field appearance="outline">
+            <mat-label>Carte Handicap Number</mat-label>
+            <input matInput formControlName="carteHandicapNumber">
+            <mat-error *ngIf="userFormGroup.get('carteHandicapNumber')?.invalid && userFormGroup.get('carteHandicapNumber')?.touched">
+              <p *ngIf="userFormGroup.get('carteHandicapNumber')?.hasError('required')">Carte Handicap Number Is Required</p>
+              <p *ngIf="userFormGroup.get('carteHandicapNumber')?.hasError('pattern')">Carte Handicap Invalid</p>
+              <p *ngIf="userFormGroup.get('carteHandicapNumber')?.hasError('IsUniqueCarteHandicapNumber')">Carte Handicap Already used</p>
+
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-6">
+          <mat-form-field appearance="outline">
+            <mat-label>Expiration Date</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="dateExpiration">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matSuffix [for]="picker">
+              <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+            </mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error *ngIf="userFormGroup.get('dateExpiration')?.invalid && userFormGroup.get('dateExpiration')?.touched">
+              <p *ngIf="userFormGroup.get('dateExpiration')?.hasError('required')">Expiration Date Is Required</p>
+              <p *ngIf="userFormGroup.get('dateExpiration')?.hasError('DateInThePast')">Carte Is Expired</p>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </ng-container>
+
+      <ng-container *ngIf="(mode === 'ADD_DOCTOR') || (mode === 'EDIT_DOCTOR')">
+        <div class="col-6">
+          <mat-form-field appearance="outline">
+            <mat-label>Matricule</mat-label>
+            <input matInput type="text" formControlName="matricule" placeholder="Matricule DOC-XXXXXX">
+            <mat-error *ngIf="userFormGroup.get('matricule')?.invalid && userFormGroup.get('matricule')?.touched">
+              <p *ngIf="userFormGroup.get('matricule')?.hasError('required')">Matricule Is Required</p>
+              <p *ngIf="userFormGroup.get('matricule')?.hasError('pattern')">Matricule Is Invalid</p>
+              <p *ngIf="userFormGroup.get('matricule')?.hasError('IsUniqueDoctorMatricule')">Matricule already used</p>
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col-6">
+          <mat-form-field appearance="outline">
+            <mat-label>Specialty</mat-label>
+            <mat-select formControlName="specialty">
+              <mat-option *ngFor="let speciality of specialities" [value]="speciality">{{speciality}}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="userFormGroup.get('specialty')?.invalid && userFormGroup.get('specialty')?.touched">
+              <p *ngIf="userFormGroup.get('specialty')?.hasError('required')">Specialty Is Required</p>
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col-6">
+          <mat-form-field appearance="outline">
+            <mat-label>CIN</mat-label>
+            <input matInput type="text" formControlName="cin">
+            <mat-error *ngIf="userFormGroup.get('cin')?.invalid && userFormGroup.get('cin')?.touched">
+              <p *ngIf="userFormGroup.get('cin')?.hasError('required')">CIN Is Required</p>
+              <p *ngIf="userFormGroup.get('cin')?.hasError('pattern')">CIN Invalid</p>
+              <p *ngIf="userFormGroup.get('cin')?.hasError('IsUniqueCIN')">CIN Already Used</p>
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col-6">
+          <mat-form-field appearance="outline">
+            <mat-label>Assurance</mat-label>
+            <mat-select formControlName="assurance"  multiple>
+              <mat-select-trigger>
+                {{userFormGroup.get('assurance')?.value?.[0] || ''}}
+                <span *ngIf="(userFormGroup.get('assurance')?.value?.length || 0) > 1" class="example-additional-selection">
+                              (+{{(userFormGroup.get('assurance')?.value?.length || 0) - 1}} {{userFormGroup.get('assurance')?.value?.length === 2 ? 'other' : 'others'}})
+                            </span>
+              </mat-select-trigger>
+              <mat-option *ngFor="let assurance of assurances" [value]="assurance">{{assurance}}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="userFormGroup.get('assurance')?.invalid && userFormGroup.get('assurance')?.touched">
+              <p *ngIf="userFormGroup.get('assurance')?.hasError('required')">Assurance Is Required</p>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </ng-container>
+
+      <ng-container *ngIf="(mode === 'ADD_ORGANIZATION') || (mode === 'EDIT_ORGANIZATION')">
+        <div class="col-6">
+          <mat-form-field appearance="outline">
+            <mat-label>name</mat-label>
+            <input matInput formControlName="name">
+            <mat-error *ngIf="userFormGroup.get('name')?.invalid && userFormGroup.get('name')?.touched">
+              <p *ngIf="userFormGroup.get('name')?.hasError('required')">Name Is Required</p>
+              <p *ngIf="userFormGroup.get('name')?.hasError('pattern')">Name Invalid</p>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-6">
+          <mat-form-field appearance="outline">
+            <mat-label>Matricule Fiscale</mat-label>
+            <input matInput type="text" formControlName="matriculeFiscale">
+            <mat-error *ngIf="userFormGroup.get('matriculeFiscale')?.invalid && userFormGroup.get('matriculeFiscale')?.touched">
+              <p *ngIf="userFormGroup.get('matriculeFiscale')?.hasError('required')">Matricule Fiscale Is Required</p>
+              <p *ngIf="userFormGroup.get('matriculeFiscale')?.hasError('pattern')">Matricule Fiscale Is Invalid</p>
+              <p *ngIf="userFormGroup.get('matriculeFiscale')?.hasError('IsUniqueMatriculeFiscale')">Matricule Fiscale already used</p>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-6">
+          <mat-form-field appearance="outline">
+            <mat-label>Forme Juridique</mat-label>
+            <mat-select formControlName="formeJuridique">
+              <mat-option *ngFor="let form of formeJuridique" [value]="form">{{form}}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="userFormGroup.get('formeJuridique')?.invalid && userFormGroup.get('formeJuridique')?.touched">
+              <p *ngIf="userFormGroup.get('formeJuridique')?.hasError('required')">Forme Juridique Is Required</p>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </ng-container>
+
+    </div>
+  </form>
+</div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button *ngIf="mode?.startsWith('ADD')" color="warn" class="mx-2"  mat-flat-button (click)="onReset()">Reset</button>
+  <button color="primary"
+          [mat-dialog-close]="true"
+          cdkFocusInitial
+          [disabled]="userFormGroup.invalid"
+          mat-flat-button (click)="onInscription()">
+    {{cardTitle}}
+  </button>
+</mat-dialog-actions>
+
