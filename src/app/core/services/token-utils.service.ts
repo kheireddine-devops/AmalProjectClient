@@ -46,6 +46,11 @@ export class TokenUtilsService {
     return true;
   }
 
+  deleteTokenInLocalStorage(): boolean {
+    localStorage.removeItem(this.TOKEN_NAME);
+    return true;
+  }
+
   decodeToken(token: string): JWTResponse {
     let jwt: JWTResponse = jwtDecode(token);
     return jwt;
