@@ -1,0 +1,21 @@
+.guest-inscription-component {
+  /* background-color: yellow; */
+  min-height: 100vh;
+  /*background-color: #ebebee;*/
+}
+.guest-inscription-card {
+  width: 380px;
+  /*background-color: yellow;*/
+}
+
+.guest-inscription-card {
+  background-color: tomato;
+  min-height: 400px;
+}
+
+.bg-left {
+  /*background-color: yellow;*/
+}
+.bg-right {
+  /*background-color: green;*/
+}
