@@ -1,0 +1,27 @@
+
+<div class="container">
+<div class="card" style="width: 18rem;">
+    <img [src]="boutique.picture" class="card-img-top" alt="boutique.nomP">
+    <div class="card-body">
+      <h5 class="card-title">{{boutique.nomP}}</h5>
+      <button type="button" class="btn btn-link like" >💖{{boutique.like}}</button>
+      <div class="origins">
+      
+      <p class="card-text">{{boutique.descriptionP}} </p>  
+    </div>
+  </div>
+
+  <div class="price">
+    <span> $ </span>
+    {{boutique.prixP}}
+     </div>
+    </div> 
+ 
+    <div class="mb-2 content-center">
+      <label class="form-label">Ajouter commentaire </label>
+      <input type="text" class="form-control" id="comment" placeholder="Ecrire votre avis svp">
+      
+    <button type="submit" class="btn btn-primary">Submit</button>
+
+ 
+

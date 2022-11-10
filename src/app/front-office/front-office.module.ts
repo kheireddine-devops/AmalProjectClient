@@ -28,6 +28,10 @@ import { PostulerComponent } from './postuler/postuler.component';
 import {HelpShowComponent} from "./help-show/help-show.component";
 import {HelpDetailsComponent} from "./help-details/help-details.component";
 import { DonsComponent } from './dons/dons.component';
+import {StoreComponent} from "./store/store.component";
+import {CategoriesComponent} from "./categories/categories.component";
+import {ArticlePageComponent} from "./article-page/article-page.component";
+import {SearchComponent} from "./search/search.component";
 
 
 @NgModule({
@@ -49,7 +53,11 @@ import { DonsComponent } from './dons/dons.component';
         PlaylisteComponent,
         HelpShowComponent,
         HelpDetailsComponent,
-        DonsComponent
+        DonsComponent,
+        StoreComponent,
+        SearchComponent,
+        CategoriesComponent,
+        ArticlePageComponent
     ],
     imports: [
         CommonModule,

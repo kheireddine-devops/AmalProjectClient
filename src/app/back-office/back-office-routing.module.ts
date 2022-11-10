@@ -24,6 +24,7 @@ import { AjouterRapportComponent } from './ajouter-rapport/ajouter-rapport.compo
 import {AdminGuard} from "../core/guards/admin.guard";
 import {BenevoleGuard} from "../core/guards/benevole.guard";
 import {DoctorGuard} from "../core/guards/doctor.guard";
+import {GestionBoutiqueComponent} from "./gestion-boutique/gestion-boutique.component";
 
 
 const routes: Routes = [
@@ -70,6 +71,9 @@ const routes: Routes = [
       {path: 'rapport', component:RapportComponent},
       {path: 'gestionrapport', component:ConsulterRapportComponent},
       {path: 'ajouter_rapport', component:AjouterRapportComponent},
+      // Start Massouda Routes
+      {path: 'gestionboutique',component:GestionBoutiqueComponent },
+      // End Massouda Routes
       // End Haithem Routes
       {path: '**', component: NotFoundComponent}
     ]

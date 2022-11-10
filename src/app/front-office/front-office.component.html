@@ -8,14 +8,14 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarScroll">
       <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
-        <li class="nav-item">
-          <a class="nav-link" aria-current="page" routerLink="#">Home</a>
+        <li class="nav-item me-1">
+          <a class="nav-link" aria-current="page" routerLink="/FrontOffice/home">Home</a>
         </li>
         <!-- menu gestion emploi -->
-        <li class="nav-item dropdown">
+        <li class="nav-item me-1 dropdown">
           <a class="nav-link dropdown-toggle"  id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <i class="fa fa-bag me-2"></i>
-            <i class="fa fa-briefcase me-2" aria-hidden="true"></i>
+            <i class="fa fa-bag me-1"></i>
+            <i class="fa fa-briefcase" aria-hidden="true"></i>
             Offres Emplois
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
@@ -23,11 +23,9 @@
             <li><a class="dropdown-item" routerLink="/FrontOffice/candidatures">Candidatures</a></li>
           </ul>
         </li>
-
-
-        <li class="nav-item dropdown">
+        <li class="nav-item dropdown me-1">
           <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <i class="fa fa-laptop me-2"></i>
+            <i class="fa fa-laptop me-1"></i>
             Gestion de Formation
           </a>
           <ul class="dropdown-menu">
@@ -36,22 +34,32 @@
           </ul>
         </li>
 
-        <li class="nav-item">
-          <a class="nav-link" aria-current="page" routerLink="/FrontOffice/login">LogIn</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="demandeaide">Demandes Aide</a>
+        <li class="nav-item me-1">
+          <a class="nav-link" routerLink="demandeaide"><i class="fa fa-laptop me-1"></i>Demandes Aide</a>
         </li>
 
-        <li class="nav-item">
-          <a class="nav-link" aria-current="page" routerLink="/FrontOffice/dons">Dons</a>
+        <li class="nav-item me-1">
+          <a class="nav-link" aria-current="page" routerLink="/FrontOffice/dons"><i class="fa fa-laptop me-1"></i>Dons</a>
+        </li>
+
+        <!-- gestion boutique -->
+        <li class="nav-item me-1">
+          <a class="nav-link active" aria-current="page" routerLink="/FrontOffice/storeP"><i class="fa fa-laptop me-1"></i>StoreProduits</a>
+        </li>
+
+        <li class="nav-item me-1">
+          <a class="nav-link active" aria-current="page" routerLink="/FrontOffice/choose-inscription"><i class="fa fa-laptop me-1"></i>Inscription</a>
+        </li>
+
+        <li class="nav-item me-1">
+          <a class="nav-link active" aria-current="page" routerLink="/FrontOffice/reset-password"><i class="fa fa-laptop me-1"></i>Reset Password</a>
         </li>
 
       </ul>
-      <!--        <form class="d-flex">-->
-      <!--          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">-->
-      <!--          <button class="btn btn-outline-success" type="submit">Search</button>-->
-      <!--        </form>-->
+      <div class="d-flex">
+
+        <button class="btn btn-primary" routerLink="/FrontOffice/login" type="click">LogIn</button>
+      </div>
     </div>
 
   </div>

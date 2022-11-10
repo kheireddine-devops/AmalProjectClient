@@ -1,0 +1,52 @@
+ul{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    list-style-type:none ;
+    padding: 0;
+}
+ul li a{
+    height: 35rem;
+    width:20rem;
+    border: 1px solid whitesmoke ;
+    border-radius: 1rem ;
+    margin: 0rem;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    color: rgb(78, 173, 223);
+}
+li a:hover{
+    opacity: 0.9;
+    cursor:pointer ;
+}
+.card-body{
+   
+    padding: 0.5rem 1rem;
+    position :relative;
+    margin-bottom: 2px;
+    height: 10rem;
+    border :1px;
+}
+.afficher{
+    
+   
+    height: 2rem;
+    display: block;
+  
+}
+.afficher button{
+    position: relative;
+    left: 80px;
+    top: 5px;
+   text-align: center;
+    /* margin: 50%; */
+}
+
+.like{
+    position: absolute;
+    top: .5rem;
+    right : 1rem;
+    font-size: 1.2rem;
+}

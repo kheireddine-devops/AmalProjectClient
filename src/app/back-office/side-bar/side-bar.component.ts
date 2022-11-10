@@ -75,15 +75,21 @@ interface MenuItem {
   subMenu?: Array<SubMenuItem>
 }
 
-
 const ADMIN_MENU: Array<MenuItem> = [
   {path: '/BackOffice/admin/dashboard', text: 'Dashboard', icon: 'fa fa-tachometer-alt'},
   // {path: '/BackOffice/admin/my-profile', text: 'My Profile', icon: 'fa fa-keyboard'},
   // {path: '/BackOffice/admin/my-profile/edit', text: 'My Profile', icon: 'fa fa-keyboard'},
   {path: '/BackOffice/admin/users', text: 'Users', icon: 'fa fa-th'},
-  {path: '/BackOffice/gestionaides', text:'Gestion D\'aides', icon: 'fa fa-tachometer-alt'},
-  // {path: '/BackOffice/KPIformation', text: 'Users', icon: 'fa fa-th'},
-  {path: "/BackOffice/gestionrapport", text: "Consulter Rapports", icon: 'fa fa-th'},
+  {
+    path: "",
+    text: "Boutique",
+    icon: "fa fa-laptop",
+    subMenu: [
+      {path: "/BackOffice/gestionboutique", text: "Ajouter"},
+      {path: "/BackOffice/link-1", text: "Afficher"},
+      {path: "/BackOffice/link-2", text: "Gestion Commentaire"}
+    ]
+  },
   {
     path: "",
     text: "Gestion de Formation",
@@ -94,6 +100,9 @@ const ADMIN_MENU: Array<MenuItem> = [
       {path: "/BackOffice/gestionTutoriels", text: "Gestion Tutoriels"}
     ]
   },
+  {path: '/BackOffice/gestionaides', text:'Gestion D\'aides', icon: 'fa fa-tachometer-alt'},
+  // {path: '/BackOffice/KPIformation', text: 'Users', icon: 'fa fa-th'},
+  {path: "/BackOffice/gestionrapport", text: "Consulter Rapports", icon: 'fa fa-th'},
   {
     path: '',
     text: "Offres d'emplois",

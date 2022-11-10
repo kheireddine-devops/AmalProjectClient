@@ -16,6 +16,8 @@ import {GuestContactComponent} from "./guest-contact/guest-contact.component";
 import {GuestResetPasswordComponent} from "./guest-reset-password/guest-reset-password.component";
 import {GuestHomeComponent} from "./guest-home/guest-home.component";
 import {TousEmploisComponent} from "./tous-emplois/tous-emplois.component";
+import {StoreComponent} from "./store/store.component";
+import {ArticlePageComponent} from "./article-page/article-page.component";
 
 
 const routes: Routes = [
@@ -44,6 +46,12 @@ const routes: Routes = [
       // Start Haithem Routes
       {path:'dons',component:DonsComponent},
       // End Haithem Routes
+      // Start Masouda Routes
+      {path: 'storeP',component:StoreComponent },
+      {path:'search/:searchItem',component:StoreComponent},
+      {path:'categorie/:categorie',component:StoreComponent},
+      {path:'boutique/:id',component:ArticlePageComponent},
+      // End Massouda Routes
       { path: "", redirectTo: "/home", pathMatch: "full" },
       { path: '**', component: NotFoundComponent }
     ]

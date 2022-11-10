@@ -46,6 +46,7 @@ import { AddDonsComponent } from './add-dons/add-dons.component';
 import { RapportComponent } from './rapport/rapport.component';
 import { ConsulterRapportComponent } from './consulter-rapport/consulter-rapport.component';
 import { AjouterRapportComponent } from './ajouter-rapport/ajouter-rapport.component';
+import {GestionBoutiqueComponent} from "./gestion-boutique/gestion-boutique.component";
 
 
 
@@ -78,8 +79,8 @@ import { AjouterRapportComponent } from './ajouter-rapport/ajouter-rapport.compo
     AddDonsComponent,
     RapportComponent,
     ConsulterRapportComponent,
-    AjouterRapportComponent
-
+    AjouterRapportComponent,
+    GestionBoutiqueComponent
   ],
   imports: [
       CommonModule,

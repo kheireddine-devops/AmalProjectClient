@@ -1,0 +1,5 @@
+<div *ngIf="categories">
+    <a *ngFor="let categorie of categories" [routerLink]="['/FrontOffice/categorie',categorie.name]">
+        {{categorie.name}}({{categorie.count}})
+    </a>
+</div>

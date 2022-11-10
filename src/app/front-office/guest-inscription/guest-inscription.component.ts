@@ -153,25 +153,25 @@ export class GuestInscriptionComponent implements OnInit {
           this.userFormGroup = this.createFormGroup(FormPart.BENEFICIER);
           this.inscriptionIcon = "assets/img/volunteer.png";
           this.inscriptionImage = "assets/images/template/piclogin.svg";
-          this.initBeneficierValues();
+          // this.initBeneficierValues();
           break;
         case InscriptionModeEnum.benevole:
           this.userFormGroup = this.createFormGroup(FormPart.BENEVOLE);
           this.inscriptionIcon = "assets/img/donation.png";
           this.inscriptionImage = "assets/images/template/piclogin.svg";
-          this.initBenevoleValues();
+          // this.initBenevoleValues();
           break;
         case InscriptionModeEnum.doctor:
           this.userFormGroup = this.createFormGroup(FormPart.DOCTOR);
           this.inscriptionIcon = "assets/img/medical-team.png";
           this.inscriptionImage = "assets/images/template/piclogin.svg";
-          this.initDoctorValues();
+          // this.initDoctorValues();
           break;
         case InscriptionModeEnum.organization:
           this.userFormGroup = this.createFormGroup(FormPart.ORGANIZATION);
           this.inscriptionIcon = "assets/img/corporation.png";
           this.inscriptionImage = "assets/images/template/piclogin.svg";
-          this.initOrganizationValues();
+          // this.initOrganizationValues();
           break;
         default:
           this.userFormGroup = this.createFormGroup(FormPart.INIT);
@@ -198,6 +198,7 @@ export class GuestInscriptionComponent implements OnInit {
           this._userService.addAccount(this.userFormGroup.get("account")?.value,RoleEnum.BENEVOLE).subscribe(account => {
             this._userService.addBenevole(this.userFormGroup.value as Benevole,account.id as number).subscribe(benevole => {
               console.log(benevole);
+              this._router.navigateByUrl("/FrontOffice/login");
             },error => {
               console.log(error)
             })
@@ -207,6 +208,7 @@ export class GuestInscriptionComponent implements OnInit {
           this._userService.addAccount(this.userFormGroup.get("account")?.value,RoleEnum.ORGANIZATION).subscribe(account => {
             this._userService.addOrganization(this.userFormGroup.value as Organization,account.id as number).subscribe(organization => {
               console.log(organization);
+              this._router.navigateByUrl("/FrontOffice/login");
             },error => {
               console.log(error)
             })
@@ -216,6 +218,7 @@ export class GuestInscriptionComponent implements OnInit {
           this._userService.addAccount(this.userFormGroup.get("account")?.value,RoleEnum.BENEFICIER).subscribe(account => {
             this._userService.addBeneficier(this.userFormGroup.value as Beneficier,account.id as number).subscribe(beneficier => {
               console.log(beneficier);
+              this._router.navigateByUrl("/FrontOffice/login");
             },error => {
               console.log(error)
             })

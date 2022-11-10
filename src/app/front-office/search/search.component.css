@@ -1,0 +1,19 @@
+div{
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+    margin-bottom: 0rem;
+}
+div input{
+    border-radius: 5rem 5rem 5rem 5rem;
+    border: none;
+    height: 3rem;
+    width:50rem;
+    margin-bottom: 2rem;
+    background-color: #7e9fd5;
+    padding: 1.2rem;
+    font-size: 1rem;
+    font-weight: 500;
+    outline: none;
+    text-decoration-color: black;
+}
