@@ -1,4 +1,4 @@
-import { BoutiqueService } from './../../services/boutique.service';
+import { BoutiqueService } from '../../core/services/boutique.service';
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { boutique } from 'src/Core/boutique';
@@ -20,9 +20,9 @@ export class StoreComponent implements OnInit {
     else
     this.boutique = this.btq.getAll();
     } )
-  
+
   }
- 
+
    public Like(i:number): void {
     this.boutique[i].like= this.boutique[i].like +1 ;
   }

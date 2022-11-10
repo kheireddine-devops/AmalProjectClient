@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Dons } from '../core/dons';
+import { Dons } from '../dons';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
-export class DonsService {
-  donsUrl:string='http://localhost:3000/dons/'
+export class MesDonsService {
+  donsUrl:string='http://localhost:3000/mesDons/'
   httpOptions = {
     headers : new HttpHeaders({
       'Content-Type': 'application/json'

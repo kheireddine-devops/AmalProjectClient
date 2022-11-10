@@ -1,4 +1,4 @@
-import { BoutiqueService } from './../../services/boutique.service';
+import { BoutiqueService } from '../../core/services/boutique.service';
 import { categorie } from './../../../Core/categorie';
 import { Component, OnInit } from '@angular/core';
 

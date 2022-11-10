@@ -1,6 +1,6 @@
 import { boutique } from 'src/Core/boutique';
 import { Component, OnInit } from '@angular/core';
-import { BoutiqueService } from 'src/app/services/boutique.service';
+import { BoutiqueService } from 'src/app/core/services/boutique.service';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -17,10 +17,10 @@ export class ArticlePageComponent implements OnInit {
         this.boutique = BService.getboutiqueById(params['id']);
       })
     }
-   
+
 
   ngOnInit(): void {
-    
+
   }
 like(i:number){
 

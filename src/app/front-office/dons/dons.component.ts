@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Dons } from '../../core/dons';
-import { DonsService } from '../../services/dons.service';
+import { DonsService } from '../../core/services/dons.service';
 
 @Component({
   selector: 'app-dons',
@@ -9,7 +9,7 @@ import { DonsService } from '../../services/dons.service';
 })
 export class DonsComponent implements OnInit {
   listDons : Dons[]=[];
- 
+
   title :string = "Liste des dons";
 
   constructor(private donsService:DonsService) { }
@@ -18,6 +18,6 @@ export class DonsComponent implements OnInit {
     this.donsService.getDons().subscribe((data)=>this.listDons=data);
   }
 
- 
+
 
 }

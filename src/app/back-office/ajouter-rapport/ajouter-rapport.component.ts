@@ -1,4 +1,4 @@
-import { ReportService } from './../../services/report.service';
+import { ReportService } from '../../core/services/report.service';
 import { Component, OnInit } from '@angular/core';
 import { report } from '../../core/report';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -41,6 +41,6 @@ export class AjouterRapportComponent implements OnInit {
 
 
 
-  
+
 
 

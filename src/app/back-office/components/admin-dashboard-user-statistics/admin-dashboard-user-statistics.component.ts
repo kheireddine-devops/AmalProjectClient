@@ -6,12 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./admin-dashboard-user-statistics.component.css']
 })
 export class AdminDashboardUserStatisticsComponent implements OnInit {
-  saleData = [
-    { name: "Mobiles", value: 105000 },
-    { name: "Laptop", value: 55000 },
-    { name: "AC", value: 15000 },
-    { name: "Headset", value: 150000 },
-    { name: "Fridge", value: 20000 }
+  usersData = [
+    { name: "Organization", value: 283 },
+    { name: "Benevole", value: 892 },
+    { name: "Beneficier", value: 3985 },
+    { name: "Doctor", value: 87 }
   ];
   constructor() { }
 

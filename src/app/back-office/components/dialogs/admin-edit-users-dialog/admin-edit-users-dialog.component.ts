@@ -122,22 +122,22 @@ export class AdminEditUsersDialogComponent implements OnInit {
       switch (this.mode) {
         case DialogMode.ADD_BENEFICIER:
           this.userFormGroup = this.createFormGroup(FormPart.BENEFICIER);
-          this.initBeneficierValues();
+          // this.initBeneficierValues();
           this.cardTitle = "Add Beneficier";
           break;
         case DialogMode.ADD_BENEVOLE:
           this.userFormGroup = this.createFormGroup(FormPart.BENEVOLE);
-          this.initBenevoleValues();
+          // this.initBenevoleValues();
           this.cardTitle = "Add Benevole";
           break;
         case DialogMode.ADD_DOCTOR:
           this.userFormGroup = this.createFormGroup(FormPart.DOCTOR);
-          this.initDoctorValues();
+          // this.initDoctorValues();
           this.cardTitle = "Add Doctor";
           break;
         case DialogMode.ADD_ORGANIZATION:
           this.userFormGroup = this.createFormGroup(FormPart.ORGANIZATION);
-          this.initOrganizationValues();
+          // this.initOrganizationValues();
           this.cardTitle = "Add Organization";
           break;
         case DialogMode.EDIT_BENEFICIER:

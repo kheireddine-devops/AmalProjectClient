@@ -1,7 +1,7 @@
 import { Dons } from './../../core/dons';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { DonsService } from '../../services/dons.service';
+import { DonsService } from '../../core/services/dons.service';
 
 
 @Component({
@@ -16,7 +16,7 @@ export class AddDonsComponent implements OnInit {
 
 
   constructor(private donsService: DonsService, private route: Router, private currentRoute: ActivatedRoute ) { }
-  
+
 
   ngOnInit(): void {
     let id=this.currentRoute.snapshot.params['id_dons'];
@@ -44,5 +44,5 @@ export class AddDonsComponent implements OnInit {
 
 
   }
- 
-  
+
+

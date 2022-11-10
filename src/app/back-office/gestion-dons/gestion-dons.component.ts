@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Dons } from '../../core/dons';
-import { MesDonsService } from '../../services/mes-dons.service';
+import { MesDonsService } from '../../core/services/mes-dons.service';
 
 @Component({
   selector: 'app-gestion-dons',

@@ -75,11 +75,12 @@ interface MenuItem {
   subMenu?: Array<SubMenuItem>
 }
 
+
 const ADMIN_MENU: Array<MenuItem> = [
   {path: '/BackOffice/admin/dashboard', text: 'Dashboard', icon: 'fa fa-tachometer-alt'},
   // {path: '/BackOffice/admin/my-profile', text: 'My Profile', icon: 'fa fa-keyboard'},
   // {path: '/BackOffice/admin/my-profile/edit', text: 'My Profile', icon: 'fa fa-keyboard'},
-  {path: '/BackOffice/admin/users', text: 'Users', icon: 'fa fa-th'},
+  {path: '/BackOffice/admin/users', text: 'Users', icon: 'fa fa-users'},
   {
     path: "",
     text: "Boutique",
@@ -137,7 +138,7 @@ const ADMIN_MENU: Array<MenuItem> = [
 const DOCTOR_MENU: Array<MenuItem> = [
   {path: '/BackOffice/doctor/dashboard', text: 'Dashboard', icon: 'fa fa-tachometer-alt'},
   {path: '/BackOffice/doctor/my-profile', text: 'My Profile', icon: 'fa fa-keyboard'},
-  {path: '/BackOffice/doctor/my-profile/edit', text: 'Edit Profile', icon: 'fa fa-keyboard'},
+  // {path: '/BackOffice/doctor/my-profile/edit', text: 'Edit Profile', icon: 'fa fa-keyboard'},
   {
     path: '',
     text: 'Gestion Dons',
@@ -165,7 +166,7 @@ const DOCTOR_MENU: Array<MenuItem> = [
 const BENEFICIER_MENU: Array<MenuItem> = [
   {path: '/BackOffice/beneficier/dashboard', text: 'Dashboard', icon: 'fa fa-tachometer-alt'},
   {path: '/BackOffice/beneficier/my-profile', text: 'My Profile', icon: 'fa fa-keyboard'},
-  {path: '/BackOffice/beneficier/my-profile/edit', text: 'Edit Profile', icon: 'fa fa-keyboard'},
+  // {path: '/BackOffice/beneficier/my-profile/edit', text: 'Edit Profile', icon: 'fa fa-keyboard'},
   {path: '/BackOffice/gestionaides', text:'Gestion D\'aides', icon: 'fa fa-tachometer-alt'},
   {path: "/BackOffice/reserverFormation", text: "Réserver Formations", icon: 'fa fa-laptop'},
   {
@@ -191,7 +192,7 @@ const BENEFICIER_MENU: Array<MenuItem> = [
 const BENEVOLE_MENU: Array<MenuItem> = [
   {path: '/BackOffice/benevole/dashboard', text: 'Dashboard', icon: 'fa fa-tachometer-alt'},
   {path: '/BackOffice/benevole/my-profile', text: 'My Profile', icon: 'fa fa-keyboard'},
-  {path: '/BackOffice/benevole/my-profile/edit', text: 'Edit Profile', icon: 'fa fa-keyboard'},
+  // {path: '/BackOffice/benevole/my-profile/edit', text: 'Edit Profile', icon: 'fa fa-keyboard'},
   {
     path: "",
     text: "Gestion de Formation",
@@ -224,7 +225,7 @@ const BENEVOLE_MENU: Array<MenuItem> = [
 const ORGANIZATION_MENU: Array<MenuItem> = [
   {path: '/BackOffice/organization/dashboard', text: 'Dashboard', icon: 'fa fa-tachometer-alt'},
   {path: '/BackOffice/organization/my-profile', text: 'My Profile', icon: 'fa fa-keyboard'},
-  {path: '/BackOffice/organization/my-profile/edit', text: 'Edit Profile', icon: 'fa fa-keyboard'},
+  // {path: '/BackOffice/organization/my-profile/edit', text: 'Edit Profile', icon: 'fa fa-keyboard'},
   {
     path: '',
     text: "Offres d'emplois",

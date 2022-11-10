@@ -35,9 +35,9 @@ const routes: Routes = [
       {path: 'gestiondons', component: GestionDonsComponent},
 
       // Start khairi Routes
-      {path: 'admin/dashboard', component: AdminDashbordComponent, canActivate: [/*AdminGuard*/]},
-      {path: 'admin/users', component: AdminUserManagementComponent, canActivate: [/*AdminGuard*/]},
-      {path: 'admin/contact', component: AdminGuestContactComponent, canActivate: [/*AdminGuard*/]},
+      {path: 'admin/dashboard', component: AdminDashbordComponent, canActivate: [AdminGuard]},
+      {path: 'admin/users', component: AdminUserManagementComponent, canActivate: [AdminGuard]},
+      {path: 'admin/contact', component: AdminGuestContactComponent, canActivate: [AdminGuard]},
       {path: 'admin', redirectTo: 'admin/dashboard', pathMatch: 'full'},
       // End khairi Routes
       // Start Sabrine Routes
