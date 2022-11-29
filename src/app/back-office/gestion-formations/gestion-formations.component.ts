@@ -1,7 +1,7 @@
 
 
-import { GestionFormationService } from './../Services/gestion-formation.service';
-import { formation } from './../../core/formation';
+import { GestionFormationService } from '../../core/services/gestion-formation.service';
+import { formation } from '../../core/entities/formation';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import {MatDialog} from  '@angular/material/dialog' ;

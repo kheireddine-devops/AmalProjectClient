@@ -1,6 +1,6 @@
-import { HelpService } from './../../shared/service/help.service';
+import { HelpService } from '../../core/services/help.service';
 import { Component, OnInit } from '@angular/core';
-import { Help } from 'src/app/shared/model/Help';
+import { Help } from 'src/app/core/entities/Help';
 
 @Component({
   selector: 'app-show-help',
@@ -17,11 +17,11 @@ export class ShowHelpComponent implements OnInit {
     this.helpservice.getHelps().subscribe((data:Help[])=>this.listHelps=data);
   }
   Delete(help:Help):void{
-  
+
     this.helpservice.DeleteHelp(help.id).subscribe((data)=>{
       this.listHelps= this.listHelps.filter((h:any)=>h !== help);
     });
-    
+
   }
 
 

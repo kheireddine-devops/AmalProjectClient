@@ -1,4 +1,4 @@
-import { boutique } from '../../../Core/boutique';
+import { boutique } from '../../core/entities/boutique';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
@@ -13,13 +13,13 @@ export class GestionBoutiqueComponent implements OnInit {
 
   saveData(registerForm : NgForm){
       console.log(registerForm.form);
-     
+
     }
-  
+
 
   ngOnInit(): void {
   }
- 
+
   boutique: boutique = new boutique();
   onsubmit(){
     console.log(boutique);

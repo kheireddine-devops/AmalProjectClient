@@ -27,14 +27,10 @@ export class AccountService {
   }
 
   login(credentials : AuthRequest): Observable<AuthResponse> {
-    return this._http.get<Array<any>>(`/api/auth/${credentials.login}/${credentials.password}`)
-      .pipe(map(value => {
-        if (value.length == 1) {
-          return { token: value[0].token, valid: true}
-        }
-        return { token: "", valid: false}
-      }));
-    // return of({token: ""});
+    return this._http.post<AuthResponse>(`/api/auth`, {
+      username: credentials.login,
+      password: credentials.password
+    });
   }
 
   logOut() {
@@ -77,5 +73,13 @@ export class AccountService {
 
   resetPassword(email: string): Observable<any> {
     return this._http.post('/api/reset-password',email);
+  }
+
+  getAllAccounts(): Observable<Array<any>> {
+    return this._http.get<Array<any>>('/api/accounts');
+  }
+
+  getToken(): string | undefined {
+    return this._tokenUtilsService.getTokenByLocalStorage();
   }
 }

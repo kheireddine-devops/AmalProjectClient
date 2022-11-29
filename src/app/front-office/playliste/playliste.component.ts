@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { video } from './../../core/video';
+import { video } from '../../core/entities/video';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { ViewChild } from '@angular/core';
 declare var $:any;
@@ -11,7 +11,7 @@ declare var $:any;
 })
 export class PlaylisteComponent implements OnInit {
   liste_tutoriels : video [ ]  = [ ] ;
-  
+
   typesOfShoes : string [] = [ 'Boots' , 'Clogs' , 'Loafers' , 'Mocassins' , 'Sneakers' ];
   title = 'angular-videoplayer-app';
   playlist = [
@@ -47,9 +47,9 @@ export class PlaylisteComponent implements OnInit {
   onChangeFileInput(): void {
     var files: { [key: string]: File } = this.fileInput.nativeElement.files;
       i :Number
-   
+
     this.file = files[0];
-   
-    
+
+
   }
 }

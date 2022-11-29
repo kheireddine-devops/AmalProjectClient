@@ -1,5 +1,5 @@
-import { CommentHelp } from './../../shared/model/CommentHelp';
-import { CommentHelpService } from './../../shared/service/comment-help.service';
+import { CommentHelp } from '../../core/entities/CommentHelp';
+import { CommentHelpService } from '../../core/services/comment-help.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 

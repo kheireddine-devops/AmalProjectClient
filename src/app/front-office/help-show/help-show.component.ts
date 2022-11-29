@@ -1,7 +1,7 @@
-import { HelpService } from './../../shared/service/help.service';
+import { HelpService } from '../../core/services/help.service';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Help } from 'src/app/shared/model/Help';
+import { Help } from 'src/app/core/entities/Help';
 
 @Component({
   selector: 'app-help-show',

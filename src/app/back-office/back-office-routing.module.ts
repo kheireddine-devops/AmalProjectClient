@@ -25,6 +25,7 @@ import {AdminGuard} from "../core/guards/admin.guard";
 import {BenevoleGuard} from "../core/guards/benevole.guard";
 import {DoctorGuard} from "../core/guards/doctor.guard";
 import {GestionBoutiqueComponent} from "./gestion-boutique/gestion-boutique.component";
+import {UserProfileComponent} from "./components/user-profile/user-profile.component";
 
 
 const routes: Routes = [
@@ -35,9 +36,10 @@ const routes: Routes = [
       {path: 'gestiondons', component: GestionDonsComponent},
 
       // Start khairi Routes
-      {path: 'admin/dashboard', component: AdminDashbordComponent, canActivate: [AdminGuard]},
-      {path: 'admin/users', component: AdminUserManagementComponent, canActivate: [AdminGuard]},
-      {path: 'admin/contact', component: AdminGuestContactComponent, canActivate: [AdminGuard]},
+      {path: 'admin/dashboard', component: AdminDashbordComponent /*, canActivate: [AdminGuard] */},
+      {path: 'admin/users', component: AdminUserManagementComponent/*, canActivate: [AdminGuard] */},
+      {path: 'admin/contact', component: AdminGuestContactComponent/*, canActivate: [AdminGuard] */},
+      {path: 'users/profile', component: UserProfileComponent},
       {path: 'admin', redirectTo: 'admin/dashboard', pathMatch: 'full'},
       // End khairi Routes
       // Start Sabrine Routes

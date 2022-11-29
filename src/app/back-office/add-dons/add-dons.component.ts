@@ -1,4 +1,4 @@
-import { Dons } from './../../core/dons';
+import { Dons } from '../../core/entities/dons';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DonsService } from '../../core/services/dons.service';

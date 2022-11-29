@@ -1,4 +1,4 @@
-import { CommentHelp } from './../model/CommentHelp';
+import { CommentHelp } from '../entities/CommentHelp';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';

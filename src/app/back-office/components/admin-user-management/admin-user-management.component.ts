@@ -13,6 +13,7 @@ import {
 import {
   AdminUserDetailsDialogComponent
 } from "../dialogs/admin-user-details-dialog/admin-user-details-dialog.component";
+import {AccountService} from "../../../core/services/account.service";
 
 @Component({
   selector: 'app-admin-user-management',
@@ -27,10 +28,16 @@ export class AdminUserManagementComponent implements OnInit , AfterViewInit {
   users: Array<GenericUser<Beneficier | Benevole | Doctor | Organization | Admin>> = [];
   dataSource: MatTableDataSource<GenericUser<Beneficier | Benevole | Doctor | Organization | Admin>> = new MatTableDataSource();
   constructor(private usersService: UsersService,
+              private _accountService: AccountService,
               private _liveAnnouncer: LiveAnnouncer,
               public dialog: MatDialog) { }
 
+  _accounts: Array<any> = [];
   ngOnInit(): void {
+    this._accountService.getAllAccounts().subscribe(value => {
+      this._accounts = value;
+    });
+
     this.usersService.getAllUsers().subscribe(value => {
       console.log(value);
       this.users = value;

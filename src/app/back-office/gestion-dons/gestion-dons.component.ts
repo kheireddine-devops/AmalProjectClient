@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Dons } from '../../core/dons';
+import { Dons } from '../../core/entities/dons';
 import { MesDonsService } from '../../core/services/mes-dons.service';
 
 @Component({

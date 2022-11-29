@@ -1,5 +1,5 @@
 import { BoutiqueService } from '../../core/services/boutique.service';
-import { categorie } from './../../../Core/categorie';
+import { categorie } from '../../core/entities/categorie';
 import { Component, OnInit } from '@angular/core';
 
 @Component({

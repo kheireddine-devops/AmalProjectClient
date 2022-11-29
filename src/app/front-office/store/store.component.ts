@@ -1,7 +1,7 @@
 import { BoutiqueService } from '../../core/services/boutique.service';
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { boutique } from 'src/Core/boutique';
+import { boutique } from 'src/app/core/entities/boutique';
 @Component({
   selector: 'app-store',
   templateUrl: './store.component.html',

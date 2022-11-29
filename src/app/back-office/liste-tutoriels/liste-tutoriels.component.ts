@@ -1,4 +1,4 @@
-import { video } from './../../core/video';
+import { video } from '../../core/entities/video';
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { ViewChild } from '@angular/core';
@@ -14,7 +14,7 @@ declare var $:any;
 })
 export class ListeTutorielsComponent implements OnInit {
   liste_tutoriels : video [ ]  = [ ] ;
-  
+
 
   title = 'angular-videoplayer-app';
   playlist = [
@@ -34,12 +34,12 @@ export class ListeTutorielsComponent implements OnInit {
       type: 'video/mp4'
     }
   ];
- 
+
 
   constructor(private http: HttpClient){}
   ngOnInit(): void {
 
-    
+
   }
 
   @ViewChild('fileInput')
@@ -54,16 +54,16 @@ export class ListeTutorielsComponent implements OnInit {
   onChangeFileInput(): void {
     var files: { [key: string]: File } = this.fileInput.nativeElement.files;
       i :Number
-   
+
     this.file = files[0];
-   
-    
+
+
   }
 
 
 
 }
-  
- 
+
+
 
 

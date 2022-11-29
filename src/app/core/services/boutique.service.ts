@@ -1,6 +1,6 @@
-import { boutique } from 'src/Core/boutique';
+import { boutique } from 'src/app/core/entities/boutique';
 import { Injectable } from '@angular/core';
-import { categorie } from 'src/Core/categorie';
+import { categorie } from 'src/app/core/entities/categorie';
 import { sample } from 'rxjs';
 
 @Injectable({
@@ -34,7 +34,7 @@ return[
 
 ];}
   getAll():boutique[]{
-    return[ 
+    return[
 {
     id: 1,
     nomP: 'decor',

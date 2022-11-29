@@ -1,6 +1,6 @@
-import { HelpService } from './../../shared/service/help.service';
+import { HelpService } from '../../core/services/help.service';
 import { Component, OnInit } from '@angular/core';
-import { Help } from 'src/app/shared/model/Help';
+import { Help } from 'src/app/core/entities/Help';
 
 @Component({
   selector: 'app-add-help',
@@ -18,7 +18,7 @@ export class AddHelpComponent implements OnInit {
   ngOnInit(): void {
     this.urlRegex = /(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&/=]*)/;
     this.help = new Help();
-    
+
   }
   Save(){
     this.help.dateHelp = new Date();
@@ -27,7 +27,7 @@ export class AddHelpComponent implements OnInit {
     //console.warn(this.Save());
     this.alert=true;
     this.help=new Help();
-    
+
  }
 
 }

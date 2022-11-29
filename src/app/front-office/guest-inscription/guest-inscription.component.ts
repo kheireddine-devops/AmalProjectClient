@@ -33,7 +33,7 @@ export class Patterns {
   static PASSWORD_LEVEL_4: RegExp = /^(?=.*[a-z])(?=.*[A-Z])(?=.*d)(?=.*[@$!%*?&])[A-Za-zd@$!%*?&]{8,}$/;
 
   static TUNISIA_ZIPCODE: RegExp = /^[0-9]{4}$/;
-  static TUNISIA_DOCTOR_MATRICULE: RegExp = /^DOC\-[0-9]{6}$/;
+  static TUNISIA_DOCTOR_MATRICULE: RegExp = /^DOC\-[0-9]{8}$/;
   static TUNISIA_CIN: RegExp = /^[0-9]{8}$/;
   static TUNISIA_CARTE_HANDICAP_NUMBER: RegExp = /^[0-9]{10}$/;
   // XXXXXXX/Y/T/C/XXX

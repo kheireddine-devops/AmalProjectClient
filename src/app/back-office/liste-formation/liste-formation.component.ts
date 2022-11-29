@@ -1,6 +1,6 @@
-import { ReserverServiceService } from './../../front-office/services/reserver-service.service';
-import { ReserverService } from './../Services/reserver.service';
-import { formation } from './../../core/formation';
+import { ReserverServiceService } from '../../core/services/reserver-service.service';
+import { ReserverService } from '../../core/services/reserver.service';
+import { formation } from '../../core/entities/formation';
 import { Component, OnInit } from '@angular/core';
 import {MatButtonModule} from '@angular/material/button';
 

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Dons } from '../dons';
+import { Dons } from '../entities/dons';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({

@@ -1,6 +1,6 @@
-import { articleItem } from '../../../Core/articleItem';
-import { boutique } from 'src/Core/boutique';
-import { article } from '../../../Core/article';
+import { articleItem } from '../entities/articleItem';
+import { boutique } from 'src/app/core/entities/boutique';
+import { article } from '../entities/article';
 import { Injectable } from '@angular/core';
 
 @Injectable({

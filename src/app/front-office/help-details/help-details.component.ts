@@ -1,8 +1,8 @@
-import { HelpService } from './../../shared/service/help.service';
-import { CommentHelpService } from './../../shared/service/comment-help.service';
+import { HelpService } from '../../core/services/help.service';
+import { CommentHelpService } from '../../core/services/comment-help.service';
 import { Component, OnInit } from '@angular/core';
-import { CommentHelp } from 'src/app/shared/model/CommentHelp';
-import { Help } from 'src/app/shared/model/Help';
+import { CommentHelp } from 'src/app/core/entities/CommentHelp';
+import { Help } from 'src/app/core/entities/Help';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({

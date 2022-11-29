@@ -1,4 +1,4 @@
-import { HttpClientModule } from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -15,6 +15,7 @@ import { MatListModule } from '@angular/material/list';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 
 import { MAT_DATE_FORMATS, NativeDateModule } from '@angular/material/core';
+import {TokenInterceptor} from "./core/interceptors/token.interceptor";
 
 
 
@@ -41,8 +42,12 @@ import { MAT_DATE_FORMATS, NativeDateModule } from '@angular/material/core';
     LayoutModule,
     NativeDateModule
   ],
-
   providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    }
     // {
     //   provide: MAT_DATE_FORMATS,
     //   useValue: {

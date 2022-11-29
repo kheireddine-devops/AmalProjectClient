@@ -1,4 +1,4 @@
-import { formation } from './../../core/formation';
+import { formation } from '../entities/formation';
 import { HttpClient, HttpHeaders ,HttpErrorResponse} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -10,7 +10,7 @@ import {BehaviorSubject} from 'rxjs';
 export class GestionFormationService {
 
   formationsUrl:string= 'http://localhost:3000/formations';
-  
+
   dataChange: BehaviorSubject<formation[]> = new BehaviorSubject<formation[]>([]);
   // Temporarily stores data from dialogs
   dialogData: any;
@@ -25,10 +25,10 @@ export class GestionFormationService {
     return this.dataChange.value;
   }
 
- 
 
 
-  
+
+
   /** CRUD METHODS */
   getAllFormation(): void {
     this.httpClient.get<formation[]>(this.formationsUrl).subscribe(data => {
@@ -39,7 +39,7 @@ export class GestionFormationService {
       });
   }
 
-  
+
 // ***************************************
   getformation():Observable<formation[]>{
     return this.httpClient.get<formation[]>(this.formationsUrl);
@@ -50,7 +50,7 @@ export class GestionFormationService {
   addformation(Formation:formation): Observable<formation> {
 
     return this.httpClient.post<formation>(this.formationsUrl, formation, this.httpOptions);
-  
+
   }
 
 

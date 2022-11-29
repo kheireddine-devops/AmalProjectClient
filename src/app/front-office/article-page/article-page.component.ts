@@ -1,4 +1,4 @@
-import { boutique } from 'src/Core/boutique';
+import { boutique } from 'src/app/core/entities/boutique';
 import { Component, OnInit } from '@angular/core';
 import { BoutiqueService } from 'src/app/core/services/boutique.service';
 import { ActivatedRoute } from '@angular/router';

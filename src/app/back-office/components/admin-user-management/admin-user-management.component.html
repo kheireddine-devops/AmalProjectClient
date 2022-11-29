@@ -16,6 +16,9 @@
         <button (click)="onAddUser('ADD_ORGANIZATION')" mat-flat-button color="primary" class="me-2"><mat-icon class="me-2">corporate_fare</mat-icon>Add Organization</button>
       </mat-card-actions>
       <mat-card-content>
+        <div>
+          <code><pre>{{_accounts | json}}</pre></code>
+        </div>
         <table mat-table [dataSource]="dataSource" matSort (matSortChange)="announceSortChange($event)" class="w-100">
 
           <ng-container matColumnDef="name">

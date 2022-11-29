@@ -1,4 +1,4 @@
-import { HttpClientModule } from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
@@ -47,6 +47,7 @@ import { RapportComponent } from './rapport/rapport.component';
 import { ConsulterRapportComponent } from './consulter-rapport/consulter-rapport.component';
 import { AjouterRapportComponent } from './ajouter-rapport/ajouter-rapport.component';
 import {GestionBoutiqueComponent} from "./gestion-boutique/gestion-boutique.component";
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
 
 
 
@@ -80,7 +81,8 @@ import {GestionBoutiqueComponent} from "./gestion-boutique/gestion-boutique.comp
     RapportComponent,
     ConsulterRapportComponent,
     AjouterRapportComponent,
-    GestionBoutiqueComponent
+    GestionBoutiqueComponent,
+    UserProfileComponent
   ],
   imports: [
       CommonModule,

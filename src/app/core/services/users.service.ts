@@ -69,10 +69,9 @@ export class UsersService {
   }
 
   existsUserByUsername(username: string): Observable<boolean> {
-    return this.http.get<boolean>(`/api/accounts?username=${username}`)
-      .pipe( map((value: any) => {
-        return ((value as Array<Account>).length > 0);
-      }));
+    return this.http.post<boolean>(`/api/users/exist-by-username`, {
+      username: username
+    });
   }
 
   mapToGenericUser(value: any) {
