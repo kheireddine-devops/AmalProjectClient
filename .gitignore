@@ -43,14 +43,5 @@ testem.log
 .DS_Store
 Thumbs.db
 
-<<<<<<< HEAD
 # kheireddine : configs
 my-infos
-=======
-
-src/app/back-office/side-bar/
-
-src/app/back-office/navbar/
-
-src/app/back-office/footer/
->>>>>>> 34e0bdba0370fcb88732cb3880549c1293e60930
