@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {CurrentUser, RoleEnum} from "../../core/entities/users";
+import {Account, RoleEnum} from "../../core/entities/users";
 import {AccountService} from "../../core/services/account.service";
 import {ActivatedRoute, Router} from "@angular/router";
 
@@ -15,9 +15,9 @@ export class SideBarComponent implements OnInit {
   @Input("mode") mode:RoleEnum | undefined;
 
   menus: Array<MenuItem> = [];
-  currentUser: CurrentUser | undefined;
+  currentUser: Account | undefined;
 
-  @Output("CurrentUserEvent") CurrentUserEvent: EventEmitter<CurrentUser> = new EventEmitter<CurrentUser>();
+  @Output("CurrentUserEvent") CurrentUserEvent: EventEmitter<Account> = new EventEmitter<Account>();
 
   constructor(private _accountService: AccountService,private _router: Router, private _activatedRoute: ActivatedRoute) {
     // this.mode = (this._router.getCurrentNavigation()?.extras?.state?.['role']);
@@ -27,7 +27,7 @@ export class SideBarComponent implements OnInit {
 
     this.mode = this._accountService.getRole();
     if (this.mode !== undefined) {
-      this._accountService.getCurrentUserByMode(this.mode).subscribe((currentUser: CurrentUser) => {
+      this._accountService.getCurrentUser().subscribe((currentUser: Account) => {
         this.currentUser = currentUser;
         this.CurrentUserEvent.emit(this.currentUser);
         switch (this.currentUser.role) {

@@ -1,18 +1,14 @@
 import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
-import {GenericUser, UsersService} from "../../../core/services/users.service";
-import {Admin, Beneficier, Benevole, Doctor, Organization, RoleEnum, User} from "../../../core/entities/users";
+import {UsersService} from "../../../core/services/users.service";
+import {Account, Admin, Beneficier, Benevole, Doctor, Organization, RoleEnum, User} from "../../../core/entities/users";
 import {MatSort, Sort} from "@angular/material/sort";
 import {LiveAnnouncer} from "@angular/cdk/a11y";
 import {MatTableDataSource} from "@angular/material/table";
 import {MatPaginator} from "@angular/material/paginator";
 import {MatDialog} from "@angular/material/dialog";
 import {AdminEditUsersDialogComponent} from "../dialogs/admin-edit-users-dialog/admin-edit-users-dialog.component";
-import {
-  AdminConfirmDeleteUserDialogComponent
-} from "../dialogs/admin-confirm-delete-user-dialog/admin-confirm-delete-user-dialog.component";
-import {
-  AdminUserDetailsDialogComponent
-} from "../dialogs/admin-user-details-dialog/admin-user-details-dialog.component";
+import {AdminConfirmDeleteUserDialogComponent} from "../dialogs/admin-confirm-delete-user-dialog/admin-confirm-delete-user-dialog.component";
+import {AdminUserDetailsDialogComponent} from "../dialogs/admin-user-details-dialog/admin-user-details-dialog.component";
 import {AccountService} from "../../../core/services/account.service";
 
 @Component({
@@ -25,23 +21,18 @@ export class AdminUserManagementComponent implements OnInit , AfterViewInit {
   @ViewChild(MatPaginator) paginator: any = MatPaginator;
   @ViewChild(MatSort) sort: any = MatSort;
 
-  users: Array<GenericUser<Beneficier | Benevole | Doctor | Organization | Admin>> = [];
-  dataSource: MatTableDataSource<GenericUser<Beneficier | Benevole | Doctor | Organization | Admin>> = new MatTableDataSource();
-  constructor(private usersService: UsersService,
-              private _accountService: AccountService,
+  accounts: Array<Account> = [];
+  dataSource: MatTableDataSource<Account> = new MatTableDataSource();
+  constructor(private _usersService: UsersService,
               private _liveAnnouncer: LiveAnnouncer,
               public dialog: MatDialog) { }
 
-  _accounts: Array<any> = [];
-  ngOnInit(): void {
-    this._accountService.getAllAccounts().subscribe(value => {
-      this._accounts = value;
-    });
 
-    this.usersService.getAllUsers().subscribe(value => {
+  ngOnInit(): void {
+    this._usersService.getAllAccounts().subscribe(value => {
       console.log(value);
-      this.users = value;
-      this.dataSource = new MatTableDataSource<GenericUser<Beneficier | Benevole | Doctor | Organization | Admin>>(value);
+      this.accounts = value;
+      this.dataSource = new MatTableDataSource<Account>(value);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
     }, error => {
@@ -49,7 +40,7 @@ export class AdminUserManagementComponent implements OnInit , AfterViewInit {
     })
   }
 
-  displayedColumns: string[] = ['name', 'email','role', 'action'];
+  displayedColumns: string[] = ['username', 'email','role', 'action'];
 
 
   ngAfterViewInit(): void {
@@ -64,7 +55,7 @@ export class AdminUserManagementComponent implements OnInit , AfterViewInit {
     }
   }
 
-  onClick($event: GenericUser<Beneficier | Benevole | Doctor | Organization | Admin>) {
+  onClick($event: Account) {
     console.log($event)
   }
 

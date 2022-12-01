@@ -48,6 +48,8 @@ import { ConsulterRapportComponent } from './consulter-rapport/consulter-rapport
 import { AjouterRapportComponent } from './ajouter-rapport/ajouter-rapport.component';
 import {GestionBoutiqueComponent} from "./gestion-boutique/gestion-boutique.component";
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { FooterComponent } from './footer/footer.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 
 
@@ -82,7 +84,9 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
     ConsulterRapportComponent,
     AjouterRapportComponent,
     GestionBoutiqueComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    FooterComponent,
+    NavbarComponent
   ],
   imports: [
       CommonModule,

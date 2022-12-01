@@ -18,8 +18,8 @@ export class AdminConfirmDeleteUserDialogComponent implements OnInit {
   ngOnInit(): void {
     this._usersService.getAccountById(this.data.userId)
       .subscribe(account => {
-        if(account.id !== undefined && account.role !== undefined) {
-          this._usersService.getUserById(account.id,account.role).subscribe(value => {
+        if(account.id_compte !== undefined && account.role !== undefined) {
+          this._usersService.getUserById(account.id_compte,account.role).subscribe(value => {
             if (account.role === RoleEnum.ORGANIZATION) {
               this.fullname = (value as Organization).name;
             } else {

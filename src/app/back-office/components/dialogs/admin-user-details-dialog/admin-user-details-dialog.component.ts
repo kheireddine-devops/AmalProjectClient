@@ -25,9 +25,9 @@ export class AdminUserDetailsDialogComponent implements OnInit {
   ngOnInit(): void {
     this._usersService.getAccountById(this.data.userId)
       .subscribe(account => {
-       if(account.id !== undefined && account.role !== undefined) {
+       if(account.id_compte !== undefined && account.role !== undefined) {
          this.account = account;
-         this._usersService.getUserById(account.id,account.role).subscribe(value => {
+         this._usersService.getUserById(account.id_compte,account.role).subscribe(value => {
            switch (account.role) {
              case RoleEnum.ORGANIZATION:
                this.name = (value as Organization).name;
@@ -46,8 +46,6 @@ export class AdminUserDetailsDialogComponent implements OnInit {
                this.name = (value as User).firstname + " " + (value as User).lastname
                break;
            }
-           this.photo = value.photo;
-           this.email = value.email;
            console.log(value);
            console.log(typeof value);
          });

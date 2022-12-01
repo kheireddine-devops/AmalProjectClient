@@ -37,8 +37,12 @@ export class TokenUtilsService {
     return undefined;
   }
 
-  getUserIdByToken(): number {
-    return 0;
+  getUserIdByToken(): number | undefined {
+    const token = this.getTokenByLocalStorage();
+    if(token !== undefined) {
+      return this.decodeToken(token).sub;
+    }
+    return undefined;
   }
 
   isValidToken(token: string): boolean {

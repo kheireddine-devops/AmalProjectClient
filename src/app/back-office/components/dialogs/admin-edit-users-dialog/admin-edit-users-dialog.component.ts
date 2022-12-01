@@ -108,11 +108,6 @@ export class AdminEditUsersDialogComponent implements OnInit {
               private _usersService: UsersService) {
     this.mode = this.data.mode;
     this.userFormGroup = this.createFormGroup(FormPart.INIT);
-
-
-
-
-
   }
 
   ngOnInit(): void {
@@ -164,8 +159,8 @@ export class AdminEditUsersDialogComponent implements OnInit {
 
     this._usersService.getAccountById(this.data.userId)
       .subscribe(account => {
-        if (account.id !== undefined && account.role !== undefined) {
-          this._usersService.getUserById(account.id, account.role).subscribe(value => {
+        if (account.id_compte !== undefined && account.role !== undefined) {
+          this._usersService.getUserById(account.id_compte, account.role).subscribe(value => {
 
             if (this.mode !== undefined) {
               this.user = value;
@@ -252,13 +247,16 @@ export class AdminEditUsersDialogComponent implements OnInit {
     if (this.userFormGroup.valid) {
       switch (this.mode) {
         case DialogMode.ADD_DOCTOR:
-          const doctor: Doctor = {
+          const _doctor: Doctor = {
             account: {
+              id_compte: 0,
               username: this.userFormGroup.get("account")?.get("username")?.value,
               password: this.userFormGroup.get("account")?.get("password")?.value,
-              token: "",
               role: RoleEnum.DOCTOR,
-              status: AccountStatusEnum.STATUS_ACTIVE_NOT_VERIFIED_PHONE_VERIFIED_MAIL
+              status: AccountStatusEnum.STATUS_ACTIVE_NOT_VERIFIED_PHONE_VERIFIED_MAIL,
+              photo: "",
+              phone: "",
+              email: ""
             },
             address: {
               street: this.userFormGroup.get("address")?.get('street')?.value,
@@ -268,53 +266,39 @@ export class AdminEditUsersDialogComponent implements OnInit {
             assurance: this.userFormGroup.get("assurance")?.value,
             cin: this.userFormGroup.get("cin")?.value,
             dateOfBirth: this.userFormGroup.get("dateOfBirth")?.value,
-            email: this.userFormGroup.get("email")?.value,
             firstname: this.userFormGroup.get("firstname")?.value,
             gender: this.userFormGroup.get("gender")?.value,
             lastname: this.userFormGroup.get("lastname")?.value,
             matricule: this.userFormGroup.get("matricule")?.value,
-            phone: this.userFormGroup.get("phone")?.value,
-            photo: "",
             specialty: this.userFormGroup.get("specialty")?.value,
-
           }
-          if (doctor.account !== undefined) {
-            this._usersService.addAccountBySpecific(doctor.account).subscribe(account => {
-              this._usersService.addDoctor(this.userFormGroup.value as Doctor,account.id as number).subscribe(doctor => {
-                console.log(doctor);
-              },error => {
-                console.log(error)
-              })
-            })
-          }
-          break;
-        case DialogMode.ADD_BENEVOLE:
-          this._usersService.addAccount(this.userFormGroup.get("account")?.value,RoleEnum.BENEVOLE).subscribe(account => {
-            this._usersService.addBenevole(this.userFormGroup.value as Benevole,account.id as number).subscribe(benevole => {
-              console.log(benevole);
-            },error => {
-              console.log(error)
-            })
+          this._usersService.addDoctor(_doctor).subscribe(doctor => {
+            console.log(doctor);
+          },error => {
+            console.log(error)
           })
           break;
-        case DialogMode.ADD_ORGANIZATION:
-          this._usersService.addAccount(this.userFormGroup.get("account")?.value,RoleEnum.ORGANIZATION).subscribe(account => {
-            this._usersService.addOrganization(this.userFormGroup.value as Organization,account.id as number).subscribe(organization => {
-              console.log(organization);
-            },error => {
-              console.log(error)
-            })
-          })
-          break;
-        case DialogMode.ADD_BENEFICIER:
-          this._usersService.addAccount(this.userFormGroup.get("account")?.value,RoleEnum.BENEFICIER).subscribe(account => {
-            this._usersService.addBeneficier(this.userFormGroup.value as Beneficier,account.id as number).subscribe(beneficier => {
-              console.log(beneficier);
-            },error => {
-              console.log(error)
-            })
-          })
-          break;
+        // case DialogMode.ADD_BENEVOLE:
+        //   this._usersService.addBenevole(_benevole).subscribe(benevole => {
+        //     console.log(benevole);
+        //   },error => {
+        //     console.log(error)
+        //   })
+        //   break;
+        // case DialogMode.ADD_ORGANIZATION:
+        //   this._usersService.addOrganization(_organization).subscribe(organization => {
+        //     console.log(organization);
+        //   },error => {
+        //     console.log(error)
+        //   })
+        //   break;
+        // case DialogMode.ADD_BENEFICIER:
+        //   this._usersService.addBeneficier(_beneficier).subscribe(beneficier => {
+        //     console.log(beneficier);
+        //   },error => {
+        //     console.log(error)
+        //   })
+        //   break;
         case DialogMode.EDIT_ORGANIZATION:
           if (this.user != undefined && this.user.account != undefined) {
             const updatedOrganization: Organization  = {
@@ -325,19 +309,18 @@ export class AdminEditUsersDialogComponent implements OnInit {
                 city: this.userFormGroup.get("address")?.get('city')?.value,
                 zipcode: this.userFormGroup.get("address")?.get('zipcode')?.value,
               },
-              email: this.userFormGroup.get("email")?.value,
               formeJuridique: this.userFormGroup.get("formeJuridique")?.value,
               matriculeFiscale: this.userFormGroup.get("matriculeFiscale")?.value,
               name: this.userFormGroup.get("name")?.value,
-              phone: this.userFormGroup.get("phone")?.value,
-              photo: "",
               account: {
-                id: this.user.account.id,
+                id_compte: this.user.account.id_compte,
                 role: this.user.account.role,
                 status: this.user.account.status,
-                token: "",
                 password: this.userFormGroup.get("account")?.get('password')?.value,
                 username: this.userFormGroup.get("account")?.get('username')?.value,
+                phone: this.userFormGroup.get("phone")?.value,
+                email: this.userFormGroup.get("email")?.value,
+                photo: ""
               }
             }
 
@@ -358,25 +341,24 @@ export class AdminEditUsersDialogComponent implements OnInit {
               id: this.user.id,
               accountId: this.user.id,
               account: {
-                id: this.user.account.id,
+                id_compte: this.user.account.id_compte,
                 role: this.user.account.role,
                 status: this.user.account.status,
-                token: "",
                 password: this.userFormGroup.get("account")?.get('password')?.value,
                 username: this.userFormGroup.get("account")?.get('username')?.value,
+                phone: this.userFormGroup.get("phone")?.value,
+                email: this.userFormGroup.get("email")?.value,
+                photo: ""
               },
               address: {
                 street: this.userFormGroup.get("address")?.get('street')?.value,
                 city: this.userFormGroup.get("address")?.get('city')?.value,
                 zipcode: this.userFormGroup.get("address")?.get('zipcode')?.value,
               },
-              phone: this.userFormGroup.get("phone")?.value,
-              email: this.userFormGroup.get("email")?.value,
               dateOfBirth: this.userFormGroup.get("dateOfBirth")?.value,
               firstname: this.userFormGroup.get("firstname")?.value,
               lastname: this.userFormGroup.get("lastname")?.value,
               gender: this.userFormGroup.get("gender")?.value,
-              photo: "",
 
               assurance: this.userFormGroup.get("assurance")?.value,
               cin: this.userFormGroup.get("cin")?.value,
@@ -401,25 +383,24 @@ export class AdminEditUsersDialogComponent implements OnInit {
               id: this.user.id,
               accountId: this.user.id,
               account: {
-                id: this.user.account.id,
+                id_compte: this.user.account.id_compte,
                 role: this.user.account.role,
                 status: this.user.account.status,
-                token: "",
                 password: this.userFormGroup.get("account")?.get('password')?.value,
                 username: this.userFormGroup.get("account")?.get('username')?.value,
+                phone: this.userFormGroup.get("phone")?.value,
+                email: this.userFormGroup.get("email")?.value,
+                photo: ""
               },
               address: {
                 street: this.userFormGroup.get("address")?.get('street')?.value,
                 city: this.userFormGroup.get("address")?.get('city')?.value,
                 zipcode: this.userFormGroup.get("address")?.get('zipcode')?.value,
               },
-              phone: this.userFormGroup.get("phone")?.value,
-              email: this.userFormGroup.get("email")?.value,
               dateOfBirth: this.userFormGroup.get("dateOfBirth")?.value,
               firstname: this.userFormGroup.get("firstname")?.value,
               lastname: this.userFormGroup.get("lastname")?.value,
               gender: this.userFormGroup.get("gender")?.value,
-              photo: "",
 
               profession: this.userFormGroup.get("profession")?.value,
             }
@@ -440,25 +421,24 @@ export class AdminEditUsersDialogComponent implements OnInit {
               id: this.user.id,
               accountId: this.user.id,
               account: {
-                id: this.user.account.id,
+                id_compte: this.user.account.id_compte,
                 role: this.user.account.role,
                 status: this.user.account.status,
-                token: "",
                 password: this.userFormGroup.get("account")?.get('password')?.value,
                 username: this.userFormGroup.get("account")?.get('username')?.value,
+                phone: this.userFormGroup.get("phone")?.value,
+                email: this.userFormGroup.get("email")?.value,
+                photo: ""
               },
               address: {
                 street: this.userFormGroup.get("address")?.get('street')?.value,
                 city: this.userFormGroup.get("address")?.get('city')?.value,
                 zipcode: this.userFormGroup.get("address")?.get('zipcode')?.value,
               },
-              phone: this.userFormGroup.get("phone")?.value,
-              email: this.userFormGroup.get("email")?.value,
               dateOfBirth: this.userFormGroup.get("dateOfBirth")?.value,
               firstname: this.userFormGroup.get("firstname")?.value,
               lastname: this.userFormGroup.get("lastname")?.value,
               gender: this.userFormGroup.get("gender")?.value,
-              photo: "",
 
               carteHandicapNumber: this.userFormGroup.get("carteHandicapNumber")?.value,
               dateExpiration: this.userFormGroup.get("dateExpiration")?.value

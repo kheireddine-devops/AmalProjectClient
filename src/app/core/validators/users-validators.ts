@@ -96,7 +96,7 @@ export class UsersValidators {
 
     IsUniqueUsername() : AsyncValidatorFn {
     return (control: AbstractControl): Observable<ValidationErrors | null> => {
-      return this._usersService.existsUserByUsername(control.value)
+      return this._usersService.existsAccountByUsername(control.value)
         .pipe(map(value => {
           return value ? { IsUniqueUsername: true } : null;
         }));
@@ -114,7 +114,7 @@ export class UsersValidators {
 
   IsUniqueEmail() : AsyncValidatorFn {
     return (control: AbstractControl): Observable<ValidationErrors | null> => {
-      return this._usersService.existsUserByEmail(control.value)
+      return this._usersService.existsAccountByEmail(control.value)
         .pipe(map(value => {
           return value ? {IsUniqueEmail: true} : null;
         }));
@@ -123,7 +123,7 @@ export class UsersValidators {
 
   IsUniquePhone() : AsyncValidatorFn {
     return (control: AbstractControl): Observable<ValidationErrors | null> => {
-      return this._usersService.existsUserByPhone(control.value)
+      return this._usersService.existsAccountByPhone(control.value)
         .pipe(map(value => {
           return value ? {IsUniquePhone: true} : null;
         }));

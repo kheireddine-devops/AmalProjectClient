@@ -64,6 +64,34 @@
                         </div>
                       </div>
                     </div>
+
+                    <div class="col-12">
+                      <div class="row">
+                        <div class="col-6">
+                          <mat-form-field appearance="outline">
+                            <mat-label>Email</mat-label>
+                            <input matInput type="email" formControlName="email">
+                            <mat-error *ngIf="userFormGroup.get('account.email')?.invalid && userFormGroup.get('account.email')?.touched">
+                              <p *ngIf="userFormGroup.get('account.email')?.hasError('required')">Email Is Required</p>
+                              <p *ngIf="userFormGroup.get('account.email')?.hasError('email')">Invalid email address</p>
+                              <p *ngIf="userFormGroup.get('account.email')?.hasError('pattern')">Invalid email pattern</p>
+                              <p *ngIf="userFormGroup.get('account.email')?.hasError('IsUniqueEmail')">Email Already Used</p>
+                            </mat-error>
+                          </mat-form-field>
+                        </div>
+                        <div class="col-6">
+                          <mat-form-field appearance="outline">
+                            <mat-label>Phone Number</mat-label>
+                            <input matInput type="text" formControlName="phone">
+                            <mat-error *ngIf="userFormGroup.get('account.phone')?.invalid && userFormGroup.get('account.phone')?.touched">
+                              <p *ngIf="userFormGroup.get('account.phone')?.hasError('required')">Phone Is Required</p>
+                              <p *ngIf="userFormGroup.get('account.phone')?.hasError('pattern')">Invalid Phone Number</p>
+                              <p *ngIf="userFormGroup.get('account.phone')?.hasError('IsUniquePhone')">Phone Number Already Used</p>
+                            </mat-error>
+                          </mat-form-field>
+                        </div>
+                      </div>
+                    </div>
                   </ng-container>
 
                   <ng-container *ngIf="mode !== 'organization'">
@@ -120,33 +148,6 @@
                     </div>
                   </ng-container>
 
-                  <div class="col-12">
-                    <div class="row">
-                      <div class="col-6">
-                        <mat-form-field appearance="outline">
-                          <mat-label>Email</mat-label>
-                          <input matInput type="email" formControlName="email">
-                          <mat-error *ngIf="userFormGroup.get('email')?.invalid && userFormGroup.get('email')?.touched">
-                            <p *ngIf="userFormGroup.get('email')?.hasError('required')">Email Is Required</p>
-                            <p *ngIf="userFormGroup.get('email')?.hasError('email')">Invalid email address</p>
-                            <p *ngIf="userFormGroup.get('email')?.hasError('pattern')">Invalid email pattern</p>
-                            <p *ngIf="userFormGroup.get('email')?.hasError('IsUniqueEmail')">Email Already Used</p>
-                          </mat-error>
-                        </mat-form-field>
-                      </div>
-                      <div class="col-6">
-                        <mat-form-field appearance="outline">
-                          <mat-label>Phone Number</mat-label>
-                          <input matInput type="text" formControlName="phone">
-                          <mat-error *ngIf="userFormGroup.get('phone')?.invalid && userFormGroup.get('phone')?.touched">
-                            <p *ngIf="userFormGroup.get('phone')?.hasError('required')">Phone Is Required</p>
-                            <p *ngIf="userFormGroup.get('phone')?.hasError('pattern')">Invalid Phone Number</p>
-                            <p *ngIf="userFormGroup.get('phone')?.hasError('IsUniquePhone')">Phone Number Already Used</p>
-                          </mat-error>
-                        </mat-form-field>
-                      </div>
-                    </div>
-                  </div>
 
                   <ng-container formGroupName="address">
                     <div class="col-12">

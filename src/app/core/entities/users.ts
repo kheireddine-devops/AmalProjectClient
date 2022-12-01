@@ -1,14 +1,3 @@
-import * as cluster from "cluster";
-
-export interface CurrentUser {
-  id?: number,
-  role?: RoleEnum,
-  photo?: string,
-  fullName?: string,
-  firstname?: string,
-  lastname?: string
-}
-
 /************************************* Start DTO Section *************************************/
 
 export interface AuthRequest {
@@ -25,13 +14,8 @@ export interface JWTResponse {
   iss: string,
   iat:number,
   exp: number,
-  aud: string,
-  sub: string
-
-  username: string;
-  role: RoleEnum;
-  id: number;
-  name: string;
+  sub: number
+  role: RoleEnum
 }
 
 interface AccountRequestDTO {}
@@ -89,12 +73,14 @@ export enum RoleEnum {
 }
 
 export interface Account {
-  id?:number; // JSON-Server
-  token: string; // JSON-Server
+  id_compte: number;
   username: string;
   password: string;
-  role: RoleEnum;
-  status: AccountStatusEnum;
+  role?: RoleEnum;
+  status?: AccountStatusEnum;
+  phone: string;
+  email: string;
+  photo?: string;
 }
 
 export interface Address {
@@ -108,12 +94,9 @@ export interface User {
   accountId?:number; // JSON-Server
   firstname: string;
   lastname: string;
-  email: string;
   dateOfBirth: Date,
-  phone: string;
   gender: GenderEnum;
   address: Address;
-  photo: string;
   account?: Account
 }
 
@@ -139,11 +122,8 @@ export interface Organization {
   matriculeFiscale: string;
   name: string;
   formeJuridique: string;
-  phone: string;
-  email: string;
   address: Address;
   account?: Account
-  photo: string;
 }
 
 export interface Admin extends User {
