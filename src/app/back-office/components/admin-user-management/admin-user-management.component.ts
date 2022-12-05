@@ -9,7 +9,6 @@ import {MatDialog} from "@angular/material/dialog";
 import {AdminEditUsersDialogComponent} from "../dialogs/admin-edit-users-dialog/admin-edit-users-dialog.component";
 import {AdminConfirmDeleteUserDialogComponent} from "../dialogs/admin-confirm-delete-user-dialog/admin-confirm-delete-user-dialog.component";
 import {AdminUserDetailsDialogComponent} from "../dialogs/admin-user-details-dialog/admin-user-details-dialog.component";
-import {AccountService} from "../../../core/services/account.service";
 
 @Component({
   selector: 'app-admin-user-management',
@@ -21,27 +20,24 @@ export class AdminUserManagementComponent implements OnInit , AfterViewInit {
   @ViewChild(MatPaginator) paginator: any = MatPaginator;
   @ViewChild(MatSort) sort: any = MatSort;
 
+  displayedColumns: string[] = ['username', 'email','role', 'action'];
   accounts: Array<Account> = [];
   dataSource: MatTableDataSource<Account> = new MatTableDataSource();
+
   constructor(private _usersService: UsersService,
               private _liveAnnouncer: LiveAnnouncer,
               public dialog: MatDialog) { }
 
-
   ngOnInit(): void {
-    this._usersService.getAllAccounts().subscribe(value => {
-      console.log(value);
-      this.accounts = value;
-      this.dataSource = new MatTableDataSource<Account>(value);
+    this._usersService.getAllAccounts().subscribe(accounts => {
+      this.accounts = accounts;
+      this.dataSource = new MatTableDataSource<Account>(accounts);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
     }, error => {
       console.error(error);
     })
   }
-
-  displayedColumns: string[] = ['username', 'email','role', 'action'];
-
 
   ngAfterViewInit(): void {
 
@@ -87,6 +83,7 @@ export class AdminUserManagementComponent implements OnInit , AfterViewInit {
   }
 
   onEditUser(userId: number,role: RoleEnum) {
+    console.log("EDIT EN MODE : " + role)
     let dialogMode: DialogMode | undefined = undefined;
     switch (role) {
       case RoleEnum.DOCTOR: dialogMode = DialogMode.EDIT_DOCTOR; break;

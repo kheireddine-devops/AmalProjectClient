@@ -90,8 +90,7 @@ export interface Address {
 }
 
 export interface User {
-  id?:number; // JSON-Server
-  accountId?:number; // JSON-Server
+  id_user: number;
   firstname: string;
   lastname: string;
   dateOfBirth: Date,
@@ -117,8 +116,7 @@ export interface Benevole extends User {
 }
 
 export interface Organization {
-  id?:number; // JSON-Server
-  accountId?:number; // JSON-Server
+  id_compte: number;
   matriculeFiscale: string;
   name: string;
   formeJuridique: string;

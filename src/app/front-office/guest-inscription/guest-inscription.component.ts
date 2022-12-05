@@ -153,13 +153,13 @@ export class GuestInscriptionComponent implements OnInit {
           this.userFormGroup = this.createFormGroup(FormPart.BENEFICIER);
           this.inscriptionIcon = "assets/img/volunteer.png";
           this.inscriptionImage = "assets/images/template/piclogin.svg";
-          // this.initBeneficierValues();
+          this.initBeneficierValues();
           break;
         case InscriptionModeEnum.benevole:
           this.userFormGroup = this.createFormGroup(FormPart.BENEVOLE);
           this.inscriptionIcon = "assets/img/donation.png";
           this.inscriptionImage = "assets/images/template/piclogin.svg";
-          // this.initBenevoleValues();
+          this.initBenevoleValues();
           break;
         case InscriptionModeEnum.doctor:
           this.userFormGroup = this.createFormGroup(FormPart.DOCTOR);
@@ -171,7 +171,7 @@ export class GuestInscriptionComponent implements OnInit {
           this.userFormGroup = this.createFormGroup(FormPart.ORGANIZATION);
           this.inscriptionIcon = "assets/img/corporation.png";
           this.inscriptionImage = "assets/images/template/piclogin.svg";
-          // this.initOrganizationValues();
+          this.initOrganizationValues();
           break;
         default:
           this.userFormGroup = this.createFormGroup(FormPart.INIT);
@@ -186,6 +186,7 @@ export class GuestInscriptionComponent implements OnInit {
       switch (this.mode) {
         case InscriptionModeEnum.doctor:
           const _doctor: Doctor = {
+            id_user: -1,
             account: {
               id_compte: -1,
               username: this.userFormGroup.get("account")?.get("username")?.value,
@@ -214,36 +215,89 @@ export class GuestInscriptionComponent implements OnInit {
             console.log(error)
           });
           break;
-        // case InscriptionModeEnum.benevole:
-        //   this._userService.addAccount(this.userFormGroup.get("account")?.value,RoleEnum.BENEVOLE).subscribe(account => {
-        //     this._userService.addBenevole(this.userFormGroup.value as Benevole,account.id_compte as number).subscribe(benevole => {
-        //       console.log(benevole);
-        //       this._router.navigateByUrl("/FrontOffice/login");
-        //     },error => {
-        //       console.log(error)
-        //     })
-        //   })
-        //   break;
-        // case InscriptionModeEnum.organization:
-        //   this._userService.addAccount(this.userFormGroup.get("account")?.value,RoleEnum.ORGANIZATION).subscribe(account => {
-        //     this._userService.addOrganization(this.userFormGroup.value as Organization,account.id_compte as number).subscribe(organization => {
-        //       console.log(organization);
-        //       this._router.navigateByUrl("/FrontOffice/login");
-        //     },error => {
-        //       console.log(error)
-        //     })
-        //   })
-        //   break;
-        // case InscriptionModeEnum.benefecier:
-        //   this._userService.addAccount(this.userFormGroup.get("account")?.value,RoleEnum.BENEFICIER).subscribe(account => {
-        //     this._userService.addBeneficier(this.userFormGroup.value as Beneficier,account.id_compte as number).subscribe(beneficier => {
-        //       console.log(beneficier);
-        //       this._router.navigateByUrl("/FrontOffice/login");
-        //     },error => {
-        //       console.log(error)
-        //     })
-        //   })
-        //   break;
+        case InscriptionModeEnum.benevole:
+          const _benevole: Benevole = {
+            id_user: -1,
+            account: {
+              id_compte: -1,
+              username: this.userFormGroup.get("account")?.get("username")?.value,
+              password: this.userFormGroup.get("account")?.get("password")?.value,
+              email: this.userFormGroup.get("account")?.get("email")?.value,
+              phone: this.userFormGroup.get("account")?.get("phone")?.value
+            },
+            address: {
+              street: this.userFormGroup.get("address")?.get('street')?.value,
+              city: this.userFormGroup.get("address")?.get('city')?.value,
+              zipcode: this.userFormGroup.get("address")?.get('zipcode')?.value,
+            },
+            dateOfBirth: this.userFormGroup.get("dateOfBirth")?.value,
+            firstname: this.userFormGroup.get("firstname")?.value,
+            gender: this.userFormGroup.get("gender")?.value,
+            lastname: this.userFormGroup.get("lastname")?.value,
+            profession: this.userFormGroup.get("profession")?.value
+          }
+          this._userService.addBenevole(_benevole).subscribe(benevole => {
+            console.log(benevole);
+            this._router.navigateByUrl("/FrontOffice/login");
+          },error => {
+            console.log(error)
+          });
+          break;
+        case InscriptionModeEnum.organization:
+          const _organization: Organization = {
+            id_compte: -1,
+            account: {
+              id_compte: -1,
+              username: this.userFormGroup.get("account")?.get("username")?.value,
+              password: this.userFormGroup.get("account")?.get("password")?.value,
+              email: this.userFormGroup.get("account")?.get("email")?.value,
+              phone: this.userFormGroup.get("account")?.get("phone")?.value
+            },
+            address: {
+              street: this.userFormGroup.get("address")?.get('street')?.value,
+              city: this.userFormGroup.get("address")?.get('city')?.value,
+              zipcode: this.userFormGroup.get("address")?.get('zipcode')?.value,
+            },
+            name: this.userFormGroup.get("name")?.value,
+            matriculeFiscale: this.userFormGroup.get("matriculeFiscale")?.value,
+            formeJuridique: this.userFormGroup.get("formeJuridique")?.value,
+          }
+          this._userService.addOrganization(_organization).subscribe(organization => {
+            console.log(organization);
+            this._router.navigateByUrl("/FrontOffice/login");
+          },error => {
+            console.log(error)
+          });
+          break;
+        case InscriptionModeEnum.benefecier:
+          const _beneficier: Beneficier = {
+            id_user: -1,
+            account: {
+              id_compte: -1,
+              username: this.userFormGroup.get("account")?.get("username")?.value,
+              password: this.userFormGroup.get("account")?.get("password")?.value,
+              email: this.userFormGroup.get("account")?.get("email")?.value,
+              phone: this.userFormGroup.get("account")?.get("phone")?.value
+            },
+            address: {
+              street: this.userFormGroup.get("address")?.get('street')?.value,
+              city: this.userFormGroup.get("address")?.get('city')?.value,
+              zipcode: this.userFormGroup.get("address")?.get('zipcode')?.value,
+            },
+            dateOfBirth: this.userFormGroup.get("dateOfBirth")?.value,
+            firstname: this.userFormGroup.get("firstname")?.value,
+            gender: this.userFormGroup.get("gender")?.value,
+            lastname: this.userFormGroup.get("lastname")?.value,
+            carteHandicapNumber: this.userFormGroup.get("carteHandicapNumber")?.value,
+            dateExpiration: this.userFormGroup.get("dateExpiration")?.value,
+          }
+          this._userService.addBeneficier(_beneficier).subscribe(beneficier => {
+            console.log(beneficier);
+            this._router.navigateByUrl("/FrontOffice/login");
+          },error => {
+            console.log(error)
+          });
+          break;
       }
     }
 
@@ -352,7 +406,7 @@ export class GuestInscriptionComponent implements OnInit {
         formGroup.addControl("confirmPassword",this._confirmPassword);
         formGroup.addControl("email",this._emailFormControl);
         formGroup.addControl("phone",this._phoneFormControl);
-        // formGroup.addControl("photo",this._photoFormControl);
+        /*formGroup.addControl("photo",this._photoFormControl);*/
         formGroup.addValidators(this._usersValidators.passwordIsMatched("password","confirmPassword"))
         break;
       case FormPart.ADDRESS:

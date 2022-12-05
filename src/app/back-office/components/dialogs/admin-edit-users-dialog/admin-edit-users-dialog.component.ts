@@ -8,15 +8,7 @@ import {
   FormPart,
   Patterns
 } from "../../../../front-office/guest-inscription/guest-inscription.component";
-import {
-  AccountStatusEnum,
-  Beneficier,
-  Benevole,
-  Doctor,
-  GenderEnum,
-  Organization,
-  RoleEnum
-} from "../../../../core/entities/users";
+import {Beneficier, Benevole, Doctor, GenderEnum, Organization} from "../../../../core/entities/users";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {UsersValidators} from "../../../../core/validators/users-validators";
 import {DialogMode} from "../../admin-user-management/admin-user-management.component";
@@ -31,7 +23,7 @@ export class AdminEditUsersDialogComponent implements OnInit {
   // Account
   _usernameFormControl: FormControl = new FormControl("",{
     validators: [Validators.required, Validators.pattern(Patterns.USERNAME)],
-    asyncValidators: [/*this._usersValidators.IsUniqueUsername()*/],
+    asyncValidators: [this._usersValidators.IsUniqueUsername()],
     updateOn: "blur"
   });
   _passwordFormControl: FormControl = new FormControl("",[Validators.required, Validators.pattern(Patterns.PASSWORD_JS_LEVEL_4)],[]);
@@ -39,13 +31,13 @@ export class AdminEditUsersDialogComponent implements OnInit {
   // User
   _emailFormControl: FormControl = new FormControl("",{
     validators: [Validators.required, Validators.email /*, Validators.pattern(Patterns.EMAIL)*/],
-    asyncValidators: [/*this._usersValidators.IsUniqueEmail()*/],
+    asyncValidators: [this._usersValidators.IsUniqueEmail()],
     updateOn: "blur"
   });
   _phoneFormControl: FormControl = new FormControl("",{
     validators: [Validators.required,Validators.pattern(Patterns.TUNISIA_PHONE_PHONE)],
     asyncValidators: [
-      /* this._usersValidators.IsUniquePhone() */
+       this._usersValidators.IsUniquePhone()
     ],
     updateOn: "blur"
   });
@@ -58,7 +50,7 @@ export class AdminEditUsersDialogComponent implements OnInit {
   // Doctor
   _matriculeFormControl: FormControl = new FormControl("",{
     validators: [Validators.required, Validators.pattern(Patterns.TUNISIA_DOCTOR_MATRICULE)],
-    asyncValidators: [/*this._usersValidators.IsUniqueDoctorMatricule()*/],
+    asyncValidators: [this._usersValidators.IsUniqueDoctorMatricule()],
     updateOn: "change"
   });
   _specialtyFormControl: FormControl = new FormControl("",{
@@ -66,13 +58,13 @@ export class AdminEditUsersDialogComponent implements OnInit {
   });
   _cinFormControl: FormControl = new FormControl("",{
     validators: [Validators.required , Validators.pattern(Patterns.TUNISIA_CIN)],
-    asyncValidators: [/*this._usersValidators.IsUniqueCIN()*/]
+    asyncValidators: [this._usersValidators.IsUniqueCIN()]
   });
   _assuranceFormControl: FormControl = new FormControl([],{validators: [Validators.required]});
   // Beneficier
   _carteHandicapNumberFormControl: FormControl = new FormControl("",{
     validators: [Validators.required, Validators.pattern(Patterns.TUNISIA_CARTE_HANDICAP_NUMBER)],
-    asyncValidators: [/*this._usersValidators.IsUniqueCarteHandicapNumber()*/]
+    asyncValidators: [this._usersValidators.IsUniqueCarteHandicapNumber()]
   });
   _dateExpirationFormControl: FormControl = new FormControl("",{validators: [Validators.required, this._usersValidators.DateInThePast()]});
   // Benevole
@@ -80,7 +72,7 @@ export class AdminEditUsersDialogComponent implements OnInit {
   // Organization
   _matriculeFiscaleFormControl: FormControl = new FormControl("",{
     validators: [Validators.required , Validators.pattern(Patterns.TUNISIA_MATRICULE_FISCAL)],
-    asyncValidators: [ /* this._usersValidators.IsUniqueMatriculeFiscale() */ ]
+    asyncValidators: [  this._usersValidators.IsUniqueMatriculeFiscale() ]
   });
   _nameFormControl: FormControl = new FormControl("",{validators: [Validators.required]});
   _formeJuridiqueFormControl: FormControl = new FormControl("",{validators: [Validators.required]});
@@ -112,27 +104,30 @@ export class AdminEditUsersDialogComponent implements OnInit {
 
   ngOnInit(): void {
 
+    console.log("==============> " + this.data.mode)
+    console.log("==============> " + this.data.userId)
+
     if (this.mode !== undefined) {
       this.userFormGroup.reset();
       switch (this.mode) {
         case DialogMode.ADD_BENEFICIER:
           this.userFormGroup = this.createFormGroup(FormPart.BENEFICIER);
-          // this.initBeneficierValues();
+          this.initBeneficierValues();
           this.cardTitle = "Add Beneficier";
           break;
         case DialogMode.ADD_BENEVOLE:
           this.userFormGroup = this.createFormGroup(FormPart.BENEVOLE);
-          // this.initBenevoleValues();
+          this.initBenevoleValues();
           this.cardTitle = "Add Benevole";
           break;
         case DialogMode.ADD_DOCTOR:
           this.userFormGroup = this.createFormGroup(FormPart.DOCTOR);
-          // this.initDoctorValues();
+          this.initDoctorValues();
           this.cardTitle = "Add Doctor";
           break;
         case DialogMode.ADD_ORGANIZATION:
           this.userFormGroup = this.createFormGroup(FormPart.ORGANIZATION);
-          // this.initOrganizationValues();
+          this.initOrganizationValues();
           this.cardTitle = "Add Organization";
           break;
         case DialogMode.EDIT_BENEFICIER:
@@ -163,18 +158,23 @@ export class AdminEditUsersDialogComponent implements OnInit {
           this._usersService.getUserById(account.id_compte, account.role).subscribe(value => {
 
             if (this.mode !== undefined) {
-              this.user = value;
-              this.user.account = account;
 
-              value.account = account;
+              switch (this.mode) {
+                case DialogMode.EDIT_ORGANIZATION:
+                  this.userFormGroup.patchValue({
+                    ...value,
+                  });
+                  this.userFormGroup.patchValue({
+                    account: {
+                      ...account,
+                      password: account.password,
+                      confirmPassword: account.password
+                    }
+                  });
+                  break;
+              }
 
-              this.userFormGroup.patchValue(value);
-              this.userFormGroup.patchValue({
-                account: {
-                  password: value.account.password,
-                  confirmPassword: value.account.password
-                }
-              });
+
             }
           });
         }
@@ -188,6 +188,9 @@ export class AdminEditUsersDialogComponent implements OnInit {
         formGroup.addControl("username",this._usernameFormControl);
         formGroup.addControl("password",this._passwordFormControl);
         formGroup.addControl("confirmPassword",this._confirmPassword);
+        formGroup.addControl("email",this._emailFormControl);
+        formGroup.addControl("phone",this._phoneFormControl);
+        // formGroup.addControl("photo",this._photoFormControl);
         formGroup.addValidators(this._usersValidators.passwordIsMatched("password","confirmPassword"))
         break;
       case FormPart.ADDRESS:
@@ -199,11 +202,8 @@ export class AdminEditUsersDialogComponent implements OnInit {
         formGroup.addControl("address",this.createFormGroup(FormPart.ADDRESS));
         formGroup.addControl("firstname",this._firstnameFormControl);
         formGroup.addControl("lastname",this._lastnameFormControl);
-        formGroup.addControl("email",this._emailFormControl);
-        formGroup.addControl("phone",this._phoneFormControl);
         formGroup.addControl("dateOfBirth",this._dateOfBirthFormControl);
         formGroup.addControl("gender",this._genderFormControl);
-        // formGroup.addControl("photo",this._photoFormControl);
         break;
       case FormPart.DOCTOR:
         formGroup = this.createFormGroup(FormPart.USER);
@@ -227,9 +227,6 @@ export class AdminEditUsersDialogComponent implements OnInit {
       case FormPart.ORGANIZATION:
         formGroup.addControl("account",this.createFormGroup(FormPart.ACCOUNT));
         formGroup.addControl("address",this.createFormGroup(FormPart.ADDRESS));
-        formGroup.addControl("email",this._emailFormControl);
-        formGroup.addControl("phone",this._phoneFormControl);
-        // formGroup.addControl("photo",this._photoFormControl);
         formGroup.addControl("matriculeFiscale",this._matriculeFiscaleFormControl);
         formGroup.addControl("name",this._nameFormControl);
         formGroup.addControl("formeJuridique",this._formeJuridiqueFormControl);
@@ -248,15 +245,13 @@ export class AdminEditUsersDialogComponent implements OnInit {
       switch (this.mode) {
         case DialogMode.ADD_DOCTOR:
           const _doctor: Doctor = {
+            id_user: -1,
             account: {
-              id_compte: 0,
+              id_compte: -1,
               username: this.userFormGroup.get("account")?.get("username")?.value,
               password: this.userFormGroup.get("account")?.get("password")?.value,
-              role: RoleEnum.DOCTOR,
-              status: AccountStatusEnum.STATUS_ACTIVE_NOT_VERIFIED_PHONE_VERIFIED_MAIL,
-              photo: "",
-              phone: "",
-              email: ""
+              email: this.userFormGroup.get("account")?.get("email")?.value,
+              phone: this.userFormGroup.get("account")?.get("phone")?.value
             },
             address: {
               street: this.userFormGroup.get("address")?.get('street')?.value,
@@ -276,34 +271,92 @@ export class AdminEditUsersDialogComponent implements OnInit {
             console.log(doctor);
           },error => {
             console.log(error)
-          })
+          });
           break;
-        // case DialogMode.ADD_BENEVOLE:
-        //   this._usersService.addBenevole(_benevole).subscribe(benevole => {
-        //     console.log(benevole);
-        //   },error => {
-        //     console.log(error)
-        //   })
-        //   break;
-        // case DialogMode.ADD_ORGANIZATION:
-        //   this._usersService.addOrganization(_organization).subscribe(organization => {
-        //     console.log(organization);
-        //   },error => {
-        //     console.log(error)
-        //   })
-        //   break;
-        // case DialogMode.ADD_BENEFICIER:
-        //   this._usersService.addBeneficier(_beneficier).subscribe(beneficier => {
-        //     console.log(beneficier);
-        //   },error => {
-        //     console.log(error)
-        //   })
-        //   break;
+        case DialogMode.ADD_BENEVOLE:
+          const _benevole: Benevole = {
+            id_user: -1,
+            account: {
+              id_compte: -1,
+              username: this.userFormGroup.get("account")?.get("username")?.value,
+              password: this.userFormGroup.get("account")?.get("password")?.value,
+              email: this.userFormGroup.get("account")?.get("email")?.value,
+              phone: this.userFormGroup.get("account")?.get("phone")?.value
+            },
+            address: {
+              street: this.userFormGroup.get("address")?.get('street')?.value,
+              city: this.userFormGroup.get("address")?.get('city')?.value,
+              zipcode: this.userFormGroup.get("address")?.get('zipcode')?.value,
+            },
+            dateOfBirth: this.userFormGroup.get("dateOfBirth")?.value,
+            firstname: this.userFormGroup.get("firstname")?.value,
+            gender: this.userFormGroup.get("gender")?.value,
+            lastname: this.userFormGroup.get("lastname")?.value,
+            profession: this.userFormGroup.get("profession")?.value
+          }
+          this._usersService.addBenevole(_benevole).subscribe(benevole => {
+            console.log(benevole);
+          },error => {
+            console.log(error)
+          });
+          break;
+        case DialogMode.ADD_ORGANIZATION:
+          const _organization: Organization = {
+            id_compte: -1,
+            account: {
+              id_compte: -1,
+              username: this.userFormGroup.get("account")?.get("username")?.value,
+              password: this.userFormGroup.get("account")?.get("password")?.value,
+              email: this.userFormGroup.get("account")?.get("email")?.value,
+              phone: this.userFormGroup.get("account")?.get("phone")?.value
+            },
+            address: {
+              street: this.userFormGroup.get("address")?.get('street')?.value,
+              city: this.userFormGroup.get("address")?.get('city')?.value,
+              zipcode: this.userFormGroup.get("address")?.get('zipcode')?.value,
+            },
+            name: this.userFormGroup.get("name")?.value,
+            matriculeFiscale: this.userFormGroup.get("matriculeFiscale")?.value,
+            formeJuridique: this.userFormGroup.get("formeJuridique")?.value,
+          }
+          this._usersService.addOrganization(_organization).subscribe(organization => {
+            console.log(organization);
+          },error => {
+            console.log(error)
+          });
+          break;
+        case DialogMode.ADD_BENEFICIER:
+          const _beneficier: Beneficier = {
+            id_user: -1,
+            account: {
+              id_compte: -1,
+              username: this.userFormGroup.get("account")?.get("username")?.value,
+              password: this.userFormGroup.get("account")?.get("password")?.value,
+              email: this.userFormGroup.get("account")?.get("email")?.value,
+              phone: this.userFormGroup.get("account")?.get("phone")?.value
+            },
+            address: {
+              street: this.userFormGroup.get("address")?.get('street')?.value,
+              city: this.userFormGroup.get("address")?.get('city')?.value,
+              zipcode: this.userFormGroup.get("address")?.get('zipcode')?.value,
+            },
+            dateOfBirth: this.userFormGroup.get("dateOfBirth")?.value,
+            firstname: this.userFormGroup.get("firstname")?.value,
+            gender: this.userFormGroup.get("gender")?.value,
+            lastname: this.userFormGroup.get("lastname")?.value,
+            carteHandicapNumber: this.userFormGroup.get("carteHandicapNumber")?.value,
+            dateExpiration: this.userFormGroup.get("dateExpiration")?.value,
+          }
+          this._usersService.addBeneficier(_beneficier).subscribe(beneficier => {
+            console.log(beneficier);
+          },error => {
+            console.log(error)
+          });
+          break;
         case DialogMode.EDIT_ORGANIZATION:
           if (this.user != undefined && this.user.account != undefined) {
             const updatedOrganization: Organization  = {
-              id: this.user.id,
-              accountId: this.user.id,
+              id_compte: -1,
               address: {
                 street: this.userFormGroup.get("address")?.get('street')?.value,
                 city: this.userFormGroup.get("address")?.get('city')?.value,
@@ -338,8 +391,7 @@ export class AdminEditUsersDialogComponent implements OnInit {
         case DialogMode.EDIT_DOCTOR:
           if (this.user != undefined && this.user.account != undefined) {
             const updatedDoctor: Doctor  = {
-              id: this.user.id,
-              accountId: this.user.id,
+              id_user: -1,
               account: {
                 id_compte: this.user.account.id_compte,
                 role: this.user.account.role,
@@ -380,8 +432,7 @@ export class AdminEditUsersDialogComponent implements OnInit {
         case DialogMode.EDIT_BENEVOLE:
           if (this.user != undefined && this.user.account != undefined) {
             const updatedBenevole: Benevole  = {
-              id: this.user.id,
-              accountId: this.user.id,
+              id_user: -1,
               account: {
                 id_compte: this.user.account.id_compte,
                 role: this.user.account.role,
@@ -418,8 +469,7 @@ export class AdminEditUsersDialogComponent implements OnInit {
         case DialogMode.EDIT_BENEFICIER:
           if (this.user != undefined && this.user.account != undefined) {
             const updatedBeneficier: Beneficier  = {
-              id: this.user.id,
-              accountId: this.user.id,
+              id_user:-1,
               account: {
                 id_compte: this.user.account.id_compte,
                 role: this.user.account.role,
@@ -465,13 +515,13 @@ export class AdminEditUsersDialogComponent implements OnInit {
       account: {
         username: "mkd_dev",
         password: "mkd.js.MKD.JS.1993",
-        confirmPassword: "mkd.js.MKD.JS.1993"
+        confirmPassword: "mkd.js.MKD.JS.1993",
+        email: "kheireddine.mechegui@gmail.com",
+        phone: 25222555,
       },
-      email: "kheireddine.mechegui@gmail.com",
-      phone: 25222555,
       dateOfBirth: new Date(1993,5,19),
       gender: GenderEnum.MALE,
-      matricule: "DOC-985632",
+      matricule: "DOC-98563200",
       specialty: DOCTOR_SPECIALTIES[5],
       cin: "07989898",
       assurance: [
@@ -492,10 +542,10 @@ export class AdminEditUsersDialogComponent implements OnInit {
       account: {
         username: "ahmed_bouslimi",
         password: "ahmed.BOUSLIMI.1995",
-        confirmPassword: "ahmed.BOUSLIMI.1995"
+        confirmPassword: "ahmed.BOUSLIMI.1995",
+        email: "ahmed.bouslimi@yahoo.fr",
+        phone: 25222333,
       },
-      email: "ahmed.bouslimi@yahoo.fr",
-      phone: 25222333,
       dateOfBirth: new Date(1995,7,19),
       gender: GenderEnum.MALE,
       address: {
@@ -513,10 +563,10 @@ export class AdminEditUsersDialogComponent implements OnInit {
       account: {
         username: "ahmlem_gadhgathi",
         password: "gadhgathi.GADHGADHI.1990",
-        confirmPassword: "gadhgathi.GADHGADHI.1990"
+        confirmPassword: "gadhgathi.GADHGADHI.1990",
+        email: "ahlam.1990@hotmail.com",
+        phone: 58222333,
       },
-      email: "ahlam.1990@hotmail.com",
-      phone: 58222333,
       dateOfBirth: new Date(1990,4,11),
       gender: GenderEnum.FEMALE,
       address: {
@@ -533,10 +583,10 @@ export class AdminEditUsersDialogComponent implements OnInit {
       account: {
         username: "ahmlem_gadhgathi",
         password: "gadhgathi.GADHGADHI.1990",
-        confirmPassword: "gadhgathi.GADHGADHI.1990"
+        confirmPassword: "gadhgathi.GADHGADHI.1990",
+        email: "ahlam.1990@hotmail.com",
+        phone: 78222333,
       },
-      email: "ahlam.1990@hotmail.com",
-      phone: 78222333,
       address: {
         street: "El Omran 2",
         city: "Tunis",

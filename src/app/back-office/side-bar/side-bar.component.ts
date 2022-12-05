@@ -61,6 +61,10 @@ export class SideBarComponent implements OnInit {
 
 
   }
+
+  onEditPhoto() {
+
+  }
 }
 
 interface SubMenuItem {

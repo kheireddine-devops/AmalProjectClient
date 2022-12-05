@@ -1,16 +1,13 @@
 import {Injectable} from '@angular/core';
-import {flatMap, map, merge, Observable, of, reduce, toArray} from "rxjs";
+import { Observable } from "rxjs";
 import {HttpClient} from "@angular/common/http";
 import {
   Account,
-  AccountStatusEnum,
-  Admin,
   Beneficier,
   Benevole,
   Doctor,
   Organization,
-  RoleEnum,
-  User
+  RoleEnum
 } from "../entities/users";
 
 
@@ -119,24 +116,15 @@ export class UsersService {
     return this.http.post<Doctor>(`/api/doctors`,doctor);
   }
 
-  addBenevole(benevole: Benevole, accountId: number): Observable<Benevole>  {
-    benevole.account = undefined;
-    benevole.id = accountId;
-    benevole.accountId = accountId;
+  addBenevole(benevole: Benevole): Observable<Benevole>  {
     return this.http.post<Benevole>(`/api/benevoles`,benevole);
   }
 
-  addBeneficier(beneficier: Beneficier, accountId: number): Observable<Beneficier> {
-    beneficier.account = undefined;
-    beneficier.id = accountId;
-    beneficier.accountId = accountId;
-    return this.http.post<Beneficier>(`/api/beneficiaries`,beneficier);
+  addBeneficier(beneficier: Beneficier): Observable<Beneficier> {
+    return this.http.post<Beneficier>(`/api/beneficiers`,beneficier);
   }
 
-  addOrganization(organization: Organization, accountId: number): Observable<Organization> {
-    organization.account = undefined;
-    organization.id = accountId;
-    organization.accountId = accountId;
+  addOrganization(organization: Organization): Observable<Organization> {
     return this.http.post<Organization>(`/api/organizations`,organization);
   }
 
@@ -145,9 +133,7 @@ export class UsersService {
   }
 
   getUserById(userId: number, role: RoleEnum): Observable<Beneficier | Benevole | Doctor | Organization> {
-
-    return this.http.get<Beneficier | Benevole | Doctor | Organization>(`/api/accounts/${userId}/${this.dispatchAccountPath(role)}`)
-      .pipe( map((value: any) => (value[0])));
+    return this.http.get<Beneficier | Benevole | Doctor | Organization>(`/api/${this.dispatchAccountPath(role)}/${userId}/`);
   }
 
   deleteAccountById(accountId: number) {
@@ -156,15 +142,16 @@ export class UsersService {
 
   dispatchAccountPath(role: RoleEnum): string {
     let ch: string = "";
+
     switch (role) {
       case RoleEnum.DOCTOR:
         ch = "doctors";
-        break;
+      break;
       case RoleEnum.BENEVOLE:
         ch = "benevoles";
         break;
       case RoleEnum.BENEFICIER:
-        ch = "beneficiaries";
+        ch = "beneficiers";
         break;
       case RoleEnum.ORGANIZATION:
         ch = "organizations";
@@ -179,21 +166,21 @@ export class UsersService {
 
   editOrganization(updatedOrganization: Organization): Observable<Organization> {
     updatedOrganization.account = undefined;
-    return this.http.put<Organization>(`/api/organizations/${updatedOrganization.id}`,updatedOrganization);
+    return this.http.put<Organization>(`/api/organizations/${updatedOrganization.id_compte}`,updatedOrganization);
   }
 
   editDoctor(updatedDoctor: Doctor): Observable<Doctor> {
     updatedDoctor.account = undefined;
-    return this.http.put<Doctor>(`/api/doctors/${updatedDoctor.id}`,updatedDoctor);
+    return this.http.put<Doctor>(`/api/doctors/${updatedDoctor.id_user}`,updatedDoctor);
   }
 
   editBenevole(updatedBenevole: Benevole): Observable<Benevole> {
     updatedBenevole.account = undefined;
-    return this.http.put<Benevole>(`/api/benevoles/${updatedBenevole.id}`,updatedBenevole);
+    return this.http.put<Benevole>(`/api/benevoles/${updatedBenevole.id_user}`,updatedBenevole);
   }
 
   editBeneficier(updatedBeneficier: Beneficier): Observable<Beneficier> {
     updatedBeneficier.account = undefined;
-    return this.http.put<Beneficier>(`/api/beneficiaries/${updatedBeneficier.id}`,updatedBeneficier);
+    return this.http.put<Beneficier>(`/api/beneficiaries/${updatedBeneficier.id_user}`,updatedBeneficier);
   }
 }

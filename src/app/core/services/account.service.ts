@@ -14,8 +14,8 @@ export class AccountService {
   getCurrentUser(): Observable<Account> {
     let _id: number | undefined = this._tokenUtilsService.getUserIdByToken();
     if (_id === undefined) _id = -1;
-    console.log(this._tokenUtilsService.getTokenByLocalStorage())
-    console.log(this._tokenUtilsService.decodeToken(this._tokenUtilsService.getTokenByLocalStorage() as string))
+    // console.log(this._tokenUtilsService.getTokenByLocalStorage())
+    // console.log(this._tokenUtilsService.decodeToken(this._tokenUtilsService.getTokenByLocalStorage() as string))
     return this._http.get<Account>(`/api/accounts/${_id}`);
   }
 
@@ -48,7 +48,9 @@ export class AccountService {
   }
 
   resetPassword(email: string): Observable<any> {
-    return this._http.post('/api/reset-password',email);
+    return this._http.post('/api/reset-password', {
+      email: email
+    });
   }
 
   getToken(): string | undefined {
