@@ -14,9 +14,6 @@ import {NotFoundComponent} from "../shared/not-found/not-found.component";
 import {AdminUserManagementComponent} from "./components/admin-user-management/admin-user-management.component";
 import {AdminGuestContactComponent} from "./components/admin-guest-contact/admin-guest-contact.component";
 import {AdminDashbordComponent} from "./components/admin-dashbord/admin-dashbord.component";
-import { CommentsHelpComponent } from './comments-help/comments-help.component';
-import { AddHelpComponent } from './add-help/add-help.component';
-import { ShowHelpComponent } from './show-help/show-help.component';
 import { AddDonsComponent } from './add-dons/add-dons.component';
 import { RapportComponent } from './rapport/rapport.component';
 import { ConsulterRapportComponent } from './consulter-rapport/consulter-rapport.component';
@@ -26,6 +23,13 @@ import {BenevoleGuard} from "../core/guards/benevole.guard";
 import {DoctorGuard} from "../core/guards/doctor.guard";
 import {GestionBoutiqueComponent} from "./gestion-boutique/gestion-boutique.component";
 import {UserProfileComponent} from "./components/user-profile/user-profile.component";
+import {ShowHelpComponent} from "./show-help/show-help.component";
+import {ShowhelpBenifComponent} from "./showhelp-benif/showhelp-benif.component";
+import {AddaidebenifComponent} from "./addaidebenif/addaidebenif.component";
+import {AddHelpComponent} from "./add-help/add-help.component";
+import {UpdatehelpComponent} from "./updatehelp/updatehelp.component";
+import {CommentsHelpComponent} from "./comments-help/comments-help.component";
+import {UpdateaidebenifComponent} from "./updateaidebenif/updateaidebenif.component";
 
 
 const routes: Routes = [
@@ -61,9 +65,12 @@ const routes: Routes = [
       {path: 'addFormation',component:AddDialogComponentComponent},
       // End Asma Routes
       // Start Ameni Routes
-      {path: 'gestiondons',component:GestionDonsComponent},
       {path: 'gestionaides',component:ShowHelpComponent},
+      {path: 'gestionaidesbenif',component:ShowhelpBenifComponent},
+      {path: 'addaidebenif',component:AddaidebenifComponent},
       {path: 'ajouteraide',component:AddHelpComponent},
+      {path: 'modifieraide/:id',component:UpdatehelpComponent},
+      {path: 'modifieraidebenif/:id',component:UpdateaidebenifComponent},
       {path: 'gestioncommentaires/:id',component:CommentsHelpComponent},
       // End Ameni Routes
       // Strat Heithem Routes

@@ -13,7 +13,7 @@
    
 }
 .btn-square{
-    background: #023b6d;
+    background: #dc3545;
 }
 .card-img-top{
     border-radius: 50%;
@@ -29,7 +29,7 @@ h1{
     margin-bottom: 20px;
     padding-bottom: 20px;
     position: relative;
-    color: #2c4964;
+    color: #e1163c;
 }
 h1::before{
     content: "";
@@ -47,7 +47,7 @@ h1::after{
     display: block;
     width: 40px;
     height: 3px;
-    background: #1977cc;
+    background: #3a0303;
     bottom: 0;
     left: calc(50% - 20px);
 }
@@ -63,14 +63,14 @@ i{
     padding: 30px 20px;
     width: 100%;
     height: 450px;
+    margin-bottom: 30px;
 }
 .form-select{
     border-radius: 10px;
     border:1px #1977cc solid;
 }
-.btn-primary{
-    background-color: #1977cc;;
-    border-color: #1977cc;
+.btn-danger{
+   
     border-radius: 50px;
 }
 h5{

@@ -118,7 +118,16 @@ const ADMIN_MENU: Array<MenuItem> = [
       {path: "/BackOffice/gestionTutoriels", text: "Gestion Tutoriels"}
     ]
   },
-  {path: '/BackOffice/gestionaides', text:'Gestion D\'aides', icon: 'fa fa-tachometer-alt'},
+  {
+    path: "",
+    text: "Gestion D\'aides",
+    icon: "fa fa-tachometer-alt",
+    subMenu: [
+      {path: "/BackOffice/gestionaides", text: "Gestion D\'aides "},
+      {path: "/BackOffice/ajouteraide", text: "Ajoutez Aides"},
+
+    ]
+  },
   // {path: '/BackOffice/KPIformation', text: 'Users', icon: 'fa fa-th'},
   {path: "/BackOffice/gestionrapport", text: "Consulter Rapports", icon: 'fa fa-th'},
   {
@@ -180,7 +189,15 @@ const BENEFICIER_MENU: Array<MenuItem> = [
   {path: '/BackOffice/beneficier/dashboard', text: 'Dashboard', icon: 'fa fa-tachometer-alt'},
   {path: '/BackOffice/beneficier/my-profile', text: 'My Profile', icon: 'fa fa-keyboard'},
   // {path: '/BackOffice/beneficier/my-profile/edit', text: 'Edit Profile', icon: 'fa fa-keyboard'},
-  {path: '/BackOffice/gestionaides', text:'Gestion D\'aides', icon: 'fa fa-tachometer-alt'},
+  {
+    path: "",
+    text: "Gestion D\'aides",
+    icon: "fa fa-tachometer-alt",
+    subMenu: [
+      {path: "/BackOffice/gestionaidesbenif", text: "Gestion Demandes D\'aides "},
+      {path: "/BackOffice/addaidebenif", text: "Ajoutez Demnde D'ide"},
+    ]
+  },
   {path: "/BackOffice/reserverFormation", text: "Réserver Formations", icon: 'fa fa-laptop'},
   {
     path: '',

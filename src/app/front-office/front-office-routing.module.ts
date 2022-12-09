@@ -2,8 +2,6 @@ import { PostulerComponent } from './postuler/postuler.component';
 import { CandidaturesComponent } from './candidatures/candidatures.component';
 import { PlaylisteComponent } from './playliste/playliste.component';
 import { CartComponent } from './cart/cart.component';
-import { HelpDetailsComponent } from './help-details/help-details.component';
-import { HelpShowComponent } from './help-show/help-show.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { FrontOfficeComponent } from './front-office.component';
@@ -18,6 +16,8 @@ import {GuestHomeComponent} from "./guest-home/guest-home.component";
 import {TousEmploisComponent} from "./tous-emplois/tous-emplois.component";
 import {StoreComponent} from "./store/store.component";
 import {ArticlePageComponent} from "./article-page/article-page.component";
+import {HelpShowComponent} from "./help-show/help-show.component";
+import {HelpDetailsComponent} from "./help-details/help-details.component";
 
 
 const routes: Routes = [

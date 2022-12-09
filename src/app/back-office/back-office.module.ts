@@ -38,9 +38,6 @@ import {MatTableModule} from '@angular/material/table';
 import { MatDialogModule } from '@angular/material/dialog';
 import { AddDialogComponentComponent } from './add-dialog-component/add-dialog-component.component';
 import { KPIformationComponent } from './kpiformation/kpiformation.component';
-import { ShowHelpComponent } from './show-help/show-help.component';
-import { AddHelpComponent } from './add-help/add-help.component';
-import { CommentsHelpComponent } from './comments-help/comments-help.component';
 
 import { AddDonsComponent } from './add-dons/add-dons.component';
 import { RapportComponent } from './rapport/rapport.component';
@@ -51,6 +48,13 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
 import { FooterComponent } from './footer/footer.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { UserEditPhotoComponent } from './components/dialogs/user-edit-photo/user-edit-photo.component';
+import {UpdateaidebenifComponent} from "./updateaidebenif/updateaidebenif.component";
+import {UpdatehelpComponent} from "./updatehelp/updatehelp.component";
+import {AddHelpComponent} from "./add-help/add-help.component";
+import {ShowhelpBenifComponent} from "./showhelp-benif/showhelp-benif.component";
+import {AddaidebenifComponent} from "./addaidebenif/addaidebenif.component";
+import {CommentsHelpComponent} from "./comments-help/comments-help.component";
+import {ShowHelpComponent} from "./show-help/show-help.component";
 
 
 
@@ -77,9 +81,6 @@ import { UserEditPhotoComponent } from './components/dialogs/user-edit-photo/use
     AddDialogComponentComponent,
     KPIformationComponent,
     KPIformationComponent,
-    ShowHelpComponent,
-    AddHelpComponent,
-    CommentsHelpComponent,
     AddDonsComponent,
     RapportComponent,
     ConsulterRapportComponent,
@@ -88,7 +89,16 @@ import { UserEditPhotoComponent } from './components/dialogs/user-edit-photo/use
     UserProfileComponent,
     FooterComponent,
     NavbarComponent,
-    UserEditPhotoComponent
+    UserEditPhotoComponent,
+    // Ameni Start Imports
+    AddHelpComponent,
+    AddaidebenifComponent,
+    CommentsHelpComponent,
+    ShowHelpComponent,
+    ShowhelpBenifComponent,
+    UpdateaidebenifComponent,
+    UpdatehelpComponent,
+    // Ameni End Imports
   ],
   imports: [
       CommonModule,

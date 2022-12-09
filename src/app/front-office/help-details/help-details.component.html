@@ -5,47 +5,50 @@
  <div class="container-fluid pt-4 px-4">
     <div class="bg-light text-center rounded p-4">
         <div class="d-flex align-items-center justify-content-between mb-4">
-            <h5 class="mb-0">Demande d'aide</h5>
+
             <a href=""><div class="d-flex align-items-center border-bottom py-3">
-                <img class="rounded-circle flex-shrink-0" src="assets/img/user.jpg" alt="" style="width: 40px; height: 40px;">
+                <img class="rounded-circle flex-shrink-0" [src]="(help.photo !== null) ? 'http://localhost:3000/uploads/images/users/'+help.photo: 'assets/images/users/USER-UNKNOWN.jpg'" alt="" style="width: 40px; height: 40px;">
                 <div class="w-100 ms-3">
                     <div class="d-flex w-100 justify-content-between">
-                        <h6 class="mb-0">Jhon Doe</h6>
+                        <h6 class="mb-0">{{help.nom}} {{help.prenom}}</h6>
                         <small></small>
                     </div>
                 </div>
             </div></a>
         </div>
         <!----start Help-->
-        
-            <div class="row">
-                <div class="col-md-6">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+
+                    <i><button type="button" class="btn btn-square btn-secondary m-2"><i class="fa fa-clock"></i></button>{{help.date_publication}}</i>
+
+                      <div class="card-body">
+                        <h5 class="card-title">{{help.typeDemande}}</h5>
+                        <h6>{{help.sujet}}</h6>
+                        <p class="card-text">{{help.contenue}}</p>
+
+                      </div>
+                    </div>
+              </div>
+            </div>
+        </div>
+
+            <div class="row"  >
+                <div class="col-md-12">
                     <div class="card" id="card1" >
                           <div class="card-body">
                             <img src="assets/img/logo-amal.png" width="150px" height="150px">
                             <h1 class="white">Lorem ipsum dolor sit, amet consectetur adipisicing elit. </h1>
-                            
-                            <a href="#" class="btn btn-primary">S'inscrire</a>
+
+                            <a routerLink="FrontOffice/login" class="btn btn-danger">S'inscrire</a>
                           </div>
                     </div>
-                  
-                </div>
-                <div class="col-md-6">
-                    <div class="card">
-              
-                        <i><button type="button" class="btn btn-square btn-secondary m-2"><i class="fa fa-clock"></i></button>12-03-2022</i>
-                          
-                          <div class="card-body">
-                            <h5 class="card-title">{{help.typeHelp}}</h5>
-                            <h6>{{help.subjectHelp}}</h6>
-                            <p class="card-text">{{help.contentHelp}}</p>
-                            
-                          </div>
-                        </div>
-                  </div>
+
                 </div>
             </div>
-        
+
+
     </div>
 </div>
 
@@ -56,19 +59,19 @@
             <div class="h-100 bg-light rounded p-4">
                 <div class="d-flex align-items-center justify-content-between mb-2">
                     <h5 class="mb-0">Commentaires</h5>
-                    <a href="">Voir Plus</a>
+
                 </div>
                 <div class="d-flex align-items-center border-bottom py-3" *ngFor="let c of listComment;let i = index">
-                    <img class="rounded-circle flex-shrink-0" src="assets/img/user.jpg" alt="" style="width: 40px; height: 40px;">
+                    <img class="rounded-circle flex-shrink-0" [src]="(c.photo !== null) ? 'http://localhost:3000/uploads/images/users/'+c.photo: 'assets/images/users/USER-UNKNOWN.jpg'" alt="" style="width: 40px; height: 40px;">
                     <div class="w-100 ms-3">
                         <div class="d-flex w-100 justify-content-between">
-                            <h6 class="mb-0">Jhon Doe</h6>
-                            <small>{{c.dateComment|date: 'dd/MM/yy, à HH:mm' }}</small>
+                            <h6 class="mb-0">{{c.nom}} {{c.prenom}}</h6>
+                            <small>{{c.dateCommentaire|date: 'dd/MM/yy' }}</small>
                         </div>
-                        <span>{{c.comment}}</span><br>
+                        <span>{{c.txtCommentaire}}</span><br>
                         <button type="button" class="btn btn-sm btn-sm-square btn-primary m-2" (click)="addlike(i)"><i class="{{textButton}}"></i></button>{{c.like}}
                     </div>
-                </div>  
+                </div>
             </div>
         </div>
 </div>
@@ -89,24 +92,24 @@
                                     <i class="fa fa-exclamation-circle me-2"></i>Commentaire Ajoutée avec succées <i class="fa fa-smile"></i>!
                                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                 </div>
-                                <!--formulaire d'ajout commentaire-->
+                                <!--formulaire ajout commentaire-->
                                 <form #f="ngForm">
                                     <div class="form-floating">
                                         <textarea class="form-control" placeholder="Leave a comment here"
-                                            id="floatingTextarea" style="height: 150px;" name="commentHelp" #com="ngModel" ngModel minlength="50" required [(ngModel)]="commenthelp.comment"></textarea>
+                                            id="floatingTextarea" style="height: 150px;" name="commentHelp" #com="ngModel" ngModel minlength="50" required [(ngModel)]="commenthelp.txtCommentaire"></textarea>
                                         <label for="floatingTextarea">Commentaire</label>
                                     </div><br>
                                     <div class="alert alert-danger" *ngIf="com.invalid && com.touched">
                                         <div *ngIf="com.errors?.['required']">Ce champs est Obligatoire</div>
                                         <div *ngIf="com.errors?.['minlength']">la longueur minimale est 50</div>
-                                        
+
                                     </div>
 
-                                    
+
                                     <button type="submit" class="btn btn-primary m-2" [disabled]="f.invalid" (click)="save()"><i class="fa fa-save me-2"></i>Commenter</button>
                                 </form>
                             </div>
                         </div>
                     </div>
-                 
+
 </div>

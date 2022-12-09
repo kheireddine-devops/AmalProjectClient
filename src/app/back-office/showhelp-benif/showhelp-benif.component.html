@@ -2,43 +2,40 @@
     <div class="bg-light text-center rounded p-4">
         <div class="d-flex align-items-center justify-content-between mb-4">
             <h6 class="mb-0">{{title}}</h6>
-
+            
         </div>
-
         <div class="table-responsive">
             <table class="table text-start align-middle table-bordered table-hover mb-0">
                 <thead>
-                    <tr>
-                        <th scope="col">Photo</th>
-                        <th scope="col">Nom & Prenom</th>
+                    <tr> 
+                        
                         <th scope="col">Type Aide</th>
                         <th scope="col">Sujet</th>
                         <th scope="col">Contenue</th>
                         <th scope="col">Date</th>
-                        <th scope="col">Nombre</th>
                         <th scope="col">Status</th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr *ngFor="let h of listHelps;index as i">
-                        <td class="photo"><img [src]="(h.photo !== null) ? 'http://localhost:3000/uploads/images/users/'+h.photo: 'assets/images/users/USER-UNKNOWN.jpg'" width="50px" height="50px"/></td>
-                        <td>{{h.nom}} {{h.prenom}}</td>
-                        <td>{{h.typeDemande}}</td>
+                        
+                        
+                        <th>{{h.typeDemande}}</th>
                         <td>{{h.sujet}}</td>
                         <td>{{h.contenue}}</td>
                         <td>{{h.date_publication}}</td>
-                        <td>{{h.nombre}}</td>
                         <td>{{h.Status}}</td>
-                        <td><button type="submit" class="btn btn-square btn-danger m-2" (click)="Delete(h.id_demande_aide)"><i class="fa fa-trash"></i></button>
-                        <a routerLink="../modifieraide/{{h.id_demande_aide}}"><button type="button"  class="btn btn-square btn-primary m-2" ><i class="fa fa-edit"></i></button></a>
-                        <a routerLink="../gestioncommentaires/{{h.id_demande_aide}}"><button type="button"  class="btn-success" >Commentaires</button></a>
+                        <td><button type="submit" class="btn btn-square btn-danger m-2" (click)="Delete(h.id_demande_aide,i)"><i class="fa fa-trash"></i>
+                        </button> <a routerLink="../modifieraidebenif/{{h.id_demande_aide}}"> <button type="button"  class="btn btn-square btn-primary m-2" ><i class="fa fa-edit"></i></button></a>
+                        <a routerLink="../gestioncommentaires/{{h.id_demande_aide}}"><button class="btn-success">Commentaires</button></a>
                     </td>
                     </tr>
-
+                   
                 </tbody>
             </table>
         </div>
     </div>
 </div>
-<a routerLink="../ajouteraide" type="button" class="btn btn-success rounded-pill m-2">Ajouter</a>
+<a routerLink="../addaidebenif" type="button" class="btn btn-success rounded-pill m-2">Ajouter</a>
+

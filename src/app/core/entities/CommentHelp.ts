@@ -1,9 +1,12 @@
-export class CommentHelp{
-    id!:string;
-    comment!:string;
-    dateComment!:Date;
+export class commentaireaide{
+    idCommentaire !: number;
+    txtCommentaire!:string;
+    dateCommentaire!:Date;
     status!:string;
     like!:number;
-    helpId!:string;
-    idUser!:string;
+    idDemandeAide!:number;
+    idCompte!:number;
+    nom?:string;
+    prenom?:string;
+    photo?:string;
 }
