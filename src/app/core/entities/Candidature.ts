@@ -1,8 +1,12 @@
 export class Candidature{
-    id!: number;
+    id_compte!:Number;
+    id_emploi!:Number 
     niveau!: String;
-    cv!: String;
+    url_cv!: String;
     message!: String;
-    dateCand!:Date;
+    date_candidature!:Date;
+    // ref_emploi?:string;
+    // nom?:string;
+    // prenom?:string;
 
 }

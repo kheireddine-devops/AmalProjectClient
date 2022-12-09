@@ -1,8 +1,13 @@
 export class Emploi{
-    id!: number;
-    titre!: string;
-    descriptif!: String;
+    id_emploi!: number;
+    titre_emploi!: string;
+    descriptif_emploi!: String;
     secteur!: String;
-    reference!: String;
-    dateExp!:Date;
+    ref_emploi!: String;
+    date_expiration!:Date;
+    id_compte!:number;
+    //nom?: string;
+    //photo?:string;
+    //adresse?:string;
+    //phone?:string;
 }

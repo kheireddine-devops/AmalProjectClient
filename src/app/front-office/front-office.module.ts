@@ -22,7 +22,6 @@ import {FrontOfficeMaterialModule} from "../core/material/front-office-material.
 import {MAT_DATE_LOCALE} from "@angular/material/core";
 import { GuestFooterComponent } from './guest-footer/guest-footer.component';
 import { GuestToolbarComponent } from './guest-toolbar/guest-toolbar.component';
-import { CandidaturesComponent } from './candidatures/candidatures.component';
 import { TousEmploisComponent } from './tous-emplois/tous-emplois.component';
 import { PostulerComponent } from './postuler/postuler.component';
 import {HelpShowComponent} from "./help-show/help-show.component";
@@ -32,6 +31,8 @@ import {StoreComponent} from "./store/store.component";
 import {CategoriesComponent} from "./categories/categories.component";
 import {ArticlePageComponent} from "./article-page/article-page.component";
 import {SearchComponent} from "./search/search.component";
+import {NgxPaginationModule} from "ngx-pagination";
+import {MatDialogModule} from "@angular/material/dialog";
 
 
 @NgModule({
@@ -45,7 +46,6 @@ import {SearchComponent} from "./search/search.component";
         GuestHomeComponent,
         GuestFooterComponent,
         GuestToolbarComponent,
-        CandidaturesComponent,
         TousEmploisComponent,
         PostulerComponent,
         FrontOfficeComponent,
@@ -70,6 +70,8 @@ import {SearchComponent} from "./search/search.component";
         HttpClientModule,
         MatIconModule,
         MatListModule,
+        MatDialogModule,
+        NgxPaginationModule
     ],
     providers: [
         {provide: MAT_DATE_LOCALE, useValue: 'fr-FR'},

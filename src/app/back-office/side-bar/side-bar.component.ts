@@ -138,7 +138,7 @@ const ADMIN_MENU: Array<MenuItem> = [
       {path: "/BackOffice/admin/emplois", text: "Liste des offres d'emplois"},
       {path: "/BackOffice/admin/ajouteremploi", text: "Ajouter une offre"},
       {path: "/BackOffice/admin/link-1", text: "Statéstique"},
-      {path: "/BackOffice/admin/linl-2", text: "Mes candidatures"}
+      {path: "/BackOffice/admin/candidatures", text: "Mes candidatures"}
     ]
   },
   {

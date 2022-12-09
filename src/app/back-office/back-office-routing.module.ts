@@ -30,6 +30,8 @@ import {AddHelpComponent} from "./add-help/add-help.component";
 import {UpdatehelpComponent} from "./updatehelp/updatehelp.component";
 import {CommentsHelpComponent} from "./comments-help/comments-help.component";
 import {UpdateaidebenifComponent} from "./updateaidebenif/updateaidebenif.component";
+import {CandidaturesComponent} from "./candidatures/candidatures.component";
+import {AjouterCandidatureComponent} from "./ajouter-candidature/ajouter-candidature.component";
 
 
 const routes: Routes = [
@@ -51,10 +53,14 @@ const routes: Routes = [
       {path: 'admin/gestionemplois', component: GestionEmploisComponent},
       {path: 'admin/ajouteremploi', component: AjouterEmploisComponent},
       {path: 'admin/modifieremploi/:id', component: AjouterEmploisComponent},
+      {path: 'admin/candidatures', component: CandidaturesComponent},
+      {path: 'admin/modifiercandidature/:id', component: AjouterCandidatureComponent},
       {path: 'organization/emplois', component: EmploisComponent},
       {path: 'organization/gestionemplois', component: GestionEmploisComponent},
       {path: 'organization/ajouteremploi', component: AjouterEmploisComponent},
       {path: 'organization/modifieremploi/:id', component: AjouterEmploisComponent},
+      {path: 'organization/candidatures', component: CandidaturesComponent},
+      {path: 'beneficiers/candidatures', component: CandidaturesComponent},
       // End Sabrine Routes
       // Start Asma Routes
       {path: 'gestiondons',component:GestionDonsComponent},

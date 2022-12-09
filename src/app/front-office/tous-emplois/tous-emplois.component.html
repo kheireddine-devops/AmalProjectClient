@@ -1,24 +1,49 @@
 
-  <div class="container">
-    <div class="row">
-        <div class="col-md-3 col-xs-12 col-sm-6" *ngFor="let e of tousEmplois;let i = index" style="margin-top:40px ;">
 
-        <div class="card" style="width: 18em;" >
-            <img src="https://i2.wp.com/urbaniste-tunisien.org/wp-content/uploads/2017/06/offre-emploi-e1497615572612.png?fit=600%2C430" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">{{e.titre}}</h5>
-              <p class="card-text"><strong>Secteur:</strong>{{e.secteur}} </p>
-              <p class="card-text"><strong>Reference :</strong>{{e.reference}}</p>
-              <p class="card-text"><strong>Secteur:</strong>{{e.dateExp}} </p>
-              <p class="card-text"><strong>Detail de l'offre :</strong>{{e.descriptif}}</p>
-              <div class="actions">
-              <button class="btn btn-success" style="margin-bottom:  20px ; " [routerLink]="['/FrontOffice/postuler']" >Postuler</button>
-              &nbsp;&nbsp;
-              <button class="btn btn-primary" style="margin-right: 10px ; margin-bottom: 20px;" >Détail</button>
-              &nbsp;&nbsp;
-              </div>
-            </div>
-          </div>
-          </div>
+
+
+<div class="container mt-5 ">
+
+  <div class="card">
+    <div class="input-group rounded rech">
+      <input type="search" class="form-control rounded" placeholder="Secteur d'activité " aria-label="Search" aria-describedby="search-addon" name ='secteur'[(ngModel)]="secteur" (ngModelChange)="Search()"/>
+      <span class="input-group-text border-0" id="search-addon">
+        <i class="fas fa-search"></i>
+      </span>
     </div>
-</div> -->
+
+    <!-- <input type="text" class="form-control rech" name ='secteur'[(ngModel)]="secteur" (ngModelChange)="Search()" placeholder="Enter le secteur d'activité qui vous interesse" > -->
+
+    <div class="row rounded border" *ngFor="let e of tousEmplois |paginate:{ itemsPerPage:5,currentPage:p};let i = index   " style="margin-top:40px ;">
+      <div class="col-md-4 sec">
+
+        <!-- <span>{{e.photo}} c</span>&nbsp; -->
+
+        <img [src]="'http://localhost:3000/uploads/images/users/' + e.photo" alt="" class="img-fluid">
+        <!-- <span>{{e.candidatures['niveau']}} e</span>  -->
+
+      </div>
+      <div class="col-md-8" style="width: 80%;">
+        <h5 class="card-title badge">{{e.titre_emploi}}</h5>
+
+            <!-- <p class="card-text"><strong>Secteur:</strong>{{e.secteur}} </p> -->
+              <p class="card-text"><strong>Reference: </strong>{{e.ref_emploi}}</p>
+              <P class="card-text "><strong>Secteur:</strong>{{e.secteur}} </P>
+              <p class="card-text"><strong>Date expiration:</strong>{{e.date_expiration}} </p>
+              <p class="card-text"><strong>Detail de l'offre: </strong> <br>{{e.descriptif_emploi.slice(0,250)+".."}}</p>
+              <!--  <p class="card-text"> <i class="fa fa-2x fa-map-marker  " aria-hidden="true" style="color:#389cb4; margin-top:20px ;" ></i>{{e.adresse}}</p>-->
+              <div class="actions">
+                <button class="btn btn-primary  "  (click)="openDialog(e)">Détail </button>
+              <button class="btn btn-success btnp" (click)="onPostuler(e)" [routerLink]="['/FrontOffice/postuler']" >Postuler</button>
+
+
+
+              </div>
+      </div>
+    </div>
+    <pagination-controls (pageChange)="p=$event"></pagination-controls>
+  </div>
+
+
+
+</div>

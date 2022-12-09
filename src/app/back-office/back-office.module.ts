@@ -55,6 +55,10 @@ import {ShowhelpBenifComponent} from "./showhelp-benif/showhelp-benif.component"
 import {AddaidebenifComponent} from "./addaidebenif/addaidebenif.component";
 import {CommentsHelpComponent} from "./comments-help/comments-help.component";
 import {ShowHelpComponent} from "./show-help/show-help.component";
+import {AjouterCandidatureComponent} from "./ajouter-candidature/ajouter-candidature.component";
+import {CandidaturesComponent} from "./candidatures/candidatures.component";
+import {ShowPDFPopUpComponent} from "./show-pdf-pop-up/show-pdf-pop-up.component";
+import {NgxPaginationModule} from "ngx-pagination";
 
 
 
@@ -99,6 +103,14 @@ import {ShowHelpComponent} from "./show-help/show-help.component";
     UpdateaidebenifComponent,
     UpdatehelpComponent,
     // Ameni End Imports
+    // Sabrine Start Imports
+    AjouterCandidatureComponent,
+    AjouterEmploisComponent,
+    CandidaturesComponent,
+    EmploisComponent,
+    GestionEmploisComponent,
+    ShowPDFPopUpComponent,
+    // Sabrine End Imports
   ],
   imports: [
       CommonModule,
@@ -124,7 +136,8 @@ import {ShowHelpComponent} from "./show-help/show-help.component";
       MatDatepickerModule,
       ObserversModule,
       A11yModule,
-      MatChipsModule
+      MatChipsModule,
+      NgxPaginationModule
   ]
 })
 export class BackOfficeModule { }

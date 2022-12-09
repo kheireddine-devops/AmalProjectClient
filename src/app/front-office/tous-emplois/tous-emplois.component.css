@@ -1,0 +1,106 @@
+/* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
+.flip-card {
+    background-color: transparent;
+    width: 300px;
+    height: 200px;
+    border: 1px solid #f1f1f1;
+    perspective: 1000px; /* Remove this if you don't want the 3D effect */
+  }
+
+  /* This container is needed to position the front and back side */
+  .flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+  }
+
+  /* Do an horizontal flip when you move the mouse over the flip box container */
+  .flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+  }
+
+  /* Position the front and back side */
+  .flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden; /* Safari */
+    backface-visibility: hidden;
+
+  }
+
+  /* Style the front side (fallback if image is missing) */
+  .flip-card-front {
+    background-color: #bbb;
+    color: black;
+  }
+
+  /* Style the back side */
+  .flip-card-back {
+    background-color: #FAD6A5;
+    color: white;
+    transform: rotateY(180deg);
+  }
+
+
+
+  .badge{
+    /* position: absolute;
+    top: -1px; */
+    background: #FF8787;
+    left: -1px;
+    padding: 5px;
+    font-weight: bold;
+    color: #FFF;
+    border-radius:3px;
+   width: 120px;
+   height:30px;
+   text-align: center;
+   font-size: large;
+
+
+
+}
+
+.btn{
+  /* margin-bottom:0px!important; */
+  width: 100px;
+}
+.btn-success{
+  background-color: #FF8787;
+  border-color: #FF8787;
+  color: white;
+}
+.btn-primary{
+ background-color: #389cb4;
+ border-color:#389cb4 ;
+}
+.sec{
+  display: flex;
+    align-items: center;
+    width: 20%;
+    /* justify-content: center; */
+}
+.item{
+  margin-left: 20px;
+  color: #434242;
+}
+.row{
+  width:90%;
+  align-self: center;
+  padding: 10px;
+
+}
+.rech{
+  width:60%; margin-top: 30px;
+  align-self: center;
+  background-color: #CBEDD5;
+  border-radius: 1000px;
+}
+.btnp{
+  margin-left: 75%;
+}
+

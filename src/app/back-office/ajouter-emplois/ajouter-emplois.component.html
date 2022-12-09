@@ -1,12 +1,27 @@
-<!-- <p>ajouter-emplois works!</p> -->
 
-<h3 style="margin-bottom: 40px; margin-top: 40px;">{{titrepage}}</h3>
+<div class="container-fluid" >
+  <div class="page-title"><h6 class="title" >{{titrepage}}</h6></div>
+
 <form  #form="ngForm" (ngSubmit)="onSubmit()"> 
-
+  <div *ngIf="isAdmin">
+    <div class="mb-3">
+      <label class="form-label">Organisation</label>
+      
+    <select class="form-select form-control"   name="id_compte"  [(ngModel)]="emploi.id_compte"   #id_compte="ngModel" required >
+      <option *ngFor="let org of organisations" [ngValue]="org['id_compte']">
+        {{ org['name'] }}
+       </option>
+    </select>
+    </div>
+    <div *ngIf="id_compte.touched && id_compte.invalid"class="alert alert-danger">
+      Merci de sélectioner une organisation
+    </div>
+  </div>
     <div class="mb-3">
       <label class="form-label">Secteur</label>
-    <select class="form-select form-control"   name="secteur"  [(ngModel)]="emploi.secteur" ngModel  #secteur="ngModel" required >
-        <option selected>Secteur</option>
+      
+    <select class="form-select form-control"   name="secteur"  [(ngModel)]="emploi.secteur"   #secteur="ngModel" required >
+        
         <option value="Administration">Administration</option>
         <option value="Banque">Banque</option>
         <option value="Electronique">Electronique</option>
@@ -21,7 +36,7 @@
 
     <div class="mb-3">
       <label class="form-label">Titre</label>
-        <input type="text" class="form-control" name="titre" placeholder="Titre"  [(ngModel)]="emploi.titre" required minlength="5" pattern="[a-zA-Z  à â ä é è ê ë î ï ô ö ù û ü ÿ ç À Â Ä Ç É È Ê Ë Î Ï Ô Ö Ù Û Ü Ÿ ]*"  ngModel #titre="ngModel" >
+        <input type="text" class="form-control" name="titre" placeholder="Titre"  [(ngModel)]="emploi.titre_emploi" required minlength="5" pattern="[a-zA-Z  à â ä é è ê ë î ï ô ö ù û ü ÿ ç À Â Ä Ç É È Ê Ë Î Ï Ô Ö Ù Û Ü Ÿ ]*"  ngModel #titre="ngModel" >
     </div>
     <div *ngIf="titre.touched && titre.invalid"class="alert alert-danger">
        <div *ngIf="titre.errors?.['required']">Le titre est obligatoire </div>
@@ -32,7 +47,7 @@
     
     <div class="mb-3">
       <label class="form-label">Référence :</label>
-        <input type="text" class="form-control" name="ref" placeholder="Réference" [(ngModel)]="emploi.reference"   ngModel #ref="ngModel" required minlength="5" pattern="[a-zA-Z0-9-]*"  >
+        <input type="text" class="form-control" name="ref" placeholder="Réference" [(ngModel)]="emploi.ref_emploi"   ngModel #ref="ngModel" required minlength="5" pattern="[a-zA-Z0-9-]*"  >
     </div>
     <div *ngIf="ref.touched && ref.invalid"class="alert alert-danger">
       <div *ngIf="ref.errors?.['required']">La référence  est obligatoire </div>
@@ -42,7 +57,7 @@
 
       <div class="mb-3">
         <label class="form-label">Description</label>
-        <textarea class="form-control" name="desc" placeholder="Description" rows="3" [(ngModel)]="emploi.descriptif"  ngModel #desc="ngModel" required minlength="10"></textarea>
+        <textarea class="form-control" name="desc" placeholder="Description" rows="3" [(ngModel)]="emploi.descriptif_emploi"  ngModel #desc="ngModel" required minlength="10"></textarea>
       </div>
       <div *ngIf="desc.touched && desc.invalid"class="alert alert-danger">
         <div *ngIf="desc.errors?.['required']">La description  est obligatoire </div>
@@ -52,12 +67,12 @@
 
     <div class="mb-3">
       <label class="form-label">Date expiration</label>
-        <input type="date" class="form-control"  min="{{ currentDate | date:'yyyy-MM-dd'}}" name="date" placeholder="Date d'expication"[(ngModel)]="emploi.dateExp"  ngModel #dateE="ngModel" required  >
+        <input type="date" class="form-control"  min="{{ currentDate | date:'yyyy-MM-dd'}}" name="date" placeholder="Date d'expication"[(ngModel)]="emploi.date_expiration"  ngModel #dateE="ngModel" required  >
     </div>
     <div *ngIf="dateE.touched && dateE.invalid"class="alert alert-danger">
       <div *ngIf="dateE.errors?.['required']">Date d'expiration est obligatoire</div>
-      <div *ngIf="">Date d'expiration future </div>
-      
+      <div *ngIf="">Date d'expiration future </div>  
     </div> 
-    <button type="submit" class="btn btn-primary"   [disabled]="form.invalid" > Submit </button>
+    <button type="submit" class="btn btn-primary"   [disabled]="form.invalid" > Ajouter </button>
   </form>
+</div>

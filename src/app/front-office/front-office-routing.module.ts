@@ -1,5 +1,4 @@
 import { PostulerComponent } from './postuler/postuler.component';
-import { CandidaturesComponent } from './candidatures/candidatures.component';
 import { PlaylisteComponent } from './playliste/playliste.component';
 import { CartComponent } from './cart/cart.component';
 import { NgModule } from '@angular/core';
@@ -31,9 +30,10 @@ const routes: Routes = [
       { path: "reset-password", component: GuestResetPasswordComponent },
       { path: "contact", component: GuestContactComponent },
       // Start Sabrine Routes
+      // Start Sabrine Routes
       {path: 'tousemplois',component:TousEmploisComponent},
-      {path: 'candidatures',component:CandidaturesComponent},
       {path: 'postuler',component:PostulerComponent},
+      // End Sabrine Routes
       // End Sabrine Routes
       // Start Asma Routes
       {path: 'ListetousFormation',component:CartComponent},
