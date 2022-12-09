@@ -15,6 +15,8 @@ import {MatDialogModule} from "@angular/material/dialog";
 import {FrontOfficeModule} from "../../front-office/front-office.module";
 import {MatGridListModule} from "@angular/material/grid-list";
 import {MatSelectModule} from "@angular/material/select";
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+
 
 @NgModule({
     imports: [
@@ -32,7 +34,8 @@ import {MatSelectModule} from "@angular/material/select";
       MatDatepickerModule,
       MatRadioModule,
       MatSelectModule,
-      MatInputModule
+      MatInputModule,
+      MatProgressBarModule
     ],
     exports: [
       MatTableModule,
@@ -49,7 +52,8 @@ import {MatSelectModule} from "@angular/material/select";
       MatDatepickerModule,
       MatRadioModule,
       MatSelectModule,
-      MatInputModule
+      MatInputModule,
+      MatProgressBarModule
     ]
 })
 export class BackOfficeMaterialModule { }

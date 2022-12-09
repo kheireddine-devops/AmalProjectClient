@@ -50,6 +50,7 @@ import {GestionBoutiqueComponent} from "./gestion-boutique/gestion-boutique.comp
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { FooterComponent } from './footer/footer.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { UserEditPhotoComponent } from './components/dialogs/user-edit-photo/user-edit-photo.component';
 
 
 
@@ -86,7 +87,8 @@ import { NavbarComponent } from './navbar/navbar.component';
     GestionBoutiqueComponent,
     UserProfileComponent,
     FooterComponent,
-    NavbarComponent
+    NavbarComponent,
+    UserEditPhotoComponent
   ],
   imports: [
       CommonModule,

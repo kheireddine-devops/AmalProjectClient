@@ -18,8 +18,15 @@
 <!--    User 6-->
 <!--  </mat-grid-tile>-->
 <!--</mat-grid-list>-->
-<h3>Number Of User By Role</h3>
-<div class="user-counts">
+<h3 class="mt-3">Total Number Of Registered Users By User Role</h3>
+<div class="user-counts-pie-chart">
+  <ngx-charts-advanced-pie-chart
+    [view]="[800,300]"
+    [results]="usersData"
+    [gradient]="true" >
+  </ngx-charts-advanced-pie-chart>
+</div>
+<div class="user-counts-bar-vertical">
   <ngx-charts-bar-vertical
     [view]="[800,400]"
     [results]="usersData"
@@ -34,8 +41,3 @@
     [gradient]="true">
   </ngx-charts-bar-vertical>
 </div>
-<ngx-charts-advanced-pie-chart
-  [view]="[800,400]"
-  [results]="usersData"
-  [gradient]="true" >
-</ngx-charts-advanced-pie-chart>

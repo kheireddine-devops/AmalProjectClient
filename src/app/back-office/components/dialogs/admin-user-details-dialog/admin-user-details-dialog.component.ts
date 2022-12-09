@@ -2,6 +2,7 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {UsersService} from "../../../../core/services/users.service";
 import {Account, Beneficier, Benevole, Doctor, Organization, RoleEnum, User} from "../../../../core/entities/users";
+import {environment} from "../../../../../environments/environment";
 
 @Component({
   selector: 'app-admin-user-details-dialog',
@@ -10,11 +11,14 @@ import {Account, Beneficier, Benevole, Doctor, Organization, RoleEnum, User} fro
 })
 export class AdminUserDetailsDialogComponent implements OnInit {
 
+  URL = `${environment.url}/images/users/`;
+
   account: Account | undefined;
-  userBeneficier: Beneficier | undefined;
-  userBenevole: Benevole | undefined;
-  userDoctor: Doctor | undefined;
-  userOrganization: Organization | undefined;
+  user: User | undefined;
+  beneficier: Beneficier | undefined;
+  benevole: Benevole | undefined;
+  doctor: Doctor | undefined;
+  organization: Organization | undefined;
   name: string = "";
   constructor(public dialogRef: MatDialogRef<AdminUserDetailsDialogComponent>,
               @Inject(MAT_DIALOG_DATA) public data: {userId: number},
@@ -26,25 +30,37 @@ export class AdminUserDetailsDialogComponent implements OnInit {
 
        if(account.id_compte !== undefined && account.role !== undefined) {
             this.account = account;
-         this._usersService.getUserById(account.id_compte,account.role).subscribe(value => {
-           switch (account.role) {
-             case RoleEnum.ORGANIZATION:
-               this.name = (value as Organization).name;
-               this.userOrganization = (value as Organization);
-               break;
-             case RoleEnum.DOCTOR:
-               this.userDoctor = (value as Doctor);
-               this.name = (value as User).firstname + " " + (value as User).lastname
-               break;
-             case RoleEnum.BENEVOLE:
-               this.userBenevole = (value as Benevole);
-               this.name = (value as User).firstname + " " + (value as User).lastname
-               break;
-             case RoleEnum.BENEFICIER:
-               this.userBeneficier = (value as Beneficier);
-               this.name = (value as User).firstname + " " + (value as User).lastname
-               break;
+         this._usersService.getAnyUserById(account.id_compte,account.role).subscribe(value => {
+
+           if(account.role == RoleEnum.ORGANIZATION) {
+             this.name = (value as Organization).name;
+             this.organization = (value as Organization);
+           } else {
+
+             this._usersService.getUserById(account.id_compte).subscribe(user => {
+              this.user = user;
+              this.name = this.user.firstname + " " + this.user.lastname;
+
+               switch (account.role) {
+                 case RoleEnum.DOCTOR:
+                   this.doctor = (value as Doctor);
+                   break;
+                 case RoleEnum.BENEVOLE:
+                   this.benevole = (value as Benevole);
+                   break;
+                 case RoleEnum.BENEFICIER:
+                   this.beneficier = (value as Beneficier);
+                   break;
+               }
+
+             }, error => {
+
+             });
+
+
            }
+
+
          });
        }
       });

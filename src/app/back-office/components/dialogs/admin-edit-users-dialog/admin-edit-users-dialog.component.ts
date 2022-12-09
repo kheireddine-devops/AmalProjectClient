@@ -132,18 +132,42 @@ export class AdminEditUsersDialogComponent implements OnInit {
           break;
         case DialogMode.EDIT_BENEFICIER:
           this.userFormGroup = this.createFormGroup(FormPart.BENEFICIER);
+          this.userFormGroup.get("account.username")?.clearAsyncValidators();
+          this.userFormGroup.get("account.phone")?.clearAsyncValidators();
+          this.userFormGroup.get("account.email")?.clearAsyncValidators();
+          this.userFormGroup.get("carteHandicapNumber")?.clearAsyncValidators();
+          this.userFormGroup.get("account.password")?.removeValidators([Validators.required])
+          this.userFormGroup.get("account.confirmPassword")?.removeValidators([Validators.required])
           this.cardTitle = "Edit Beneficier";
           break;
         case DialogMode.EDIT_BENEVOLE:
           this.userFormGroup = this.createFormGroup(FormPart.BENEVOLE);
+          this.userFormGroup.get("account.username")?.clearAsyncValidators();
+          this.userFormGroup.get("account.phone")?.clearAsyncValidators();
+          this.userFormGroup.get("account.email")?.clearAsyncValidators();
+          this.userFormGroup.get("account.password")?.removeValidators([Validators.required])
+          this.userFormGroup.get("account.confirmPassword")?.removeValidators([Validators.required])
           this.cardTitle = "Edit Benevole";
           break;
         case DialogMode.EDIT_DOCTOR:
           this.userFormGroup = this.createFormGroup(FormPart.DOCTOR);
+          this.userFormGroup.get("account.username")?.clearAsyncValidators();
+          this.userFormGroup.get("account.phone")?.clearAsyncValidators();
+          this.userFormGroup.get("account.email")?.clearAsyncValidators();
+          this.userFormGroup.get("cin")?.clearAsyncValidators();
+          this.userFormGroup.get("matricule")?.clearAsyncValidators();
+          this.userFormGroup.get("account.password")?.removeValidators([Validators.required])
+          this.userFormGroup.get("account.confirmPassword")?.removeValidators([Validators.required])
           this.cardTitle = "Edit Doctor";
           break;
         case DialogMode.EDIT_ORGANIZATION:
           this.userFormGroup = this.createFormGroup(FormPart.ORGANIZATION);
+          this.userFormGroup.get("account.username")?.clearAsyncValidators();
+          this.userFormGroup.get("account.phone")?.clearAsyncValidators();
+          this.userFormGroup.get("account.email")?.clearAsyncValidators();
+          this.userFormGroup.get("matriculeFiscale")?.clearAsyncValidators();
+          this.userFormGroup.get("account.password")?.removeValidators([Validators.required])
+          this.userFormGroup.get("account.confirmPassword")?.removeValidators([Validators.required])
           this.cardTitle = "Edit Organization";
           break;
         default:
@@ -155,26 +179,29 @@ export class AdminEditUsersDialogComponent implements OnInit {
     this._usersService.getAccountById(this.data.userId)
       .subscribe(account => {
         if (account.id_compte !== undefined && account.role !== undefined) {
-          this._usersService.getUserById(account.id_compte, account.role).subscribe(value => {
+          this._usersService.getAnyUserById(account.id_compte, account.role).subscribe(anyUser => {
 
             if (this.mode !== undefined) {
 
-              switch (this.mode) {
-                case DialogMode.EDIT_ORGANIZATION:
+              this.userFormGroup.patchValue({
+                ...anyUser,
+              });
+              this.userFormGroup.patchValue({
+                account: {
+                  ...account,
+                  password: account.password,
+                  confirmPassword: account.password
+                }
+              });
+              if(this.mode !== DialogMode.EDIT_ORGANIZATION) {
+
+                this._usersService.getUserById(account.id_compte).subscribe(user => {
                   this.userFormGroup.patchValue({
-                    ...value,
+                    ...user,
                   });
-                  this.userFormGroup.patchValue({
-                    account: {
-                      ...account,
-                      password: account.password,
-                      confirmPassword: account.password
-                    }
-                  });
-                  break;
+                });
+
               }
-
-
             }
           });
         }
@@ -354,94 +381,69 @@ export class AdminEditUsersDialogComponent implements OnInit {
           });
           break;
         case DialogMode.EDIT_ORGANIZATION:
-          if (this.user != undefined && this.user.account != undefined) {
-            const updatedOrganization: Organization  = {
-              id_compte: -1,
+            const _updatedOrganization: Organization = {
+              id_compte: this.data.userId,
+              account: {
+                id_compte: this.data.userId,
+                username: this.userFormGroup.get("account")?.get("username")?.value,
+                password: this.userFormGroup.get("account")?.get("password")?.value,
+                email: this.userFormGroup.get("account")?.get("email")?.value,
+                phone: this.userFormGroup.get("account")?.get("phone")?.value
+              },
               address: {
                 street: this.userFormGroup.get("address")?.get('street')?.value,
                 city: this.userFormGroup.get("address")?.get('city')?.value,
                 zipcode: this.userFormGroup.get("address")?.get('zipcode')?.value,
               },
-              formeJuridique: this.userFormGroup.get("formeJuridique")?.value,
-              matriculeFiscale: this.userFormGroup.get("matriculeFiscale")?.value,
               name: this.userFormGroup.get("name")?.value,
-              account: {
-                id_compte: this.user.account.id_compte,
-                role: this.user.account.role,
-                status: this.user.account.status,
-                password: this.userFormGroup.get("account")?.get('password')?.value,
-                username: this.userFormGroup.get("account")?.get('username')?.value,
-                phone: this.userFormGroup.get("phone")?.value,
-                email: this.userFormGroup.get("email")?.value,
-                photo: ""
-              }
+              matriculeFiscale: this.userFormGroup.get("matriculeFiscale")?.value,
+              formeJuridique: this.userFormGroup.get("formeJuridique")?.value,
             }
-
-            if (updatedOrganization.account != undefined) {
-              this._usersService.editAccount(updatedOrganization.account).subscribe(account => {
-                console.log(account);
-                this._usersService.editOrganization(updatedOrganization).subscribe(organization => {
-                  console.log(organization)
-                });
-              });
-            }
-          }
-
+          this._usersService.editOrganization(_updatedOrganization,this.data.userId).subscribe(organization => {
+            console.log(organization);
+          },error => {
+            console.log(error)
+          });
           break;
         case DialogMode.EDIT_DOCTOR:
-          if (this.user != undefined && this.user.account != undefined) {
-            const updatedDoctor: Doctor  = {
-              id_user: -1,
+            const _updatedDoctor: Doctor  = {
+              id_user: this.data.userId,
               account: {
-                id_compte: this.user.account.id_compte,
-                role: this.user.account.role,
-                status: this.user.account.status,
-                password: this.userFormGroup.get("account")?.get('password')?.value,
-                username: this.userFormGroup.get("account")?.get('username')?.value,
-                phone: this.userFormGroup.get("phone")?.value,
-                email: this.userFormGroup.get("email")?.value,
-                photo: ""
+                id_compte: this.data.userId,
+                username: this.userFormGroup.get("account")?.get("username")?.value,
+                password: this.userFormGroup.get("account")?.get("password")?.value,
+                email: this.userFormGroup.get("account")?.get("email")?.value,
+                phone: this.userFormGroup.get("account")?.get("phone")?.value
               },
               address: {
                 street: this.userFormGroup.get("address")?.get('street')?.value,
                 city: this.userFormGroup.get("address")?.get('city')?.value,
                 zipcode: this.userFormGroup.get("address")?.get('zipcode')?.value,
               },
-              dateOfBirth: this.userFormGroup.get("dateOfBirth")?.value,
-              firstname: this.userFormGroup.get("firstname")?.value,
-              lastname: this.userFormGroup.get("lastname")?.value,
-              gender: this.userFormGroup.get("gender")?.value,
-
               assurance: this.userFormGroup.get("assurance")?.value,
               cin: this.userFormGroup.get("cin")?.value,
+              dateOfBirth: this.userFormGroup.get("dateOfBirth")?.value,
+              firstname: this.userFormGroup.get("firstname")?.value,
+              gender: this.userFormGroup.get("gender")?.value,
+              lastname: this.userFormGroup.get("lastname")?.value,
               matricule: this.userFormGroup.get("matricule")?.value,
               specialty: this.userFormGroup.get("specialty")?.value,
-
             }
-
-            if (updatedDoctor.account != undefined) {
-              this._usersService.editAccount(updatedDoctor.account).subscribe(account => {
-                console.log(account);
-                this._usersService.editDoctor(updatedDoctor).subscribe(doctor => {
-                  console.log(doctor)
-                });
-              });
-            }
-          }
+          this._usersService.editDoctor(_updatedDoctor,this.data.userId).subscribe(doctor => {
+            console.log(doctor);
+          },error => {
+            console.log(error)
+          });
           break;
         case DialogMode.EDIT_BENEVOLE:
-          if (this.user != undefined && this.user.account != undefined) {
-            const updatedBenevole: Benevole  = {
-              id_user: -1,
+            const _updatedBenevole: Benevole  = {
+              id_user: this.data.userId,
               account: {
-                id_compte: this.user.account.id_compte,
-                role: this.user.account.role,
-                status: this.user.account.status,
-                password: this.userFormGroup.get("account")?.get('password')?.value,
-                username: this.userFormGroup.get("account")?.get('username')?.value,
-                phone: this.userFormGroup.get("phone")?.value,
-                email: this.userFormGroup.get("email")?.value,
-                photo: ""
+                id_compte: this.data.userId,
+                username: this.userFormGroup.get("account")?.get("username")?.value,
+                password: this.userFormGroup.get("account")?.get("password")?.value,
+                email: this.userFormGroup.get("account")?.get("email")?.value,
+                phone: this.userFormGroup.get("account")?.get("phone")?.value
               },
               address: {
                 street: this.userFormGroup.get("address")?.get('street')?.value,
@@ -450,35 +452,25 @@ export class AdminEditUsersDialogComponent implements OnInit {
               },
               dateOfBirth: this.userFormGroup.get("dateOfBirth")?.value,
               firstname: this.userFormGroup.get("firstname")?.value,
-              lastname: this.userFormGroup.get("lastname")?.value,
               gender: this.userFormGroup.get("gender")?.value,
-
-              profession: this.userFormGroup.get("profession")?.value,
+              lastname: this.userFormGroup.get("lastname")?.value,
+              profession: this.userFormGroup.get("profession")?.value
             }
-
-            if (updatedBenevole.account != undefined) {
-              this._usersService.editAccount(updatedBenevole.account).subscribe(account => {
-                console.log(account);
-                this._usersService.editBenevole(updatedBenevole).subscribe(benevole => {
-                  console.log(benevole)
-                });
-              });
-            }
-          }
+          this._usersService.editBenevole(_updatedBenevole,this.data.userId).subscribe(benevole => {
+            console.log(benevole);
+          },error => {
+            console.log(error)
+          });
           break;
         case DialogMode.EDIT_BENEFICIER:
-          if (this.user != undefined && this.user.account != undefined) {
-            const updatedBeneficier: Beneficier  = {
-              id_user:-1,
+            const _updatedBeneficier: Beneficier  = {
+              id_user: this.data.userId,
               account: {
-                id_compte: this.user.account.id_compte,
-                role: this.user.account.role,
-                status: this.user.account.status,
-                password: this.userFormGroup.get("account")?.get('password')?.value,
-                username: this.userFormGroup.get("account")?.get('username')?.value,
-                phone: this.userFormGroup.get("phone")?.value,
-                email: this.userFormGroup.get("email")?.value,
-                photo: ""
+                id_compte: this.data.userId,
+                username: this.userFormGroup.get("account")?.get("username")?.value,
+                password: this.userFormGroup.get("account")?.get("password")?.value,
+                email: this.userFormGroup.get("account")?.get("email")?.value,
+                phone: this.userFormGroup.get("account")?.get("phone")?.value
               },
               address: {
                 street: this.userFormGroup.get("address")?.get('street')?.value,
@@ -487,22 +479,17 @@ export class AdminEditUsersDialogComponent implements OnInit {
               },
               dateOfBirth: this.userFormGroup.get("dateOfBirth")?.value,
               firstname: this.userFormGroup.get("firstname")?.value,
-              lastname: this.userFormGroup.get("lastname")?.value,
               gender: this.userFormGroup.get("gender")?.value,
-
+              lastname: this.userFormGroup.get("lastname")?.value,
               carteHandicapNumber: this.userFormGroup.get("carteHandicapNumber")?.value,
-              dateExpiration: this.userFormGroup.get("dateExpiration")?.value
+              dateExpiration: this.userFormGroup.get("dateExpiration")?.value,
             }
 
-            if (updatedBeneficier.account != undefined) {
-              this._usersService.editAccount(updatedBeneficier.account).subscribe(account => {
-                console.log(account);
-                this._usersService.editBeneficier(updatedBeneficier).subscribe(beneficier => {
-                  console.log(beneficier)
-                });
-              });
-            }
-          }
+            this._usersService.editBeneficier(_updatedBeneficier,this.data.userId).subscribe(beneficier => {
+              console.log(beneficier);
+            },error => {
+              console.log(error)
+            });
           break;
       }
     }

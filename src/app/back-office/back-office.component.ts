@@ -11,6 +11,8 @@ export class BackOfficeComponent implements OnInit {
   isOpenSideBar: boolean = false;
   constructor() { }
 
+  currentUser: Account | undefined;
+
   ngOnInit(): void {
   }
 
@@ -18,6 +20,7 @@ export class BackOfficeComponent implements OnInit {
     this.isOpenSideBar = !this.isOpenSideBar;
   }
 
-  onGetCurrentUserEvent($event: Account) {
+  onGetCurrentUserEvent(account: Account) {
+    this.currentUser = account;
   }
 }

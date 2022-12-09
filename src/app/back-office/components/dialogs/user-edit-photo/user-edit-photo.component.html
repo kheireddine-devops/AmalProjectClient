@@ -1,0 +1,23 @@
+<mat-card-header>
+  <mat-card-title>Mettre à jour la photo de profil</mat-card-title>
+</mat-card-header>
+<mat-dialog-content>
+  <input class="visually-hidden" id="input-file-id" multiple="false" type="file" accept="image/*" (change)="selectFile($event)" />
+  <label for="input-file-id"><a  mat-stroked-button color="primary"> + importer une photo</a></label>
+
+  <div class="mt-3">
+    <img width="150" height="150" alt="" title="" [src]="preview" class="preview">
+  </div>
+
+<!--  <div class="mt-3 edit-photo-progress-bar">-->
+<!--    <p>{{progress}}%</p>-->
+<!--    <mat-progress-bar mode="determinate" [value]="progress"></mat-progress-bar>-->
+<!--  </div>-->
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Retour</button>
+  <button mat-button [disabled]="!selectedFiles" (click)="upload()">upload</button>
+</mat-dialog-actions>
+
+

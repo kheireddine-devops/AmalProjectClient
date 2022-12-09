@@ -8,7 +8,7 @@
   <!-- Content Start -->
   <div [style.z-index]="100" class="content" [class.open]="isOpenSideBar">
     <!-- Navbar Start -->
-    <app-navbar (OnToggleSidebarEvent)="isOpenSideBar = $event"></app-navbar>
+    <app-navbar (OnToggleSidebarEvent)="isOpenSideBar = $event" [currentUser]="currentUser"></app-navbar>
     <!-- Navbar End -->
 
     <router-outlet></router-outlet>

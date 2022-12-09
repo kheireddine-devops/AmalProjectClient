@@ -2,6 +2,12 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Account, RoleEnum} from "../../core/entities/users";
 import {AccountService} from "../../core/services/account.service";
 import {ActivatedRoute, Router} from "@angular/router";
+import {
+  AdminUserDetailsDialogComponent
+} from "../components/dialogs/admin-user-details-dialog/admin-user-details-dialog.component";
+import {UserEditPhotoComponent} from "../components/dialogs/user-edit-photo/user-edit-photo.component";
+import {MatDialog} from "@angular/material/dialog";
+import {environment} from "../../../environments/environment";
 
 
 @Component({
@@ -12,14 +18,18 @@ import {ActivatedRoute, Router} from "@angular/router";
 export class SideBarComponent implements OnInit {
 
   @Input("isOpenSideBar") isOpenSideBar: boolean = false;
-  @Input("mode") mode:RoleEnum | undefined;
+  @Input("mode") mode: RoleEnum | undefined;
 
   menus: Array<MenuItem> = [];
   currentUser: Account | undefined;
 
+  URL = `${environment.url}/images/users/`;
+
   @Output("CurrentUserEvent") CurrentUserEvent: EventEmitter<Account> = new EventEmitter<Account>();
 
-  constructor(private _accountService: AccountService,private _router: Router, private _activatedRoute: ActivatedRoute) {
+  constructor(private _accountService: AccountService,
+              private _router: Router,
+              private _activatedRoute: ActivatedRoute) {
     // this.mode = (this._router.getCurrentNavigation()?.extras?.state?.['role']);
   }
 
@@ -31,14 +41,25 @@ export class SideBarComponent implements OnInit {
         this.currentUser = currentUser;
         this.CurrentUserEvent.emit(this.currentUser);
         switch (this.currentUser.role) {
-          case RoleEnum.ADMIN: this.menus = ADMIN_MENU; break;
-          case RoleEnum.BENEFICIER: this.menus = BENEFICIER_MENU; break;
-          case RoleEnum.BENEVOLE: this.menus = BENEVOLE_MENU; break;
-          case RoleEnum.DOCTOR: this.menus = DOCTOR_MENU; break;
-          case RoleEnum.ORGANIZATION: this.menus = ORGANIZATION_MENU; break;
-          default: console.error("unknown user")
+          case RoleEnum.ADMIN:
+            this.menus = ADMIN_MENU;
+            break;
+          case RoleEnum.BENEFICIER:
+            this.menus = BENEFICIER_MENU;
+            break;
+          case RoleEnum.BENEVOLE:
+            this.menus = BENEVOLE_MENU;
+            break;
+          case RoleEnum.DOCTOR:
+            this.menus = DOCTOR_MENU;
+            break;
+          case RoleEnum.ORGANIZATION:
+            this.menus = ORGANIZATION_MENU;
+            break;
+          default:
+            console.error("unknown user")
         }
-      },error => {
+      }, error => {
         console.log(error);
       })
     }
@@ -56,14 +77,7 @@ export class SideBarComponent implements OnInit {
     //     // Object.values(RoleEnum).includes(this.mode as RoleEnum)
     //
     //   }
-
     // })
-
-
-  }
-
-  onEditPhoto() {
-
   }
 }
 
@@ -78,7 +92,6 @@ interface MenuItem {
   path: string,
   subMenu?: Array<SubMenuItem>
 }
-
 
 const ADMIN_MENU: Array<MenuItem> = [
   {path: '/BackOffice/admin/dashboard', text: 'Dashboard', icon: 'fa fa-tachometer-alt'},
@@ -162,10 +175,6 @@ const DOCTOR_MENU: Array<MenuItem> = [
     ]
   }
 ];
-
-
-
-
 
 const BENEFICIER_MENU: Array<MenuItem> = [
   {path: '/BackOffice/beneficier/dashboard', text: 'Dashboard', icon: 'fa fa-tachometer-alt'},
