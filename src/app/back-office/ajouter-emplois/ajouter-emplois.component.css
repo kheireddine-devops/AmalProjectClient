@@ -1,0 +1,17 @@
+.page-title{
+    margin-bottom: 40px;
+     margin-top: 40px;
+     
+     
+}
+.title{
+    background-color: #B2B2B2;
+    border-radius:5px;
+    color: white;
+    height: 40px;
+    padding-top:10px ;
+    text-align: center;
+}
+.container-fluid{
+    width: 80%;
+}

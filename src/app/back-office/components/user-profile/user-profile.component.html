@@ -1,1 +1,47 @@
-<p>user-profile works!</p>
+<div class="user-profile py-3">
+  <div class="user-profile-infos">
+    <div class="card user-profile-cover">
+      <img src="assets/images/template/landscape.jpg">
+      <div class="bg-contrast-black"></div>
+    </div>
+    <div class="user-profile-bar">
+      <div class="user-profile-photo">
+        <img [src]="(this.currentAccount?.photo) ? URL+this.currentAccount?.photo: 'assets/images/users/USER-UNKNOWN.jpg'">
+      </div>
+      <div class="user-edit-photo" (click)="onEditPhoto()">
+        <mat-icon mat-list-icon>photo_camera</mat-icon>
+      </div>
+      <div class="user-profile-name">
+        {{name}}
+      </div>
+    </div>
+  </div>
+
+  <mat-card class="my-4 user-about">
+    <mat-card-header>
+      <mat-card-title>About</mat-card-title>
+    </mat-card-header>
+    <mat-dialog-content>
+      <mat-list>
+        <ng-container>
+          <mat-list-item>
+            <mat-icon mat-list-icon>badge</mat-icon>
+            <div mat-line>{{name}}</div>
+          </mat-list-item>
+          <mat-list-item>
+            <mat-icon mat-list-icon>mail</mat-icon>
+            <div mat-line>{{currentAccount?.email}}</div>
+          </mat-list-item>
+          <mat-list-item>
+            <mat-icon mat-list-icon>vpn_key</mat-icon>
+            <div mat-line>{{currentAccount?.username}}</div>
+          </mat-list-item>
+          <mat-list-item>
+            <mat-icon mat-list-icon>phone_android</mat-icon>
+            <div mat-line>{{currentAccount?.phone}}</div>
+          </mat-list-item>
+        </ng-container>
+      </mat-list>
+    </mat-dialog-content>
+  </mat-card>
+</div>

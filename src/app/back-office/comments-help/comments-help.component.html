@@ -2,30 +2,32 @@
     <div class="bg-light text-center rounded p-4">
         <div class="d-flex align-items-center justify-content-between mb-4">
             <h6 class="mb-0">Commentaires</h6>
-            <a href="">Voir Plus</a>
+            
         </div>
         <div class="table-responsive">
             <table class="table text-start align-middle table-bordered table-hover mb-0">
                 <thead>
                     <tr class="text-dark">
-                        <th scope="col"><input class="form-check-input" type="checkbox"></th>
+
                         <th scope="col">Nom</th>
                         <th scope="col">Prénom</th>
                         <th scope="col">Commentaires</th>
                         <th scope="col">Date</th>
+                        <th scope="col">Nombre like</th>
                         <th scope="col">Status</th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let c of ListComment">
-                        <td><input class="form-check-input" type="checkbox"></td>
-                        <td>KHLIFI</td>
-                        <td>Ameni</td>
-                        <td>{{c.comment}}</td>
-                        <td>{{c.dateComment| date}}</td>
+                    <tr *ngFor="let c of ListComment; index as i">
+                        
+                        <td>{{c.nom}}</td>
+                        <td>{{c.prenom}}</td>
+                        <td>{{c.txtCommentaire}}</td>
+                        <td>{{c.dateCommentaire| date}}</td>
+                        <td>{{c.like}}</td>
                         <td>{{c.status}}</td>
-                        <td><button type="submit" class="btn btn-square btn-danger m-2" (click)="delete(c)"><i class="fa fa-trash"></i>
+                        <td><button type="submit" class="btn btn-square btn-danger m-2" (click)="delete(c.idCommentaire,i)"><i class="fa fa-trash"></i>
                         </button> <button type="submit" class="btn btn-square btn-primary m-2"><i class="fa fa-edit"></i></button></td>
                     </tr>
                     
@@ -62,7 +64,7 @@
                     <form #f="ngForm">
                         <div class="form-floating">
                             <textarea class="form-control" placeholder="Leave a comment here"
-                                id="floatingTextarea" style="height: 150px;" name="commentHelp" ngModel #com="ngModel" required minlength="50" maxlength="500" [(ngModel)]="commenthelp.comment"></textarea>
+                                id="floatingTextarea" style="height: 150px;" name="commentHelp" ngModel #com="ngModel" required minlength="50" maxlength="500" [(ngModel)]="commenthelp.txtCommentaire"></textarea>
                             <label for="floatingTextarea">Commentaire</label>
                         </div><br>
                         <div class="alert alert-danger" *ngIf="com.invalid && com.touched">
@@ -72,16 +74,16 @@
                         </div>
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="status" ngModel #status="ngModel"
-                                id="flexRadioDefault1" value="Published" [(ngModel)]="commenthelp.status">
+                                id="flexRadioDefault1" value="Publié" [(ngModel)]="commenthelp.status">
                             <label class="form-check-label" for="flexRadioDefault1">
-                                Published
+                                Publié
                             </label>
                         </div>
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="status" ngModel #status="ngModel"
-                                id="flexRadioDefault2" value="Unpublished" [(ngModel)]="commenthelp.status">
+                                id="flexRadioDefault2" value="Non publié" [(ngModel)]="commenthelp.status">
                             <label class="form-check-label" for="flexRadioDefault2">
-                                Unpublished
+                                Non publié
                             </label>
                         </div>
                         <button type="submit" class="btn btn-outline-primary m-2" [disabled]="f.invalid" (click)="save()"><i class="fa fa-save me-2"></i>Commenter</button>

@@ -2,6 +2,12 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Account, RoleEnum} from "../../core/entities/users";
 import {AccountService} from "../../core/services/account.service";
 import {ActivatedRoute, Router} from "@angular/router";
+import {
+  AdminUserDetailsDialogComponent
+} from "../components/dialogs/admin-user-details-dialog/admin-user-details-dialog.component";
+import {UserEditPhotoComponent} from "../components/dialogs/user-edit-photo/user-edit-photo.component";
+import {MatDialog} from "@angular/material/dialog";
+import {environment} from "../../../environments/environment";
 
 
 @Component({
@@ -12,14 +18,18 @@ import {ActivatedRoute, Router} from "@angular/router";
 export class SideBarComponent implements OnInit {
 
   @Input("isOpenSideBar") isOpenSideBar: boolean = false;
-  @Input("mode") mode:RoleEnum | undefined;
+  @Input("mode") mode: RoleEnum | undefined;
 
   menus: Array<MenuItem> = [];
   currentUser: Account | undefined;
 
+  URL = `${environment.url}/images/users/`;
+
   @Output("CurrentUserEvent") CurrentUserEvent: EventEmitter<Account> = new EventEmitter<Account>();
 
-  constructor(private _accountService: AccountService,private _router: Router, private _activatedRoute: ActivatedRoute) {
+  constructor(private _accountService: AccountService,
+              private _router: Router,
+              private _activatedRoute: ActivatedRoute) {
     // this.mode = (this._router.getCurrentNavigation()?.extras?.state?.['role']);
   }
 
@@ -31,14 +41,25 @@ export class SideBarComponent implements OnInit {
         this.currentUser = currentUser;
         this.CurrentUserEvent.emit(this.currentUser);
         switch (this.currentUser.role) {
-          case RoleEnum.ADMIN: this.menus = ADMIN_MENU; break;
-          case RoleEnum.BENEFICIER: this.menus = BENEFICIER_MENU; break;
-          case RoleEnum.BENEVOLE: this.menus = BENEVOLE_MENU; break;
-          case RoleEnum.DOCTOR: this.menus = DOCTOR_MENU; break;
-          case RoleEnum.ORGANIZATION: this.menus = ORGANIZATION_MENU; break;
-          default: console.error("unknown user")
+          case RoleEnum.ADMIN:
+            this.menus = ADMIN_MENU;
+            break;
+          case RoleEnum.BENEFICIER:
+            this.menus = BENEFICIER_MENU;
+            break;
+          case RoleEnum.BENEVOLE:
+            this.menus = BENEVOLE_MENU;
+            break;
+          case RoleEnum.DOCTOR:
+            this.menus = DOCTOR_MENU;
+            break;
+          case RoleEnum.ORGANIZATION:
+            this.menus = ORGANIZATION_MENU;
+            break;
+          default:
+            console.error("unknown user")
         }
-      },error => {
+      }, error => {
         console.log(error);
       })
     }
@@ -56,14 +77,7 @@ export class SideBarComponent implements OnInit {
     //     // Object.values(RoleEnum).includes(this.mode as RoleEnum)
     //
     //   }
-
     // })
-
-
-  }
-
-  onEditPhoto() {
-
   }
 }
 
@@ -79,7 +93,6 @@ interface MenuItem {
   subMenu?: Array<SubMenuItem>
 }
 
-
 const ADMIN_MENU: Array<MenuItem> = [
   {path: '/BackOffice/admin/dashboard', text: 'Dashboard', icon: 'fa fa-tachometer-alt'},
   // {path: '/BackOffice/admin/my-profile', text: 'My Profile', icon: 'fa fa-keyboard'},
@@ -88,11 +101,11 @@ const ADMIN_MENU: Array<MenuItem> = [
   {
     path: "",
     text: "Boutique",
-    icon: "fa fa-laptop",
+    icon: "fa fa-shopping-cart",
     subMenu: [
-      {path: "/BackOffice/gestionboutique", text: "Ajouter"},
-      {path: "/BackOffice/link-1", text: "Afficher"},
-      {path: "/BackOffice/link-2", text: "Gestion Commentaire"}
+      {path: "/BackOffice/gestionboutique", text: "Ajouter Produit"},
+      {path: "/BackOffice/store-produit", text: "Liste Produit"},
+      {path: "/BackOffice/gestionavis", text: "Gestion Avis"}
     ]
   },
   {
@@ -100,12 +113,20 @@ const ADMIN_MENU: Array<MenuItem> = [
     text: "Gestion de Formation",
     icon: "fa fa-laptop",
     subMenu: [
-      {path: "/BackOffice/gestionFormation", text: "Gestion Formation"},
-      {path: "/BackOffice/reserverFormation", text: "Réserver Formations"},
-      {path: "/BackOffice/gestionTutoriels", text: "Gestion Tutoriels"}
+      {path: "/BackOffice/gestionFormation", text: "Gestion Formations"},
+      {path: "/BackOffice/gestionPlaylist", text: "Gestion Playlists"}
     ]
   },
-  {path: '/BackOffice/gestionaides', text:'Gestion D\'aides', icon: 'fa fa-tachometer-alt'},
+  {
+    path: "",
+    text: "Gestion D\'aides",
+    icon: "fa fa-tachometer-alt",
+    subMenu: [
+      {path: "/BackOffice/gestionaides", text: "Gestion D\'aides "},
+      {path: "/BackOffice/ajouteraide", text: "Ajoutez Aides"},
+
+    ]
+  },
   // {path: '/BackOffice/KPIformation', text: 'Users', icon: 'fa fa-th'},
   {path: "/BackOffice/gestionrapport", text: "Consulter Rapports", icon: 'fa fa-th'},
   {
@@ -116,7 +137,7 @@ const ADMIN_MENU: Array<MenuItem> = [
       {path: "/BackOffice/admin/emplois", text: "Liste des offres d'emplois"},
       {path: "/BackOffice/admin/ajouteremploi", text: "Ajouter une offre"},
       {path: "/BackOffice/admin/link-1", text: "Statéstique"},
-      {path: "/BackOffice/admin/linl-2", text: "Mes candidatures"}
+      {path: "/BackOffice/admin/candidatures", text: "Mes candidatures"}
     ]
   },
   {
@@ -163,15 +184,19 @@ const DOCTOR_MENU: Array<MenuItem> = [
   }
 ];
 
-
-
-
-
 const BENEFICIER_MENU: Array<MenuItem> = [
   {path: '/BackOffice/beneficier/dashboard', text: 'Dashboard', icon: 'fa fa-tachometer-alt'},
   {path: '/BackOffice/beneficier/my-profile', text: 'My Profile', icon: 'fa fa-keyboard'},
   // {path: '/BackOffice/beneficier/my-profile/edit', text: 'Edit Profile', icon: 'fa fa-keyboard'},
-  {path: '/BackOffice/gestionaides', text:'Gestion D\'aides', icon: 'fa fa-tachometer-alt'},
+  {
+    path: "",
+    text: "Gestion D\'aides",
+    icon: "fa fa-tachometer-alt",
+    subMenu: [
+      {path: "/BackOffice/gestionaidesbenif", text: "Gestion Demandes D\'aides "},
+      {path: "/BackOffice/addaidebenif", text: "Ajoutez Demnde D'ide"},
+    ]
+  },
   {path: "/BackOffice/reserverFormation", text: "Réserver Formations", icon: 'fa fa-laptop'},
   {
     path: '',

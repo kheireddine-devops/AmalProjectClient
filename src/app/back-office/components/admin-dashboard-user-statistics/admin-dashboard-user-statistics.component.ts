@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {UsersService} from "../../../core/services/users.service";
 
 @Component({
   selector: 'app-admin-dashboard-user-statistics',
@@ -6,15 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./admin-dashboard-user-statistics.component.css']
 })
 export class AdminDashboardUserStatisticsComponent implements OnInit {
-  usersData = [
-    { name: "Organization", value: 283 },
-    { name: "Benevole", value: 892 },
-    { name: "Beneficier", value: 3985 },
-    { name: "Doctor", value: 87 }
-  ];
-  constructor() { }
+  usersData:Array<{name: string, value: number}> = [];
+  constructor(private _usersService: UsersService) { }
 
   ngOnInit(): void {
+    this._usersService.getNumberOfUsersByRole().subscribe(value => {
+      this.usersData = value;
+    })
   }
 
 }

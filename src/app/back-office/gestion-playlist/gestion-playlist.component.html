@@ -1,0 +1,42 @@
+
+
+<h3 class="heading"></h3><br>
+<div class="container">
+
+   <div class="row">
+
+<h2 class="heading text-center">LISTE DES PLAYLISTES</h2>
+
+
+
+<button style="margin-top: 30px; margin-bottom: 30px; margin-left: 30px; height: 50px; width: 1000px;" class="btn btn-success btn-lg" (click)="onAddPlaylist()"  mat-raised-button > Ajouter Playliste </button>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Nom de playliste</th>
+      <th scope="col" >date de création</th>
+      <th scope="col" style="text-align: center;">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    <!-- ajout des valeur  des playlist -->
+    <tr *ngFor="let p of listePlaylist ;let i= index">
+<td width="400px" height="auto">
+  <a (click)="showPlaylist(p.id_playlist,p)" [routerLink]="'Playlist/gestionvideo/'+p.id_playlist" >{{p.Nom_playlist}}</a>
+</td>
+<td  width="200px">{{p.date_create}}</td>
+<td   width="300px" >
+<button style="  height: 50px; width: 160px;" class="btn btn-secondary btn-lg"(click)="onUpdatePlaylist(p.id_playlist,p)" mat-raised-button> Modifier </button>
+<button   style="  height: 50px; width: 160px;" class="btn btn-danger btn-lg" mat-raised-button (click)="removePlayliste(p.id_playlist)"> Supprimer  </button>
+
+</td>
+    </tr>
+
+  </tbody>
+</table>
+
+
+</div>
+</div>

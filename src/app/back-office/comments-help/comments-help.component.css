@@ -1,3 +1,17 @@
 .containerComment{
     border-radius: 20px;
 }
+table{
+    background-color: white;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 11pt;
+    border-radius: 10px;
+    box-shadow: 0px 2px 15px rgb(0 0 0 / 10%);
+    width: 100%;
+}
+th{
+    color:#009CFF;
+    font-size: 12pt;
+    text-align: center;
+    font-weight: initial;
+}

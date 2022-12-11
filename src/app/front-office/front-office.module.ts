@@ -8,8 +8,7 @@ import { CommonModule } from '@angular/common';
 import { FrontOfficeRoutingModule } from './front-office-routing.module';
 import { FrontOfficeComponent } from './front-office.component';
 
-import { CartComponent } from './cart/cart.component';
-import { PlaylisteComponent } from './playliste/playliste.component';
+
 import {MatListModule} from '@angular/material/list';
 import { GuestLoginComponent } from './guest-login/guest-login.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
@@ -22,7 +21,6 @@ import {FrontOfficeMaterialModule} from "../core/material/front-office-material.
 import {MAT_DATE_LOCALE} from "@angular/material/core";
 import { GuestFooterComponent } from './guest-footer/guest-footer.component';
 import { GuestToolbarComponent } from './guest-toolbar/guest-toolbar.component';
-import { CandidaturesComponent } from './candidatures/candidatures.component';
 import { TousEmploisComponent } from './tous-emplois/tous-emplois.component';
 import { PostulerComponent } from './postuler/postuler.component';
 import {HelpShowComponent} from "./help-show/help-show.component";
@@ -32,6 +30,12 @@ import {StoreComponent} from "./store/store.component";
 import {CategoriesComponent} from "./categories/categories.component";
 import {ArticlePageComponent} from "./article-page/article-page.component";
 import {SearchComponent} from "./search/search.component";
+import {NgxPaginationModule} from "ngx-pagination";
+import {MatDialogModule} from "@angular/material/dialog";
+import {SharedModule} from "../shared/shared.module";
+import {CartComponent} from "./cart/cart.component";
+import {PlaylisteComponent} from "./playliste/playliste.component";
+import {ViewPlaylistComponent} from "./view-playlist/view-playlist.component";
 
 
 @NgModule({
@@ -45,19 +49,19 @@ import {SearchComponent} from "./search/search.component";
         GuestHomeComponent,
         GuestFooterComponent,
         GuestToolbarComponent,
-        CandidaturesComponent,
         TousEmploisComponent,
         PostulerComponent,
         FrontOfficeComponent,
-        CartComponent,
-        PlaylisteComponent,
         HelpShowComponent,
         HelpDetailsComponent,
         DonsComponent,
         StoreComponent,
         SearchComponent,
         CategoriesComponent,
-        ArticlePageComponent
+        ArticlePageComponent,
+        CartComponent,
+        PlaylisteComponent,
+        ViewPlaylistComponent
     ],
     imports: [
         CommonModule,
@@ -65,11 +69,14 @@ import {SearchComponent} from "./search/search.component";
         FrontOfficeRoutingModule,
         FormsModule,
         ReactiveFormsModule,
+        SharedModule,
 
         RouterModule,
         HttpClientModule,
         MatIconModule,
         MatListModule,
+        MatDialogModule,
+        NgxPaginationModule
     ],
     providers: [
         {provide: MAT_DATE_LOCALE, useValue: 'fr-FR'},

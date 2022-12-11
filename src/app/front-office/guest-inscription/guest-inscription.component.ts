@@ -153,25 +153,25 @@ export class GuestInscriptionComponent implements OnInit {
           this.userFormGroup = this.createFormGroup(FormPart.BENEFICIER);
           this.inscriptionIcon = "assets/img/volunteer.png";
           this.inscriptionImage = "assets/images/template/piclogin.svg";
-          this.initBeneficierValues();
+          //this.initBeneficierValues();
           break;
         case InscriptionModeEnum.benevole:
           this.userFormGroup = this.createFormGroup(FormPart.BENEVOLE);
           this.inscriptionIcon = "assets/img/donation.png";
           this.inscriptionImage = "assets/images/template/piclogin.svg";
-          this.initBenevoleValues();
+          //this.initBenevoleValues();
           break;
         case InscriptionModeEnum.doctor:
           this.userFormGroup = this.createFormGroup(FormPart.DOCTOR);
           this.inscriptionIcon = "assets/img/medical-team.png";
           this.inscriptionImage = "assets/images/template/piclogin.svg";
-          this.initDoctorValues();
+          //this.initDoctorValues();
           break;
         case InscriptionModeEnum.organization:
           this.userFormGroup = this.createFormGroup(FormPart.ORGANIZATION);
           this.inscriptionIcon = "assets/img/corporation.png";
           this.inscriptionImage = "assets/images/template/piclogin.svg";
-          this.initOrganizationValues();
+          //this.initOrganizationValues();
           break;
         default:
           this.userFormGroup = this.createFormGroup(FormPart.INIT);
@@ -461,11 +461,11 @@ export enum InscriptionModeEnum {
 }
 
 export const DOCTOR_SPECIALTIES: Array<string> = [
-  "Cardiologue  (Cœur)",
+  "Cardiologue (Cœur)",
   "Chirurgien Esthétique",
   "Chirurgien Orthopédiste Traumatologue",
-  "Dentiste  (Dents)",
-  "Dermatologue  (Peau)",
+  "Dentiste (Dents)",
+  "Dermatologue (Peau)",
   "Endocrinologue Diabétologue",
   "Gastro-entérologue",
   "G'énéraliste",
@@ -475,11 +475,11 @@ export const DOCTOR_SPECIALTIES: Array<string> = [
   "Néphrologue",
   "Neurologue  (Cerveau et Nerfs)",
   "Nutritionniste",
-  "Ophtalmologue  (Yeux)",
-  "Oto-Rhino-Laryngologiste (ORL)  (Oreille nez gorge)",
-  "Pédiatre  (Enfant)",
+  "Ophtalmologue (Yeux)",
+  "Oto-Rhino-Laryngologiste (ORL) (Oreille nez gorge)",
+  "Pédiatre (Enfant)",
   "Pneumologue",
-  "Psychiatre  (Troubles mentaux)",
+  "Psychiatre (Troubles mentaux)",
   "Psychothérapeute",
   "Radiologue",
   "Rhumatologue",

@@ -1,8 +1,8 @@
 import { HelpService } from '../../core/services/help.service';
 import { CommentHelpService } from '../../core/services/comment-help.service';
 import { Component, OnInit } from '@angular/core';
-import { CommentHelp } from 'src/app/core/entities/CommentHelp';
-import { Help } from 'src/app/core/entities/Help';
+import { commentaireaide } from 'src/app/core/entities/CommentHelp';
+import { demandeaide } from 'src/app/core/entities/Help';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -11,9 +11,9 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./help-details.component.css']
 })
 export class HelpDetailsComponent implements OnInit {
-  commenthelp !: CommentHelp;
-  listComment :CommentHelp[]=[];
-  help :Help =new Help();
+  commenthelp !: commentaireaide;
+  listComment :commentaireaide[]=[];
+  help :demandeaide=new demandeaide();
   id:any;
   textButton:string="fa fa-thumbs-up";
   alert:boolean=false;
@@ -21,11 +21,13 @@ export class HelpDetailsComponent implements OnInit {
   constructor(private helpservice:HelpService ,private commentservice : CommentHelpService,private router: Router,private ac:ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.commenthelp = new CommentHelp();
+    this.commenthelp = new commentaireaide();
     this.id = this.ac.snapshot.params['id'];
     this.helpservice.getHelpById(this.id).subscribe(res=>{
-      this.help=res;})
-    this.commentservice.getCommentHelps().subscribe((data:CommentHelp[])=>this.listComment=data)
+      this.help=res;
+    console.log(res)})
+    this.commentservice.getCommentbyHelp(this.id).subscribe((data:commentaireaide[])=>this.listComment=data)
+    console.log(this.listComment);
 
   }
   addlike(i:number){
@@ -39,12 +41,10 @@ export class HelpDetailsComponent implements OnInit {
     }
   }
   save(){
-    this.commenthelp.dateComment = new Date();
-    this.commenthelp.like = 0;
-    this.commenthelp.helpId = "2";
-    this.commenthelp.idUser="3";
+    this.commenthelp.idDemandeAide=this.id;
+    this.commenthelp.status="Non publié"
     this.commentservice.PostCommentHelp(this.commenthelp).subscribe();
     this.alert=true;
-    this.commenthelp = new CommentHelp();
+    this.commenthelp = new commentaireaide();
 }
 }

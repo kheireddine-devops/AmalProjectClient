@@ -1,4 +1,10 @@
 .btn10{
-width: 8em;
-margin: 10px;
+/* width: 4em; */
+margin-top: 15px;
+}
+.btn-primary{
+   background-color:#389cb4;
+}
+.fa{
+    color:white;
 }

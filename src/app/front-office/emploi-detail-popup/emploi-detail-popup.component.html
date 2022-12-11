@@ -1,0 +1,26 @@
+<div class="container" style="minwidth: 100%; align-self: center;">
+    <div >
+    <!-- <p>{{dataTransferService.myData}}</p> -->
+    <!-- <img [src]="'http://localhost:3000/images/users/' + {{dataTransferService.data.photo}}" alt="img" style="height: 50px; width: 50px;"> -->
+    <img src="ttp://localhost:3000/images/users/ee66e489-2ed8-41ed-859e-570ecff9e16d.png" alt="">
+    <p class="test"><label class="detailbadge">Reference </label> {{dataTransferService.data.ref_emploi}} 
+        <span style="align-self: flex-end ; ">
+        <label class="detailbadge">Date expiration </label> {{dataTransferService.data.date_expiration}}
+       </span>
+      </p>
+  
+    <!-- <p class="det"><label class="detailbadge">Date expiration </label>{{dataTransferService.data.date_expiration}} </p> -->
+
+    <p ><strong>Detail de l'offre </strong></p>
+    <div style="width: 1000px;">
+    <pre> <p >{{dataTransferService.data.descriptif_emploi}}</p> </pre>
+    <!-- <p class="det"> {{dataTransferService.data.descriptif_emploi}}  </p> -->
+     </div>
+    <p class="det"><strong> <i class="fa fa-xl fa-phone" aria-hidden="true"  ></i>Contact :</strong>{{dataTransferService.data.phone}}</p>
+    <p class="det"><strong> <i class="fa fa-xl fa-envelope" aria-hidden="true"  ></i>Email :</strong>{{dataTransferService.data.email}}</p>
+    <p class="det"><strong ><i class="fa fa-xl fa-map-marker" aria-hidden="true"style="margin-right: 15px ;" ></i> Adresse :</strong> {{dataTransferService.data.adresse}}</p>
+    <p class="det"><strong><i class="fa fa-xl fa-briefcase" aria-hidden="true"></i>Annonceur :</strong>{{dataTransferService.data.nom}}</p>
+</div>
+</div>
+
+

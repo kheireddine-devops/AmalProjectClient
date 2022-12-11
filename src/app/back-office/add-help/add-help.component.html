@@ -1,12 +1,15 @@
-<div class="col-sm-12 col-xl-12">
-    <div class="bg-light rounded h-100 p-4">
+<div class="container-fluid pt-4 px-4">
+    <div class="bg-light text-center rounded p-4">
+        <div class="d-flex align-items-center justify-content-between mb-4">
+            <h6 class="mb-0">{{titre}}</h6>
+        </div>
         <div class="alert alert-success alert-dismissible fade show" role="alert" *ngIf="alert">
             Demande ajoutée avec success
           </div>
-        <h6 class="mb-4">{{titre}}</h6>
-        <form #f="ngForm" >
+        
+        <form #f="ngForm" (ngSubmit)="Save()">
             <div class="form-floating mb-3">
-                <select class="form-select" id="floatingSelect" aria-label="Floating label select example" name="typeHelp" ngModel #t="ngModel" [(ngModel)]="help.typeHelp" required>
+                <select class="form-select" id="floatingSelect" aria-label="Floating label select example" name="typeDemande" ngModel #t="ngModel" [(ngModel)]="help.typeDemande" required>
                     <option selected>demande aide médical</option>
                     <option value="Demande d'emploi">Demande d'emploi</option>
                     <option value="Demande de Formation">Demande de Formation</option>
@@ -22,7 +25,7 @@
             </div>
 
         <div class="form-floating mb-3">
-        <input type="text" class="form-control" id="floatingInput" name="subjectHelp" ngModel #s="ngModel" required minlength="20" maxlength="100" pattern="([.\s]?[a-zA-Z]*){10}" [(ngModel)]="help.subjectHelp">
+        <input type="text" class="form-control" id="floatingInput" name="sujet" ngModel #s="ngModel" required minlength="20" maxlength="100" pattern="([.\s]?[a-zA-Z]*){10}" [(ngModel)]="help.sujet">
             <label for="floatingInput">Sujet</label>
         </div>
         <div class="alert alert-danger" *ngIf="s.invalid && s.touched">
@@ -32,15 +35,15 @@
             
         </div>
         <div class="form-floating mb-3">
-            <input type="url" class="form-control" id="floatingInput" name="urlImage" ngModel #image="ngModel" required pattern="(http[s]?:\/\/)?([^\/\s]+\/)(.*)" [(ngModel)]="help.urlImage">
-             <label for="floatingInput">URL Image</label>
+            <input (change)="selectFile($event)" type="file" class="form-control" id="floatingInput" name="image" ngModel #image="ngModel" required  [(ngModel)]="help.image">
+             <label for="floatingInput">Image</label>
         </div>
         <div class="alert alert-danger" *ngIf="image.invalid && image.touched">
             <div *ngIf="image.errors?.['required']">Ce champs est Obligatoire</div>
-            <div *ngIf="image.errors?.['pattern']">URL n'est pas valide </div>
+            
         </div>
         <div class="form-floating mb-3">
-            <input class="form-control" type="number" placeholder="Nombre des personnes" id="floatingNumber"  name="numberHelp" ngModel #n="ngModel" pattern="[1-5]" required [(ngModel)]="help.numberHelp">
+            <input class="form-control" type="nombre" placeholder="Nombre des personnes" id="floatingNumber"  name="numberHelp" ngModel #n="ngModel" pattern="[1-5]" required [(ngModel)]="help.nombre">
             <label for="floatingNumber">Nombre des personnes ont besoin d'aide</label>
         </div>
         <div class="alert alert-danger" *ngIf="n.invalid && n.touched">
@@ -49,7 +52,7 @@
             
         </div>
         <div class="form-floating">
-            <textarea class="form-control" placeholder="votre publication ici" id="floatingTextarea" style="height: 150px;" name="contentHelp" ngModel #c="ngModel" minlength="100" required [(ngModel)]="help.contentHelp"></textarea>
+            <textarea class="form-control" placeholder="votre publication ici" id="floatingTextarea" style="height: 150px;" name="contenue" ngModel #c="ngModel" minlength="100" required [(ngModel)]="help.contenue"></textarea>
             <label for="floatingTextarea">Votre demande en quelque phrase</label>
         </div><br>
         <div class="alert alert-danger alert-dismissible fade show"  *ngIf="c.invalid && c.touched">
@@ -62,20 +65,20 @@
             <legend class="col-form-label col-sm-2 pt-0">Status</legend>
             <div class="col-sm-10">
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="published" checked name="statusHelp" ngModel [(ngModel)]="help.statusHelp">
+                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="Publié" checked name="Status" ngModel [(ngModel)]="help.Status">
                     <label class="form-check-label" for="gridRadios1">
-                        Published
+                        Publié
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="Unpublished" name="statusHelp" ngModel [(ngModel)]="help.statusHelp">
+                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="Non publié" name="Status" ngModel [(ngModel)]="help.Status">
                     <label class="form-check-label" for="gridRadios2">
-                        Unpublished
+                        Non publié
                     </label>
                 </div>
             </div>
         </fieldset>
-        <button type="submit" class="btn btn-success rounded-pill m-2" [disabled]="f.invalid" (click)="Save()" >Ajouter</button>
+        <button type="submit" class="btn btn-success rounded-pill m-2" [disabled]="f.invalid"  >Ajouter</button>
     </form>
     </div>
 </div>

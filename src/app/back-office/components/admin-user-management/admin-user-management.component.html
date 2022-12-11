@@ -21,7 +21,7 @@
           <ng-container matColumnDef="username">
             <th mat-header-cell *matHeaderCellDef mat-sort-header>Username</th>
             <td mat-cell *matCellDef="let element">
-              <img class="avatar" [src]="(element?.photo) ? 'http://localhost:3000/images/users/'+element?.photo : 'assets/images/users/USER-UNKNOWN.jpg'" alt="">
+              <img class="avatar" [src]="(element?.photo) ? URL+element?.photo : 'assets/images/users/USER-UNKNOWN.jpg'" alt="">
               {{element.username}} </td>
           </ng-container>
 

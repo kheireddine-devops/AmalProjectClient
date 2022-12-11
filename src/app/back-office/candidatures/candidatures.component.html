@@ -1,0 +1,49 @@
+<div class="container">
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Emploi</th>
+        <th scope="col">Nom</th>
+        <th scope="col">Prenom</th>
+        <!-- <th scope="col">cv</th> -->
+
+        <th scope="col"style="width: 20%;">Date Candidature</th>
+        <th scope="col">Niveau</th>
+        <th scope="col">Message</th>
+        <th scope="col"> cv</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr  *ngFor="let c of listCandidatures |paginate:{ itemsPerPage:10,currentPage:p};let i = index">
+        <th scope="row" >{{c.ref_emploi}}</th>
+        <td>{{c.nom}}</td>
+        <td>{{c.prenom}}</td>
+        <!-- <td>{{c.url_cv}}</td> -->
+
+
+
+        <td>{{c.date_candidature}}</td>
+        <td>{{c.niveau}}</td>
+        <td>{{c.message}}</td>
+
+        <td>
+
+
+
+
+            <button class="btn btn-update btn-lg"  > <a  [href]="'http://localhost:3000/uploads/cv/' + c.url_cv"> <i class="fa fa-download "> </i></a></button>
+
+        </td>
+
+        <td style="min-width: 130px">
+          <!-- <button class="btn btn-update btn-lg " [routerLink]="['/BackOffice/admin/modifiercandidature',c.id_emploi,c.id_compte]"  >
+             <i class="fa fa-pencil-square-o"> </i>
+          </button>&nbsp; -->
+          <button class="btn btn-danger btn-lg"  (click)="delete(c)"> <i class="fa fa-trash" aria-hidden="true"></i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <pagination-controls (pageChange)="p=$event"></pagination-controls>
+</div>

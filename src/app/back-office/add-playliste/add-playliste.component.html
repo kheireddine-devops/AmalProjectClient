@@ -1,0 +1,34 @@
+
+<h3 class="heading"></h3><br>
+<div class="container">
+
+   <div class="row">
+
+<h2 class="heading text-center">AJOUTER PLAYLISTE</h2>
+
+
+
+   <form class="form-group" #f="ngForm" (submit)="Addplayliste()"  method="post">
+  
+    <div class="form-group" class="mb-3">
+       <label>Nom Playliste </label>
+       <input name="theme" type="text" class="form-control" ngModel [(ngModel)]="playlist.Nom_playlist" #Nom_playlist="ngModel"  required  pattern="[a-zA-Z  à â ä é è ê ë î ï ô ö ù û ü ÿ ç À Â Ä Ç É È Ê Ë Î Ï Ô Ö Ù Û Ü Ÿ ]*" >
+       <div class="alert alert-danger" *ngIf="Nom_playlist.invalid && Nom_playlist.touched">
+ 
+       <div *ngIf="Nom_playlist.errors?.['required']"> champ obliguatoire</div>
+       <div *ngIf="Nom_playlist.errors?.['pattern']"> n'accepte que de des caractéres  </div>
+ 
+       </div>
+    </div>
+
+ <!-- ********************************DATE creation playliste******************************************** -->
+ <p class="date"><i class="fas fa-calendar"></i>
+   {{playlist.date_create | date: 'dd/MM/yyyy'}}
+   <!--<span ngModel [ngModelOptions]="{standalone: true}" [(ngModel)]="playlist.date_create" #date_create="ngModel"></span>-->
+</p>
+     <button type="submit" class=" btn btn-primary"[disabled]="f.invalid" >Création</button>&nbsp;
+     <button type="reset" class="btn btn-danger "  >Annuler</button>
+
+   </form>
+   </div>
+   </div>

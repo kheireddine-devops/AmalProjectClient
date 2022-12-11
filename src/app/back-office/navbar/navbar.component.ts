@@ -1,7 +1,8 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {AccountService} from "../../core/services/account.service";
 import {Router} from "@angular/router";
-import {Account} from "../../core/entities/users";
+import {Account, RoleEnum} from "../../core/entities/users";
+import {environment} from "../../../environments/environment";
 
 @Component({
   selector: 'app-navbar',
@@ -10,10 +11,13 @@ import {Account} from "../../core/entities/users";
 })
 export class NavbarComponent implements OnInit {
 
-  currentUser: Account | undefined;
+  @Input() currentUser: Account | undefined;
 
   @Output() OnToggleSidebarEvent: EventEmitter<boolean> = new EventEmitter<boolean>();
   isOpenSideBar: boolean = false;
+  mode: RoleEnum | undefined;
+  URL = `${environment.url}/images/users/`;
+
   constructor(private _accountService: AccountService,private _router:Router) { }
 
   ngOnInit(): void {

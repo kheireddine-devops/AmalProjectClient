@@ -1,33 +1,44 @@
 
 <!-- ************************liste formation du benevole ********************* -->
-<h2 class="text-center">Liste des formations </h2>
+<h3 class="heading"></h3><br>
+<div class="container">
 
-   <button class="btn btn-success btn-lg" routerLink="/BackOffice/addFormation" mat-raised-button  (click)="addformation()"> Ajouter Formation </button>
-<button   class="btn btn-danger btn-lg" mat-raised-button (click)="removeformation()"> Supprimer Formation </button>
-<button  class="btn btn-secondary btn-lg" mat-raised-button (click)="modifierformation()"> Modifier Formation</button>
+   <div class="row">
+
+<h2 class=" heading text-center">LISTE DES FORMATIONS</h2>
+
+   <button  style=" margin-left: 30px; height: 50px; width: 1000px;" class="btn btn-success btn-lg"   mat-raised-button  (click)="addformation()"> Ajouter Formation </button>
 
 <table class="table">
   <thead>
     <tr>
-      <th scope="col">Theme</th>
-      <th scope="col">descriptif</th>
-      <th scope="col">date debut</th>
-      <th scope="col">date Fin</th>
-      <th scope="col">Nbr Jours</th>
-      <th scope="col">Nbr personnes</th>
+      <th scope="col">Théme</th>
+      <th scope="col">Déscriptif</th>
+      <th scope="col">Date debut</th>
+      <th scope="col">Date Fin</th>
+      <th scope="col">Nombre Jours</th>
+      <th scope="col">Nombre personnes</th>
+      <th scope="col" style="text-align: center;">Action</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let f of listeFormations ;let i= index">
     
      
-    <td>{{f.theme}}</td>
-<td>{{f.descriptif}}</td>
+<td>{{f.theme}}</td>
+<td style=" height: 50px; width: 50px;">{{f.descriptif}}</td>
 <td>{{f.date_debut}}</td>
 <td>{{f.dateFin}}</td>
 <td>{{f.Nbr_jours}}</td>
 <td>{{f.Nbr_personnes}}</td>
+<td>
+  <button  style="  height: 50px; width: 160px;"  class="btn btn-danger btn-lg" (click)="removeformation(f.id_formation)" mat-raised-button> Supprimer  </button>
+ <button  style="  height: 50px; width: 160px;"  class="btn btn-secondary btn-lg" (click)="modifierformation(f.id_formation)" mat-raised-button> Modifier </button>
+ </td>
     </tr>
+
  
   </tbody>
 </table>
+</div>
+</div>

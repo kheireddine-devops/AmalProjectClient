@@ -1,4 +1,13 @@
-.user-counts {
+.user-counts-pie-chart {
+  width: 800px;
+  height: 300px;
+  border: solid 1px #D6E4E5;
+  margin: 1em 0;
+}
+.user-counts-bar-vertical {
+  padding-top: 1em;
   width: 800px;
   height: 400px;
+  border: solid 2px #D6E4E5;
+  margin: 1em 0;
 }

@@ -1,0 +1,16 @@
+
+<h1 mat-dialog-title> Confirmer la réservation</h1>
+<div mat-dialog-content>
+  Voulez‑vous vraiment reserver une place dans la formation ?
+</div>
+
+<div mat-dialog-actions>
+ 
+  <button mat-button mat-dialog-close>Non</button>
+
+  <button mat-button mat-dialog-close cdkFocusInitial  *ngFor="let i= index "  (click)="reserverPlace(i)">Oui</button>
+
+</div>
+
+
+

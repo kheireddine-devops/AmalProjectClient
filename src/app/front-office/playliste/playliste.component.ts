@@ -1,7 +1,13 @@
+import { ActivatedRoute, Route, Router } from '@angular/router';
+import { AddVideosComponent } from './../../back-office/add-videos/add-videos.component';
+import { WatchVideoComponent } from '../../shared/watch-video/watch-video.component';
 import { Component, OnInit } from '@angular/core';
-import { video } from '../../core/entities/video';
+import { video } from './../../core/entities/video';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { ViewChild } from '@angular/core';
+import {MatDialog, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import { playlist } from 'src/app/core/entities/playlist';
+import { GestionPlaylistsService } from 'src/app/core/services/gestion-playlists.service';
+import { id } from '@swimlane/ngx-charts';
 declare var $:any;
 
 @Component({
@@ -10,46 +16,54 @@ declare var $:any;
   styleUrls: ['./playliste.component.css']
 })
 export class PlaylisteComponent implements OnInit {
-  liste_tutoriels : video [ ]  = [ ] ;
+  
 
-  typesOfShoes : string [] = [ 'Boots' , 'Clogs' , 'Loafers' , 'Mocassins' , 'Sneakers' ];
-  title = 'angular-videoplayer-app';
-  playlist = [
-    {
-      title: 'Agent 327!',
-      src: 'https://media.vimejs.com/720p.mp4',
-      type: 'video/mp4'
-    },
-    {
-      title: 'Big Buck Bunny',
-      src: 'http://static.videogular.com/assets/videos/big_buck_bunny_720p_h264.mov',
-      type: 'video/mp4'
-    },
-    {
-      title: 'Messi Goal',
-      src: 'http://static.videogular.com/assets/videos/goal-2.mp4',
-      type: 'video/mp4'
-    }
-  ];
-  constructor(private http: HttpClient) { }
+  
+  video : video= new video();
+  playliste : playlist = new playlist();
+
+  constructor(private gestionPlaylistsService: GestionPlaylistsService,public dialog: MatDialog) { }
+
+
 
   ngOnInit(): void {
-  }
-  @ViewChild('fileInput')
-  fileInput : any;
 
-  file: File | null = null;
-
-  onClickFileInputButton(): void {
-    this.fileInput.nativeElement.click();
-  }
-
-  onChangeFileInput(): void {
-    var files: { [key: string]: File } = this.fileInput.nativeElement.files;
-      i :Number
-
-    this.file = files[0];
-
+    this.gestionPlaylistsService.getPlaylistsByID(2).subscribe(value => {
+      this.playliste = value;
+    })
 
   }
+  watch()  {
+
+    const dialogRef = this.dialog.open(WatchVideoComponent, {
+      width: '800px',
+      data: {
+        id: id
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+
+    });
+
+  }
+  onAddVideo(){
+
+    const dialogRef = this.dialog.open(AddVideosComponent, {
+      width: '800px',
+      data: { Playlist : video    },
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+
+    });
+  }
+
+  removeVideo(){
+
+
+  }
+  
 }

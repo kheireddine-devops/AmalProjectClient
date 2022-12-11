@@ -1,31 +1,4 @@
- <!-- <div class="container">
-    <div class="row">
-        <div class="col-md-3 col-xs-12 col-sm-6" *ngFor="let e of listEmplois;let i = index">
-
-        <div class="card" style="width: 18rem;" >
-            <img src="https://i2.wp.com/urbaniste-tunisien.org/wp-content/uploads/2017/06/offre-emploi-e1497615572612.png?fit=600%2C430" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">{{e.titre}}</h5>
-              <p class="card-text"><strong>Secteur:</strong>{{e.secteur}} </p>
-              <p class="card-text"><strong>Reference :</strong>{{e.reference}}</p>
-              <p class="card-text"><strong>Detail de l'offre :</strong>{{e.descriptif}}</p>
-              <div class="actions">
-                <button class="btn btn-danger" >Delete</button>
-                &nbsp;&nbsp;
-                <button class="btn btn-primary">Update</button>
-                &nbsp;&nbsp;
-                <button class="btn btn-success" >Add</button>
-              &nbsp;&nbsp;
-              </div>
-            </div>
-          </div>
-          </div>
-          <button class="btn" type="button" >Candidature</button>
-    </div>
-</div> -->
-
-
-
+<div class="container">
 <table class="table table-hover">
     <thead>
       <tr>
@@ -38,17 +11,21 @@
       </tr>
     </thead>
     <tbody>
-      <tr  *ngFor="let e of listEmplois;let i = index">
-        <th scope="row" >{{e.reference}}</th>
+      <tr  *ngFor="let e of listEmplois | paginate:{itemsPerPage:5,currentPage:p} ;let i = index ">
+        <th scope="row" >{{e.ref_emploi}}</th>
         <td>{{e.secteur}}</td>
-        <td>{{e.titre}}</td>
-        <td>{{e.descriptif}}</td>
-        <td>{{e.dateExp}}</td>
-        <td> <div><button class="btn btn-primary btn10" [routerLink]="['/BackOffice/admin/modifieremploi',e.id]" >update</button>
-          <button class="btn btn-danger btn10" (click)="delete(e)">delete</button></div></td>
+        <td>{{e.titre_emploi}}</td>
+        <td>{{e.descriptif_emploi}}</td>
+        <td>{{e.date_expiration}}</td>
+        <td style="min-width: 130px">
+          <button class="btn btn-primary btn-lg " [routerLink]="['/BackOffice/'+rol+'/modifieremploi',e.id_emploi]"  >
+            <i class="fa fa-wrench" aria-hidden="true"></i>
+          </button>&nbsp;
+          <button class="btn btn-danger btn-lg" (click)="delete(e)"> <i class="fa fa-trash" aria-hidden="true"></i></button>
+        </td>
       </tr>
-
-
     </tbody>
   </table>
+  <pagination-controls (pageChange)="p=$event"></pagination-controls>
+</div>
 

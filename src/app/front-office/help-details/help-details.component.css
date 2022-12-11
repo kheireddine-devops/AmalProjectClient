@@ -5,7 +5,7 @@ h5{
     margin-bottom: 20px;
     padding-bottom: 20px;
     position: relative;
-    color: #2c4964;
+    color: #e1163c;
 }
 h5::before{
     content: "";
@@ -23,7 +23,7 @@ h5::after{
     display: block;
     width: 40px;
     height: 3px;
-    background: #1977cc;
+    background: #660606;
     bottom: 0;
     left: calc(50% - 20px);
 }
@@ -48,16 +48,21 @@ p{
     border: none;
     background-color: #1977cc;
     color:#fff;
-    border-radius: 0;
+    border-radius: 0px;
+    text-align: center;
+    padding: 0;
 
 }
 .white{
     font-weight: 700;
-    font-size: 34px;
+    font-size: 20px;
     margin-bottom: 30px;
     font-family: "Raleway", sans-serif;
     color:white;
 }
 h1, h2, h3, h4, h5, h6 {
     font-family: "Raleway", sans-serif;
+}
+#rowpub{
+    border-radius: 30px;
 }

@@ -1,4 +1,4 @@
-import { CommentHelp } from '../entities/CommentHelp';
+import { commentaireaide } from '../entities/CommentHelp';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -7,27 +7,22 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class CommentHelpService {
-  url :string="http://localhost:3000/commentHelp";
-  httpOptions = {
-    headers: new HttpHeaders({
-    'Content-Type': 'application/json'
-    })
-    }
+ 
 
   constructor(private http : HttpClient) { }
 
-  getCommentbyHelp(idHelp:any){
-    return this.http.get(this.url+'/'+idHelp);
+  getCommentbyHelp(idHelp:any):Observable<any[]>{
+    return this.http.get<any[]>('http://localhost:3000/api/commentaire/get/'+idHelp);
 
   }
-  getCommentHelps():Observable<CommentHelp[]>{
-    return this.http.get<CommentHelp[]>(this.url);
+  getCommentHelps():Observable<commentaireaide[]>{
+    return this.http.get<commentaireaide[]>('this.url');
   }
-  PostCommentHelp(c:CommentHelp){
-    return this.http.post(this.url,c,this.httpOptions);
+  PostCommentHelp(c:commentaireaide){
+    return this.http.post('http://localhost:3000/api/commentaire/add',c);
   }
   DeleteCommentHelp(id:any){
-    return this.http.delete<any>(this.url+'/'+id);
+    return this.http.delete('http://localhost:3000/api/commentaire/delete/'+id);
 
   }
 

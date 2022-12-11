@@ -9,6 +9,7 @@ import {MatDialog} from "@angular/material/dialog";
 import {AdminEditUsersDialogComponent} from "../dialogs/admin-edit-users-dialog/admin-edit-users-dialog.component";
 import {AdminConfirmDeleteUserDialogComponent} from "../dialogs/admin-confirm-delete-user-dialog/admin-confirm-delete-user-dialog.component";
 import {AdminUserDetailsDialogComponent} from "../dialogs/admin-user-details-dialog/admin-user-details-dialog.component";
+import {environment} from "../../../../environments/environment";
 
 @Component({
   selector: 'app-admin-user-management',
@@ -23,6 +24,8 @@ export class AdminUserManagementComponent implements OnInit , AfterViewInit {
   displayedColumns: string[] = ['username', 'email','role', 'action'];
   accounts: Array<Account> = [];
   dataSource: MatTableDataSource<Account> = new MatTableDataSource();
+
+  URL = `${environment.url}/images/users/`;
 
   constructor(private _usersService: UsersService,
               private _liveAnnouncer: LiveAnnouncer,

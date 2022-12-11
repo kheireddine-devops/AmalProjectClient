@@ -1,27 +1,40 @@
-
+<!DOCTYPE html>
 <div class="container">
-<div class="card" style="width: 18rem;">
-    <img [src]="boutique.picture" class="card-img-top" alt="boutique.nomP">
-    <div class="card-body">
-      <h5 class="card-title">{{boutique.nomP}}</h5>
-      <button type="button" class="btn btn-link like" >💖{{boutique.like}}</button>
-      <div class="origins">
-      
-      <p class="card-text">{{boutique.descriptionP}} </p>  
+  <div class="card" style="width: 18rem;">
+    <img height="300px"  [src]="'http://localhost:3000/uploads/images/produits/'+Prod.photoP" class="card-img-top" alt="food images">
+      <!-- <img [src]="'http://localhost:3000/uploads/images/produits/'+Prod.photoP " class="card-img-top" alt="produit.photoP"> -->
+          <div class="card-body">
+        <h5 class="card-title">{{Prod.libelleP}}</h5>
+        <button type="button" class="btn btn-link like" >💖</button>
+        <div class="origins">
+        
+        <p class="card-text">{{Prod.descriptionP}} </p>  
+      </div>
     </div>
+  
+    <div class="price">
+      <span> $ </span>
+      {{Prod.prixP}}
+       </div>
+      
+  
+      <br> 
+   <!-- //**********ADD COMMENTS****************// -->
+   <form #f="ngForm">
+        
+     
+        <div >
+            <textarea class="form-control" placeholder="Write your feedback"
+                id="avisProduit" style="height: 150px;" name="avisP" ngModel #avisP="ngModel" maxlength="250" [(ngModel)]="avis.text"></textarea>
+                <br>  <button type="submit" (click)="ajouter()" class="btn btn-primary">Submit</button>
+        </div><br>
+        <div class="alert alert-danger" *ngIf="avisP.invalid && avisP.touched">
+            <div *ngIf="avisP.errors?.['maxlength']">Max caractere est 250</div>
+  
+       
+        </div>
+ </form>
   </div>
 
-  <div class="price">
-    <span> $ </span>
-    {{boutique.prixP}}
-     </div>
-    </div> 
- 
-    <div class="mb-2 content-center">
-      <label class="form-label">Ajouter commentaire </label>
-      <input type="text" class="form-control" id="comment" placeholder="Ecrire votre avis svp">
-      
-    <button type="submit" class="btn btn-primary">Submit</button>
-
- 
+  
 

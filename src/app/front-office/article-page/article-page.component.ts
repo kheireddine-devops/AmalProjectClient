@@ -1,7 +1,9 @@
-import { boutique } from 'src/app/core/entities/boutique';
+import { AvisService } from './../../core/services/avis.service';
+import { avis } from './../../core/entities/avis';
+import { produit } from './../../core/entities/produit';
+import { ProduitService } from './../../core/services/produit.service';
 import { Component, OnInit } from '@angular/core';
-import { BoutiqueService } from 'src/app/core/services/boutique.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-article-page',
@@ -9,20 +11,37 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./article-page.component.css']
 })
 export class ArticlePageComponent implements OnInit {
-  boutique!:boutique;
-  constructor(private  btq:BoutiqueService,private activatedRoute:ActivatedRoute,
-    private BService: BoutiqueService){
-      activatedRoute.params.subscribe((params)=>{
-        if(params['id'])
-        this.boutique = BService.getboutiqueById(params['id']);
-      })
+  Prod! : produit;
+  avis! : avis;
+  ListAvisProduit : avis[]=[];
+
+  constructor(private  prd:ProduitService,private activatedRoute:ActivatedRoute, private avisService:AvisService){
+      
     }
 
 
   ngOnInit(): void {
 
+    const id: string | null = this.activatedRoute.snapshot.paramMap.get("id");
+     
+    if(id !== null) {
+
+      this.prd.getOneProduit(Number.parseInt(id + "")).subscribe(value => {
+        this.Prod = value;
+        console.log(value)
+      });
+    }
+    this.avis = new avis();
+    // this.avisService.getavisByidProduit().subscribe((data: avis[])=> this.ListAvisProduit=data
+    // );
+    
+
+  
   }
+  ajouter(){}
 like(i:number){
 
 }
+
+
 }

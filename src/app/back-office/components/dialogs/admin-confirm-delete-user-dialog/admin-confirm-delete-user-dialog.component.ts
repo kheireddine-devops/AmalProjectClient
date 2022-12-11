@@ -19,13 +19,18 @@ export class AdminConfirmDeleteUserDialogComponent implements OnInit {
     this._usersService.getAccountById(this.data.userId)
       .subscribe(account => {
         if(account.id_compte !== undefined && account.role !== undefined) {
-          this._usersService.getUserById(account.id_compte,account.role).subscribe(value => {
+
             if (account.role === RoleEnum.ORGANIZATION) {
-              this.fullname = (value as Organization).name;
+              this._usersService.getOrganizationByID(account.id_compte).subscribe(organization => {
+                this.fullname = organization.name;
+              });
             } else {
-              this.fullname = (value as User).firstname + ' ' + (value as User).lastname;
+              this._usersService.getUserById(account.id_compte)
+                .subscribe(user => {
+                  this.fullname = user.firstname + ' ' + user.lastname;
+              });
             }
-          });
+
         }
       });
   }

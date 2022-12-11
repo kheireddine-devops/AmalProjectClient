@@ -2,26 +2,26 @@
 <app-search></app-search>
 <app-categories></app-categories>
 <ul>
-  <li *ngFor="let boutique of boutique; let i = index">
-    <a routerLink="../boutique/{{boutique.id}}">
+  <li *ngFor="let item of listproduits; let i = index">
+    <a routerLink="../boutique/{{item.id_produit}}">
     <div class="container">
             
             <div class="col-md-4 mt-5">
         <div class="card" style="width: 18rem;">
-            <img height="300px"  src="{{boutique.picture}}" class="card-img-top" alt="food images">
+            <img height="300px"   [src]="'http://localhost:3000/uploads/images/produits/'+item.photoP" class="card-img-top" alt="food images">
           <div class="card-body">
-              <h5 class="card-title" >{{boutique.nomP}}</h5>
-              <p class="card-text">{{boutique.descriptionP}} </p>       
-          <button type="button" class="btn btn-link like" (click)="Like(i)" >💖{{boutique.like}}</button>
+              <h5 class="card-title" >{{item.libelleP}}</h5>
+              <p class="card-text">{{item.descriptionP}} </p>       
+          <button type="button" class="btn btn-link like"  >💖</button>
           <div class="origins">
           
         </div>
         <div class="price">
         <span> $ </span>
-        {{boutique.prixP}}
+        {{item.prixP}}
          </div>
-         <div class="afficher">
-        <button  class="btn btn-primary" routerLink="../boutique/{{boutique.id}}"> Commander </button>
+         <div class="afficher"> 
+        <button  class="btn btn-primary" routerLink="/FrontOffice/boutique/"> Commander {{item.id_produit}} </button>
       </div>
           </div>
          </div>
