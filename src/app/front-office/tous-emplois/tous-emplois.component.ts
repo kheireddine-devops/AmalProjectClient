@@ -44,5 +44,8 @@ export class TousEmploisComponent implements OnInit {
 
     } 
   }
+  convert(element:any){
+    return JSON.parse(element);
+  }
  
 }

@@ -14,4 +14,7 @@ export class EmploiDetailPopupComponent implements OnInit {
     
   }
 
+  convert(el:any){
+    return JSON.parse(el);
+  }
 }
