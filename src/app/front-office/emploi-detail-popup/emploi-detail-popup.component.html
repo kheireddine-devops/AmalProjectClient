@@ -18,7 +18,7 @@
      </div>
     <p class="det"><strong> <i class="fa fa-xl fa-phone" aria-hidden="true"  ></i>Contact :</strong>{{dataTransferService.data.phone}}</p>
     <p class="det"><strong> <i class="fa fa-xl fa-envelope" aria-hidden="true"  ></i>Email :</strong>{{dataTransferService.data.email}}</p>
-    <p class="det"><strong ><i class="fa fa-xl fa-map-marker" aria-hidden="true"style="margin-right: 15px ;" ></i> Adresse :</strong> {{dataTransferService.data.adresse}}</p>
+    <p class="det"><strong ><i class="fa fa-xl fa-map-marker" aria-hidden="true"style="margin-right: 15px ;" ></i> Adresse :</strong> {{'rue '+convert(dataTransferService.data.adresse).street+', '+convert(dataTransferService.data.adresse).city+', '+convert(dataTransferService.data.adresse).zipcode}}</p>
     <p class="det"><strong><i class="fa fa-xl fa-briefcase" aria-hidden="true"></i>Annonceur :</strong>{{dataTransferService.data.nom}}</p>
 </div>
 </div>
