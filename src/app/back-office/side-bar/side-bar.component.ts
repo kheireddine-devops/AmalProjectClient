@@ -101,11 +101,11 @@ const ADMIN_MENU: Array<MenuItem> = [
   {
     path: "",
     text: "Boutique",
-    icon: "fa fa-laptop",
+    icon: "fa fa-shopping-cart",
     subMenu: [
-      {path: "/BackOffice/gestionboutique", text: "Ajouter"},
-      {path: "/BackOffice/link-1", text: "Afficher"},
-      {path: "/BackOffice/link-2", text: "Gestion Commentaire"}
+      {path: "/BackOffice/gestionboutique", text: "Ajouter Produit"},
+      {path: "/BackOffice/store-produit", text: "Liste Produit"},
+      {path: "/BackOffice/gestionavis", text: "Gestion Avis"}
     ]
   },
   {
@@ -113,9 +113,8 @@ const ADMIN_MENU: Array<MenuItem> = [
     text: "Gestion de Formation",
     icon: "fa fa-laptop",
     subMenu: [
-      {path: "/BackOffice/gestionFormation", text: "Gestion Formation"},
-      {path: "/BackOffice/reserverFormation", text: "Réserver Formations"},
-      {path: "/BackOffice/gestionTutoriels", text: "Gestion Tutoriels"}
+      {path: "/BackOffice/gestionFormation", text: "Gestion Formations"},
+      {path: "/BackOffice/gestionPlaylist", text: "Gestion Playlists"}
     ]
   },
   {

@@ -1,26 +1,15 @@
-import { ReserverServiceService } from '../../core/services/reserver-service.service';
-import { ReserverService } from '../../core/services/reserver.service';
-import { formation } from '../../core/entities/formation';
 import { Component, OnInit } from '@angular/core';
-import {MatButtonModule} from '@angular/material/button';
+import { formation } from './../../core/entities/formation';
 
 @Component({
-  selector: 'app-liste-formation',
-  templateUrl: './liste-formation.component.html',
-  styleUrls: ['./liste-formation.component.css'],
-
-
+  selector: 'app-reservation-confirmer',
+  templateUrl: './reservation-confirmer.component.html',
+  styleUrls: ['./reservation-confirmer.component.css']
 })
-export class ListeFormationComponent implements OnInit {
+export class ReservationConfirmerComponent implements OnInit {
   listeFormations : formation [] = [] ;
 
-
-  title :String ="LISTE DE FORMATIONS";
-  THEME :String='';
-  constructor(private ReserverServiceService :ReserverServiceService ) {
-
-  }
-
+  constructor() { }
 
   ngOnInit(): void {
     this.listeFormations=[
@@ -30,10 +19,12 @@ export class ListeFormationComponent implements OnInit {
       {id_formation: 3, theme: "Devellepement perso", descriptif: "Formation pour renforcer les compethence en soft skils",    date_debut:new Date('2017-05-03') ,dateFin: new Date('2017-05-03'),Nbr_jours:4,Nbr_personnes:5},]
 
   }
-  reserver(i :number): void{
+
+
+  reserverPlace(i :number): void{
     this.listeFormations[i].Nbr_personnes= this.listeFormations[i].Nbr_personnes -1;
 
-
+    
   }
 
 }

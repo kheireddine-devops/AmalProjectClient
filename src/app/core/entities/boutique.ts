@@ -9,4 +9,3 @@ export class boutique{
     like:number=0;
    
 }
-    

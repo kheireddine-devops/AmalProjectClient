@@ -1,10 +1,5 @@
 import { NgModule } from '@angular/core';
-import {ListeFormationComponent} from "./liste-formation/liste-formation.component";
 import { GestionEmploisComponent } from './gestion-emplois/gestion-emplois.component';
-import { AddDialogComponentComponent } from './add-dialog-component/add-dialog-component.component';
-import { KPIformationComponent } from './kpiformation/kpiformation.component';
-import { ListeTutorielsComponent } from './liste-tutoriels/liste-tutoriels.component';
-import { GestionFormationsComponent } from './gestion-formations/gestion-formations.component';
 import { GestionDonsComponent } from './gestion-dons/gestion-dons.component';
 import { RouterModule, Routes } from '@angular/router';
 import { BackOfficeComponent } from './back-office.component';
@@ -32,6 +27,19 @@ import {CommentsHelpComponent} from "./comments-help/comments-help.component";
 import {UpdateaidebenifComponent} from "./updateaidebenif/updateaidebenif.component";
 import {CandidaturesComponent} from "./candidatures/candidatures.component";
 import {AjouterCandidatureComponent} from "./ajouter-candidature/ajouter-candidature.component";
+import {GestionFormationsComponent} from "./gestion-formations/gestion-formations.component";
+import {AddDialogComponentComponent} from "./add-dialog-component/add-dialog-component.component";
+import {AddPlaylisteComponent} from "./add-playliste/add-playliste.component";
+import {DeleteConfirmationComponent} from "./delete-confirmation/delete-confirmation.component";
+import {UpdatePlaylistComponent} from "./update-playlist/update-playlist.component";
+import {GestionvideoComponent} from "./gestionvideo/gestionvideo.component";
+import {AddVideosComponent} from "./add-videos/add-videos.component";
+import {UpdateFormationComponent} from "./update-formation/update-formation.component";
+import {KPIformationComponent} from "./kpiformation/kpiformation.component";
+import {GestionPlaylistComponent} from "./gestion-playlist/gestion-playlist.component";
+import {WatchVideoComponent} from "../shared/watch-video/watch-video.component";
+import {StoreProduitComponent} from "./store-produit/store-produit.component";
+import {GestionavisComponent} from "./gestionavis/gestionavis.component";
 
 
 const routes: Routes = [
@@ -63,12 +71,23 @@ const routes: Routes = [
       {path: 'beneficiers/candidatures', component: CandidaturesComponent},
       // End Sabrine Routes
       // Start Asma Routes
-      {path: 'gestiondons',component:GestionDonsComponent},
-      {path: 'gestionFormation',component:GestionFormationsComponent},
-      {path: 'reserverFormation',component:ListeFormationComponent},
-      {path: 'gestionTutoriels',component:ListeTutorielsComponent},
-      {path: 'KPIformation',component:KPIformationComponent},
-      {path: 'addFormation',component:AddDialogComponentComponent},
+          // benevole
+          {path: 'gestionFormation',component:GestionFormationsComponent},
+          {path: 'gestionFormation/addFormation',component:AddDialogComponentComponent},
+          {path: 'gestionFormation/updateFormation/:id',component:UpdateFormationComponent},
+          {path: 'gestionFormation/deleteFormation',component:GestionFormationsComponent},
+          //benevole gestion des playlistes
+          {path: 'gestionPlaylist',component:GestionPlaylistComponent},
+          {path: 'gestionPlaylist/addPlaylist',component:AddPlaylisteComponent},
+          {path: 'gestionPlaylist/updatePlaylist',component:UpdatePlaylistComponent},
+          {path: 'gestionPlaylist/deletePlaylist',component:DeleteConfirmationComponent},
+          //benevole gestion des videos dans un playliste
+          {path: 'gestionPlaylist/Playlist/gestionvideo/:id',component:GestionvideoComponent},
+          {path: 'Playlist/gestionvideo/addvideo',component:AddVideosComponent},
+          {path: 'Playlist/gestionvideo/deletevideo',component:DeleteConfirmationComponent},
+          {path: 'Playlist/gestionvideo/watch-video',component:WatchVideoComponent},
+          //kpi formation
+          {path: 'KPIformation',component:KPIformationComponent},
       // End Asma Routes
       // Start Ameni Routes
       {path: 'gestionaides',component:ShowHelpComponent},
@@ -88,6 +107,9 @@ const routes: Routes = [
       {path: 'ajouter_rapport', component:AjouterRapportComponent},
       // Start Massouda Routes
       {path: 'gestionboutique',component:GestionBoutiqueComponent },
+      {path: 'editproduit/:id',component:GestionBoutiqueComponent },
+      {path: 'store-produit',component:StoreProduitComponent },
+      {path: 'gestionavis',component: GestionavisComponent },
       // End Massouda Routes
       // End Haithem Routes
       {path: '**', component: NotFoundComponent}

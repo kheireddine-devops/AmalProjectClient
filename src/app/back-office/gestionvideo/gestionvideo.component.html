@@ -1,0 +1,77 @@
+
+<h3 class="heading"></h3><br>
+<div class="container">
+
+   <div  class="row">
+
+
+
+
+           <h2 class="heading text-center">
+                {{playliste.Nom_playlist}}
+               </h2>
+
+<section class="playlist-details" >
+
+   <div class="row" >
+
+      <div class="column" >
+         <div class="thumb">
+            <img src="/assets/images/playlist.jpg" alt="" style="  height: 20rem;  width: 60rem;" >
+            {{playliste.id_playlist}}
+
+         </div>
+      </div>
+
+      <div class="column" >
+
+         <div class="tutor">
+            <img src="" alt="">
+
+            <div>
+               <h3>john deo</h3>
+
+               <h2>{{playliste.date_create}}</h2>
+
+                </div>
+
+         </div>
+
+
+
+         <a  class="inline-btn " cdkFocusInitial (click)="onAddVideo()" >Ajouter video</a>
+
+      </div>
+   </div>
+
+</section>
+
+<!-- start   liste des video  -->
+<section class="playlist-videos">
+
+
+
+   <div class="box-container">
+
+<div *ngFor="let v of playliste.videos ;let i= index" class="card" style="width: 25rem;">
+
+   <a class="box" (click)="watch(v.id_video,v)">
+      <div>
+      <video [src]="'http://localhost:3000/uploads/videos/tutoriels/'+v.url"></video>
+      <h4  class="card-title">{{v.titre}}</h4>
+   </div>
+
+   </a>
+   <div class="card-body" >
+      <button class="btn-danger" mat-raised-button (click)="removeVideo(v.id_video)"> Supprimer </button>
+   </div>
+
+</div>
+
+
+   </div>
+
+</section>
+
+</div>
+</div>

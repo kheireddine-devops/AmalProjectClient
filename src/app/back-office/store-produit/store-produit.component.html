@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<div class=" container bg-light rounded h-100 p-4">
+<!-- <h6 class="mb-4"></h6> -->
+<div class="title">
+    <h4>{{title}}</h4>
+    <button type="button" class="btn btn-link" routerLink="/BackOffice/gestionboutique">+ Ajouter Prod</button>
+</div>
+
+
+
+
+<table class="table table-bordered border-primary text-center my-3">
+
+    <thead>
+        <tr class="table-dark">
+           
+            <th>LibelleP</th>
+            <th>PrixP </th>
+            <th>DescriptionP </th>
+            <th>PhotoP</th>
+            <th>NumVendeur</th>
+            <th>DateP</th>
+            <th colspan="3">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+         <tr *ngFor="let item of listproduits" class=" table-active">
+             <td>{{item.libelleP}}  </td>
+             <td>  {{item.prixP   }} dt </td>
+             <td> {{item.descriptionP}} </td>
+             <td> <img [src]="(item.photoP) ? 'http://localhost:3000/uploads/images/produits/'+item.photoP : 'assets/images/template/unknound-produit.webp'" width="50" class="img-thumbnail"></td> 
+             <td> {{item.numVendeur}} </td>
+             <td> {{item.dateP}} </td>
+             <td>
+                 <a [routerLink]="'/BackOffice/editproduit/'+item.id_produit" class="text-success"><i class="fas fa-edit fa-lg mx-1"></i></a>
+                 <a (click)="delete(item.id_produit)" class="text-danger"><i class="fas fa-trash fa-lg mx-1"></i></a>
+             </td>
+         </tr>
+         </tbody>
+</table>
+

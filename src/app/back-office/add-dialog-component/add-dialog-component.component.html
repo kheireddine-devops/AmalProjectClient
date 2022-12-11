@@ -1,8 +1,13 @@
 
 <!-- ************************formulaire ajouter formation  ********************* -->
+<h3 class="heading"></h3><br>
+
+<h2 class=" heading text-center">AJOUTER UNE FORMATION</h2>
 
 <div class="container" >
-  <h2 class="text-center"> Ajouter une formation </h2>
+  <div class="row">
+
+
 <form class="form-group" #f="ngForm" (submit)="sauvgarder()">
   <div class="form-group" class="mb-3">
       <label>Théme</label>
@@ -18,11 +23,11 @@
 
    <div class="form-group" class="mb-3">
         <label>Détail</label>
-         <input name="detail" type="text" class="form-control" ngModel   #detail="ngModel" [(ngModel)]="Formation.descriptif" required pattern="[a-zA-Z  à â ä é è ê ë î ï ô ö ù û ü ÿ ç À Â Ä Ç É È Ê Ë Î Ï Ô Ö Ù Û Ü Ÿ ]*">
+         <input name="detail" type="text" class="form-control" ngModel   #detail="ngModel" [(ngModel)]="Formation.descriptif" required pattern="[a-zA-Z  à â ä é è ê ë î ï ô ö ù û ü ÿ ç À Â Ä Ç É È Ê Ë Î Ï Ô Ö Ù Û Ü Ÿ ]*" maxlength="100">
          <div class="alert alert-danger" *ngIf="detail.invalid && detail.touched">
           <div *ngIf="detail.errors?.['required']"> champ obliguatoire</div>
           <div *ngIf="detail.errors?.['pattern']"> n'accepte que de des caractéres  </div>
-
+          <div *ngIf="detail.errors?.['maxlength']" >nombre maximal des caractéres est 30 caractéres  </div>
          </div>
       </div>
 <!-- ********************************DATE DEBUT******************************************** -->
@@ -68,12 +73,14 @@
       </div>
     </div>
     <div class="form-group" class="mb-3" class="text-center">
-   <button class="btn btn-success "  type="submit" routerLink="/BackOffice/gestionFormation" [disabled]="f.invalid">Sauvguarder</button>&nbsp;
-   <button type="submit" class="btn btn-danger " [disabled]="f.invalid">Annuler</button>
+   <button class="btn btn-success "  type="submit" [disabled]="f.invalid">Ajouter</button>&nbsp;
+   <button type="reset" class="btn btn-danger "  >Annuler</button>
+
   </div>
   &nbsp;
   <div></div>
 </form>
+</div>
 </div>
 
 <!-- ****** -->

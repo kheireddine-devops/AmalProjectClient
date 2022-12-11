@@ -1,0 +1,39 @@
+
+ <h3 class="heading"></h3><br>
+ <div class="container">
+
+    <div class="row">
+
+
+ <h2 class=" heading text-center">AJOUTER VIDEO</h2>
+
+
+   <form class="form-group" #f="ngForm" (submit)="AddVideo()"  method="post" enctype="multipart/form-data">
+
+    <div class="form-group" class="mb-3">
+       <label>Titre video </label>
+
+       <input name="theme" type="text" class="form-control"  name="titre" [(ngModel)]="video.titre" #titre="ngModel"  required  pattern="[a-zA-Z àâäéèêëîïôöùûüÿçÀÂÄÇÉÈÊËÎÏÔÖÙÛÜŸ]*" >
+       <div class="alert alert-danger" *ngIf="titre.invalid && titre.touched">
+
+       <div *ngIf="titre.errors?.['required']"> champ obliguatoire</div>
+       <div *ngIf="titre.errors?.['pattern']"> n'accepte que de des caractéres  </div>
+
+       </div>
+       </div>
+
+
+       <div class="mb-3">
+
+
+         <input class="form-control" accept="video/*" (change)="selectFile($event)" type="file" id="formFile"name="upload-file" accept="video/*" (change)="onFileSelected($event)">
+          </div>
+
+
+ <button type="submit" class=" btn btn-primary"[disabled]="f.invalid"   mat-dialog-close cdkFocusInitial >Ajouter</button>
+
+</form>
+</div>
+</div>
+
+

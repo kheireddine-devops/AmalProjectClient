@@ -1,0 +1,24 @@
+
+
+
+
+<section class="courses">
+
+   <h1 class="heading text-center"> PLAYLISTES DES FORMATIONS</h1>
+
+   <div class="box-container">
+
+      <div class="box" *ngFor="let p of listePlaylist ;let i= index"> 
+         <div class="thumb">
+            <img src="/assets/images/playlist.jpg">
+            <span>{{p.date_create}}</span>
+         </div>
+         <h3 class="title">{{p.Nom_playlist}}</h3>
+         <a class="inline-btn" (click)="showPlaylist(p.id_playlist,p)" >voir playlist</a>
+      </div>
+
+
+   </div>
+
+</section>
+

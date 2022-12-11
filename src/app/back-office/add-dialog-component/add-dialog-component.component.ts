@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { GestionFormationService } from '../../core/services/gestion-formation.service';
-import { formation } from '../../core/entities/formation';
+import { GestionFormationService } from './../../core/services/gestion-formation.service';
+import { formation } from './../../core/entities/formation';
+
 import { Router } from '@angular/router';
 
 @Component({
@@ -24,16 +25,18 @@ export class AddDialogComponentComponent implements OnInit {
 
 
 sauvgarder(){
-  console.log(this.Formation);
-  this.formationService.addformation(this.Formation).subscribe((data)=>this.router.navigateByUrl('/Backoffice/ajouterFormation'));
 
+  this.formationService.addformation(this.Formation).subscribe((data)=>{
+    this.router.navigateByUrl('/BackOffice/gestionFormation')
+  });
+  
 
 }
 
 compareDatesD() {
   console.log('compareDateD...');
   this.isPeriodValid = this.Formation.dateFin > this.Formation.date_debut;
-
+  
 
   }
 

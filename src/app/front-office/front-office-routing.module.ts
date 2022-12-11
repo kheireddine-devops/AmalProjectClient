@@ -1,6 +1,4 @@
 import { PostulerComponent } from './postuler/postuler.component';
-import { PlaylisteComponent } from './playliste/playliste.component';
-import { CartComponent } from './cart/cart.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { FrontOfficeComponent } from './front-office.component';
@@ -17,6 +15,9 @@ import {StoreComponent} from "./store/store.component";
 import {ArticlePageComponent} from "./article-page/article-page.component";
 import {HelpShowComponent} from "./help-show/help-show.component";
 import {HelpDetailsComponent} from "./help-details/help-details.component";
+import {CartComponent} from "./cart/cart.component";
+import {PlaylisteComponent} from "./playliste/playliste.component";
+import {ViewPlaylistComponent} from "./view-playlist/view-playlist.component";
 
 
 const routes: Routes = [
@@ -36,8 +37,12 @@ const routes: Routes = [
       // End Sabrine Routes
       // End Sabrine Routes
       // Start Asma Routes
-      {path: 'ListetousFormation',component:CartComponent},
-      {path: 'ListetousTutoriels',component:PlaylisteComponent},
+          //all users voir liste des annoces formation
+          {path: 'annonceFormation',component:CartComponent},
+          //all users voir liste des
+          {path: 'formationEnLigne',component:ViewPlaylistComponent},
+          //all users peut voir playlist
+          {path: 'formationEnLigne/PlaylistFormation',component:PlaylisteComponent},
       // End Asma Routes
       // Start Ameni Routes
       {path:'demandeaide',component:HelpShowComponent},
@@ -48,8 +53,8 @@ const routes: Routes = [
       // End Haithem Routes
       // Start Masouda Routes
       {path: 'storeP',component:StoreComponent },
-      {path:'search/:searchItem',component:StoreComponent},
-      {path:'categorie/:categorie',component:StoreComponent},
+      // {path:'search/:searchItem',component:StoreComponent},
+      // {path:'categorie/:categorie',component:StoreComponent},
       {path:'boutique/:id',component:ArticlePageComponent},
       // End Massouda Routes
       { path: "", redirectTo: "/home", pathMatch: "full" },

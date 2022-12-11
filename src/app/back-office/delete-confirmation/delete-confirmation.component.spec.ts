@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ListeFormationComponent } from './liste-formation.component';
+import { DeleteConfirmationComponent } from './delete-confirmation.component';
 
-describe('ListeFormationComponent', () => {
-  let component: ListeFormationComponent;
-  let fixture: ComponentFixture<ListeFormationComponent>;
+describe('DeleteConfirmationComponent', () => {
+  let component: DeleteConfirmationComponent;
+  let fixture: ComponentFixture<DeleteConfirmationComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ListeFormationComponent ]
+      declarations: [ DeleteConfirmationComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ListeFormationComponent);
+    fixture = TestBed.createComponent(DeleteConfirmationComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

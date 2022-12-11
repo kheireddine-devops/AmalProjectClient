@@ -12,7 +12,7 @@
         <mat-icon mat-list-icon>photo_camera</mat-icon>
       </div>
       <div class="user-profile-name">
-        {{currentAccount?.email}}
+        {{name}}
       </div>
     </div>
   </div>
@@ -25,16 +25,20 @@
       <mat-list>
         <ng-container>
           <mat-list-item>
-            <mat-icon mat-list-icon>school</mat-icon>
-            <div mat-line>pppp</div>
+            <mat-icon mat-list-icon>badge</mat-icon>
+            <div mat-line>{{name}}</div>
           </mat-list-item>
           <mat-list-item>
-            <mat-icon mat-list-icon>school</mat-icon>
-            <div mat-line>ffff</div>
+            <mat-icon mat-list-icon>mail</mat-icon>
+            <div mat-line>{{currentAccount?.email}}</div>
           </mat-list-item>
           <mat-list-item>
-            <mat-icon mat-list-icon>school</mat-icon>
-            <div mat-line>bbbb</div>
+            <mat-icon mat-list-icon>vpn_key</mat-icon>
+            <div mat-line>{{currentAccount?.username}}</div>
+          </mat-list-item>
+          <mat-list-item>
+            <mat-icon mat-list-icon>phone_android</mat-icon>
+            <div mat-line>{{currentAccount?.phone}}</div>
           </mat-list-item>
         </ng-container>
       </mat-list>

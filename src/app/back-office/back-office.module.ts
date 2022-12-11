@@ -22,9 +22,6 @@ import { GestionEmploisComponent } from './gestion-emplois/gestion-emplois.compo
 import { AjouterEmploisComponent } from './ajouter-emplois/ajouter-emplois.component';
 import { EmploisComponent } from './emplois/emplois.component';
 import { SideBarComponent } from './side-bar/side-bar.component';
-import { GestionFormationsComponent } from './gestion-formations/gestion-formations.component';
-import { ListeFormationComponent } from './liste-formation/liste-formation.component';
-import { ListeTutorielsComponent } from './liste-tutoriels/liste-tutoriels.component';
 import {A11yModule} from '@angular/cdk/a11y';
 import {ObserversModule} from '@angular/cdk/observers';
 import { MatSliderModule } from '@angular/material/slider';
@@ -36,8 +33,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { LayoutModule } from '@angular/cdk/layout';
 import {MatTableModule} from '@angular/material/table';
 import { MatDialogModule } from '@angular/material/dialog';
-import { AddDialogComponentComponent } from './add-dialog-component/add-dialog-component.component';
-import { KPIformationComponent } from './kpiformation/kpiformation.component';
 
 import { AddDonsComponent } from './add-dons/add-dons.component';
 import { RapportComponent } from './rapport/rapport.component';
@@ -59,6 +54,23 @@ import {AjouterCandidatureComponent} from "./ajouter-candidature/ajouter-candida
 import {CandidaturesComponent} from "./candidatures/candidatures.component";
 import {ShowPDFPopUpComponent} from "./show-pdf-pop-up/show-pdf-pop-up.component";
 import {NgxPaginationModule} from "ngx-pagination";
+import {AddDialogComponentComponent} from "./add-dialog-component/add-dialog-component.component";
+import {AddPlaylisteComponent} from "./add-playliste/add-playliste.component";
+import {AddVideosComponent} from "./add-videos/add-videos.component";
+import {DeleteConfirmationComponent} from "./delete-confirmation/delete-confirmation.component";
+import {DeletePlaylistComponent} from "./delete-playlist/delete-playlist.component";
+import {DeleteVideoComponent} from "./delete-video/delete-video.component";
+import {GestionFormationsComponent} from "./gestion-formations/gestion-formations.component";
+import {GestionPlaylistComponent} from "./gestion-playlist/gestion-playlist.component";
+import {GestionvideoComponent} from "./gestionvideo/gestionvideo.component";
+import {KPIformationComponent} from "./kpiformation/kpiformation.component";
+import {ReservationConfirmerComponent} from "./reservation-confirmer/reservation-confirmer.component";
+import {UpdateFormationComponent} from "./update-formation/update-formation.component";
+import {UpdatePlaylistComponent} from "./update-playlist/update-playlist.component";
+import {SharedModule} from "../shared/shared.module";
+import {MAT_DATE_LOCALE} from "@angular/material/core";
+import {StoreProduitComponent} from "./store-produit/store-produit.component";
+import {GestionavisComponent} from "./gestionavis/gestionavis.component";
 
 
 
@@ -79,17 +91,10 @@ import {NgxPaginationModule} from "ngx-pagination";
     EmploisComponent,
     GestionDonsComponent,
     SideBarComponent,
-    GestionFormationsComponent,
-    ListeFormationComponent,
-    ListeTutorielsComponent,
-    AddDialogComponentComponent,
-    KPIformationComponent,
-    KPIformationComponent,
     AddDonsComponent,
     RapportComponent,
     ConsulterRapportComponent,
     AjouterRapportComponent,
-    GestionBoutiqueComponent,
     UserProfileComponent,
     FooterComponent,
     NavbarComponent,
@@ -111,6 +116,26 @@ import {NgxPaginationModule} from "ngx-pagination";
     GestionEmploisComponent,
     ShowPDFPopUpComponent,
     // Sabrine End Imports
+    // Asma Start Imports
+    AddDialogComponentComponent,
+    AddPlaylisteComponent,
+    AddVideosComponent,
+    DeleteConfirmationComponent,
+    DeletePlaylistComponent,
+    DeleteVideoComponent,
+    GestionFormationsComponent,
+    GestionPlaylistComponent,
+    GestionvideoComponent,
+    KPIformationComponent,
+    ReservationConfirmerComponent,
+    UpdateFormationComponent,
+    UpdatePlaylistComponent,
+    // Asma End Imports
+    // Massouda Start Routes
+    GestionBoutiqueComponent,
+    StoreProduitComponent,
+    GestionavisComponent,
+    // Massouda End Routes
   ],
   imports: [
       CommonModule,
@@ -118,6 +143,7 @@ import {NgxPaginationModule} from "ngx-pagination";
       BackOfficeMaterialModule,
       FormsModule,
       ReactiveFormsModule,
+      SharedModule,
       NgxChartsModule,
       MatChipsModule,
 
@@ -138,6 +164,9 @@ import {NgxPaginationModule} from "ngx-pagination";
       A11yModule,
       MatChipsModule,
       NgxPaginationModule
-  ]
+  ],
+  providers: [
+    {provide: MAT_DATE_LOCALE, useValue: 'fr-FR'},
+  ],
 })
 export class BackOfficeModule { }
