@@ -263,7 +263,7 @@ const ORGANIZATION_MENU: Array<MenuItem> = [
       {path: "/BackOffice/organization/emplois", text: "Liste des offres d'emplois"},
       {path: "/BackOffice/organization/ajouteremploi", text: "Ajouter une offre"},
       {path: "/BackOffice/organization/link-1", text: "Statéstique"},
-      {path: "/BackOffice/organization/linl-2", text: "Mes candidatures"}
+      {path: "/BackOffice/organization/candidatures", text: "Mes candidatures"}
     ]
   },
   {
