@@ -31,10 +31,12 @@
               <P class="card-text "><strong>Secteur:</strong>{{e.secteur}} </P>
               <p class="card-text"><strong>Date expiration:</strong>{{e.date_expiration}} </p>
               <p class="card-text"><strong>Detail de l'offre: </strong> <br>{{e.descriptif_emploi.slice(0,250)+".."}}</p>
-               <p class="card-text"> <i class="fa fa-2x fa-map-marker  " aria-hidden="true" style="color:#389cb4; margin-top:20px ;" ></i>Rue: {{convert(e.adresse).street}}, Ville: {{convert(e.adresse).city}}, Code Postal: {{convert(e.adresse).zipcode}}</p>
+
+               <p class="card-text" > <i class="fa fa-2x fa-map-marker  " aria-hidden="true" style="color:#389cb4; margin-top:20px ; margin-right: 10px;" ></i>Rue: {{convert(e.adresse).street}}, Ville: {{convert(e.adresse).city}}, Code Postal: {{convert(e.adresse).zipcode}}</p>
+               
               <div class="actions">
                 <button class="btn btn-primary  "  (click)="openDialog(e)">Détail </button>
-              <button class="btn btn-success btnp" (click)="onPostuler(e)" [routerLink]="['/FrontOffice/postuler']" >Postuler</button>
+              <button class="btn btn-success btnp" (click)="onPostuler(e)" [routerLink]="['/FrontOffice/postuler']" [disabled]="!isBenificier" >Postuler</button>
 
 
 
